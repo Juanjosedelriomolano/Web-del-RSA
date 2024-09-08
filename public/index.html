@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA personalizado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Keania+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Aplica la fuente personalizada a los encabezados */
+        h1 {
+            font-family: 'Keania One', sans-serif;
+            position: absolute;
+            left:35%;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>RSA personalizado</h1>
+    <div class="rsa-text">
+    <p>Bienvenido a nuestra paginá web sobre el algoritmo RSA,  uno de los métodos más importantes en la criptografía moderna. En esta paginá web, te llevaremos paso a paso a través del funcionamiento de RSA y la generación de las claves necesarias para su implementación.</p>
+    <p>Nuestra plataforma está organizada en tres secciones clave:</p>
+    <ol>
+        <li><strong>Generación de Claves:</strong>Aprende cómo se crean las  claves pública<!--ℹ️--> y privada<!--ℹ️-->, esenciales para el proceso de cifrado y descifrado.</li>
+        <li><!--ℹ️--><strong>Cifrado:</strong>Descubre cómo utilizar la clave pública para cifrar mensajes y garantizar que solo los destinatarios autorizados puedan leerlos.</li>
+        <li><!--ℹ️--><strong>Descifrado:</strong>Entiende el proceso de descifrado utilizando la clave privada para recuperar el mensaje original a partir del texto cifrado.</li>
+    </ol>
+    <button>Inicio</button>
+    </div>
+    <div class="diagram-container">
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape rhomboid">
+        <h2>El Módulo RSA (n) y la Elección de Números Primos</h2>
+        <p>Selecciona dos números primos distintos.</p>
+        <form action="#">
+            <label>n =</label>
+            <select name="numerosP" id="numP"  onchange="calculateN()">
+              <option value="p">p</option>  
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="7">7</option>
+              <option value="11">11</option>
+              <option value="13">13</option>
+              <option value="17">17</option>
+              <option value="19">19</option>
+              <option value="23">23</option>
+              <option value="29">29</option>
+              <option value="31">31</option>
+              <option value="37">37</option>
+              <option value="41">41</option>
+              <option value="43">43</option>
+              <option value="47">47</option>
+              <option value="53">53</option>
+              <option value="59">59</option>
+              <option value="61">61</option>
+              <option value="67">67</option>
+              <option value="71">71</option>
+              <option value="73">73</option>
+              <option value="79">79</option>
+              <option value="83">83</option>
+              <option value="89">89</option>
+              <option value="97">97</option>
+            </select>
+            <label>*</label>
+            <select name="numerosq" id="numq"  onchange="calculateN()">
+                <option value="q">q</option>  
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="7">7</option>
+                <option value="11">11</option>
+                <option value="13">13</option>
+                <option value="17">17</option>
+                <option value="19">19</option>
+                <option value="23">23</option>
+                <option value="29">29</option>
+                <option value="31">31</option>
+                <option value="37">37</option>
+                <option value="41">41</option>
+                <option value="43">43</option>
+                <option value="47">47</option>
+                <option value="53">53</option>
+                <option value="59">59</option>
+                <option value="61">61</option>
+                <option value="67">67</option>
+                <option value="71">71</option>
+                <option value="73">73</option>
+                <option value="79">79</option>
+                <option value="83">83</option>
+                <option value="89">89</option>
+                <option value="97">97</option>
+              </select>
+              <!-- se coloca para evitar un error en consola, podria quitarse si se ve muy inecesario
+            <div id="n-value" style="display:none;">
+            <p>Valor de n: <span id="output-n">n</span></p>
+             </div> 
+              -->
+
+      </form>
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape square">
+        <h2>Función Totiente de Euler (φ)</h2>
+        <p>Se calcula mediante la siguiente ecuación:</p>
+        <p class="ecuacion">φ(<span id="output-n">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1)</p>
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape rhomboid">
+        <h2>Exponente de Cifrado (e)</h2>
+        <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
+        <form action="#">
+            <label>e =</label>
+            <select name="cadidatose" id="canE">
+              <option value="p">p</option>  
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>            
+      </form>
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape square" id="Square">
+        <h2>Exponente de Descifrado (d)</h2>
+        <ol>
+            <li>Inicialización</li>
+            <div class="arrow down"></div>
+            <li>Algoritmo de Euclides</li>
+            <div class="arrow down"></div>
+            <li>Verificación de Coprimalidad</li>
+            <div class="arrow down"></div>
+            <li>Algoritmo Extendido de Euclides</li>
+            <div class="arrow down"></div>
+            <li>Cálculo del Inverso Multiplicativo d</li>
+            <div class="arrow down"></div>
+        </ol>
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape rhomboid">
+        <h2>Introduce el mensaje para aplicar el cifrado</h2>
+        <input type="text">
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <div class="shape square">
+        <h2>Cifrado y descifrado</h2>
+        <form action="#">
+            <label>M =</label>
+            <input type="text">
+      </form>
+      <div class="privada">Llave privada = (<span id="outputd">d</span>,<span id="outputn">n</span>)</div>
+      <div class="publica">Llave pública = (<span id="outpute">e</span>,<span id="outputn1">n</span>)</div>
+    </div>
+    <div class="arrow-line down"></div>
+    <div class="arrow down"></div>
+    <button>Fin</button>
+    </div>
+
+    <script>
+        function calculateN() {
+            const p = parseInt(document.getElementById('numP').value);
+            const q = parseInt(document.getElementById('numq').value);
+
+            document.getElementById('outputp').textContent = isNaN(p) ? 'p' : p;
+            document.getElementById('outputq').textContent = isNaN(q) ? 'q' : q;
+            
+            // Si ambos valores son números válidos
+            if (!isNaN(p) && !isNaN(q)) {
+                fetch('/calculate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ p, q })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Valor de n calculado:', data.n);
+                    document.getElementById('output-n').textContent = data.n;
+                    document.getElementById('n-value').style.display = 'block'; // Muestra el valor de n (puedes ocultarlo si no quieres mostrarlo)
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+
+</body>
+</html>
