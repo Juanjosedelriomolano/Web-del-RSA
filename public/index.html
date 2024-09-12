@@ -117,11 +117,8 @@
         <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
         <form action="#">
             <label>e =</label>
-            <select name="cadidatose" id="canE">
-              <option value="p">p</option>  
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select name="cadidatose" id="canE" onchange="updatePublicKey(); calculateD()">
+                <!-- Las opciones de e se generarán dinámicamente aquí -->
             </select>            
       </form>
     </div>
@@ -146,7 +143,8 @@
     <div class="arrow down"></div>
     <div class="shape rhomboid">
         <h2>Introduce el mensaje para aplicar el cifrado</h2>
-        <input type="text">
+        <input type="text" id="mensaje" oninput="validateMessageLength()">
+        <span id="error-message" style="color: red;"></span>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
@@ -154,10 +152,10 @@
         <h2>Cifrado y descifrado</h2>
         <form action="#">
             <label>M =</label>
-            <input type="text">
+            <input type="text" id="textoCifrado" readonly>
       </form>
-      <div class="privada">Llave privada = (<span id="outputd">d</span>,<span id="outputn">n</span>)</div>
-      <div class="publica">Llave pública = (<span id="outpute">e</span>,<span id="outputn1">n</span>)</div>
+      <div class="privada">Llave privada = (<span id="outputd">d</span>,<span id="output-n1">n</span>)</div>
+      <div class="publica">Llave pública = (<span id="outpute">e</span>,<span id="output-n2">n</span>)</div>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
@@ -165,12 +163,19 @@
     </div>
 
     <script>
+
         function calculateN() {
             const p = parseInt(document.getElementById('numP').value);
             const q = parseInt(document.getElementById('numq').value);
 
             document.getElementById('outputp').textContent = isNaN(p) ? 'p' : p;
             document.getElementById('outputq').textContent = isNaN(q) ? 'q' : q;
+
+            // Verificar si p y q son iguales
+            if (p === q) {
+                alert('Los números p y q no pueden ser iguales. Por favor, selecciona dos números primos diferentes.');
+                return; // Detener el cálculo si son iguales
+            }
             
             // Si ambos valores son números válidos
             if (!isNaN(p) && !isNaN(q)) {
@@ -184,12 +189,118 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Valor de n calculado:', data.n);
+                    nValue = data.n;
                     document.getElementById('output-n').textContent = data.n;
+                    document.getElementById('output-n1').textContent = data.n;
+                    document.getElementById('output-n2').textContent = data.n;
                     document.getElementById('n-value').style.display = 'block'; // Muestra el valor de n (puedes ocultarlo si no quieres mostrarlo)
+                    document.getElementById('error-message').textContent = '';
+
+
                 })
-                .catch(error => console.error('Error:', error));
-            }
+            .catch(error => console.error('Error:', error));
+
+            // Calcular e
+            fetch('/calculateE', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ p, q })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const eSelect = document.getElementById('canE');
+                eSelect.innerHTML = ''; // Limpiar opciones anteriores
+
+                // Añadir opción por defecto
+                const defaultOption = document.createElement('option');
+                defaultOption.text = 'Selecciona e';
+                defaultOption.value = '';
+                eSelect.add(defaultOption);
+
+                // Añadir opciones de e
+                data.possibleE.forEach(e => {
+                    const option = document.createElement('option');
+                    option.value = e;
+                    option.text = e;
+                    eSelect.add(option);
+                });
+                 // Reiniciar el valor de e en la llave pública
+                 document.getElementById('outpute').textContent = 'e';
+            })
+            .catch(error => console.error('Error:', error));
         }
+    }
+    function updatePublicKey() {
+            const e = document.getElementById('canE').value;
+            document.getElementById('outpute').textContent = e || 'e';
+        }
+
+        function calculateD() {
+        const e = parseInt(document.getElementById('canE').value);
+        const p = parseInt(document.getElementById('outputp').textContent);
+        const q = parseInt(document.getElementById('outputq').textContent);
+
+        if (!isNaN(e) && !isNaN(p) && !isNaN(q)) {
+            fetch('/calculateD', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ p, q, e })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Valor de d calculado:', data.d);
+                document.getElementById('outputd').textContent = data.d;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+
+   function validateMessageLength() {
+            const mensajeInput = document.getElementById('mensaje');
+            const errorMessage = document.getElementById('error-message');
+            const mensaje = mensajeInput.value;
+
+            if (mensaje.length > nValue) {
+                mensajeInput.value = mensaje.substring(0, nValue);
+                errorMessage.textContent = 'El mensaje no puede superar el tamaño de n.';
+            } else {
+                errorMessage.textContent = '';
+            }
+
+            // Convertir el mensaje a número ASCII y mostrar
+            convertirAMensajeNumerico();
+        }
+
+        function convertirAMensajeNumerico() {
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (mensaje.trim() === '') {
+                document.getElementById('textoCifrado').value = '';
+                return;
+            }
+
+            fetch('/convertMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: mensaje, n: nValue })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.asciiMessage) {
+                    document.getElementById('textoCifrado').value = data.asciiMessage;
+                } else {
+                    document.getElementById('error-message').textContent = data.error;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
     </script>
 
 </body>
