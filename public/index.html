@@ -137,6 +137,7 @@
             <div class="arrow down"></div>
             <li>Cálculo del Inverso Multiplicativo d</li>
             <div class="arrow down"></div>
+            <div>d calculado = <span id="outputd2">d</span></div>
         </ol>
     </div>
     <div class="arrow-line down"></div>
@@ -156,6 +157,11 @@
       </form>
       <div class="privada">Llave privada = (<span id="outputd">d</span>,<span id="output-n1">n</span>)</div>
       <div class="publica">Llave pública = (<span id="outpute">e</span>,<span id="output-n2">n</span>)</div>
+      <br>
+        <button type="button" onclick="encryptMessage()">Cifrar con llave pública</button>
+        <p id="resultadoCifrado"></p> <!-- Aquí se imprime el resultado de cifrado -->
+        <button type="button" onclick="decryptMessage()">Descifrar con llave privada</button>
+        <p id="resultadoDescifrado"></p> <!-- Aquí se imprime el resultado de descifrado -->
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
@@ -254,6 +260,7 @@
             .then(data => {
                 console.log('Valor de d calculado:', data.d);
                 document.getElementById('outputd').textContent = data.d;
+                document.getElementById('outputd2').textContent = data.d;
             })
             .catch(error => console.error('Error:', error));
         }
