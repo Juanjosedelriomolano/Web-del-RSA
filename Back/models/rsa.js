@@ -1,0 +1,55 @@
+// Funciones para cálculos RSA
+
+// Calcular n = p * q
+function calculateN(p, q) {
+    return p * q;
+}
+
+// Calcular valores posibles de 'e'
+function calculateE(p, q) {
+    const phi = (p - 1) * (q - 1);
+    const gcd = (a, b) => {
+        if (!b) return a;
+        return gcd(b, a % b);
+    };
+
+    const possibleE = [];
+    for (let e = 2; e < phi; e++) {
+        if (gcd(e, phi) === 1) {
+            possibleE.push(e);
+        }
+    }
+
+    return possibleE;
+}
+
+// Calcular d usando el algoritmo extendido de Euclides
+function calculateD(p, q, e) {
+    const phi = (p - 1) * (q - 1);
+
+    function modInverse(a, m) {
+        let [m0, x0, x1] = [m, 0, 1];
+        if (m === 1) return 0;
+        while (a > 1) {
+            let q = Math.floor(a / m);
+            [m, a] = [a % m, m];
+            [x0, x1] = [x1 - q * x0, x0];
+        }
+        if (x1 < 0) x1 += m0;
+        return x1;
+    }
+
+    return modInverse(e, phi);
+}
+
+// Convertir mensaje a ASCII
+function convertMessage(message) {
+    return message.split('').map(char => char.charCodeAt(0)).join('');
+}
+
+module.exports = {
+    calculateN,
+    calculateE,
+    calculateD,
+    convertMessage
+};
