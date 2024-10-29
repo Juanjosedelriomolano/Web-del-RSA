@@ -31,12 +31,12 @@ exports.calculateD = (req, res) => {
     }
 };
 
-// Ruta para convertir el mensaje a números ASCII
-exports.convertMessage = (req, res) => {
+// Nueva ruta para convertir texto a números
+exports.convertText = (req, res) => {
     const { message } = req.body;
-    if (typeof message !== 'string') {
-        return res.status(400).json({ error: 'Mensaje no proporcionado' });
+    if (!message) {
+        return res.status(400).json({ error: 'El mensaje está vacío' });
     }
-    const asciiMessage = rsaModel.convertMessage(message);
-    res.json({ asciiMessage });
+    const { convertedText, convertedArray } = rsaModel.convertTextToNumbers(message);
+    res.json({ convertedText, convertedArray });
 };
