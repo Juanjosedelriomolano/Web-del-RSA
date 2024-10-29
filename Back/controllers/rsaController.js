@@ -40,3 +40,13 @@ exports.convertText = (req, res) => {
     const { convertedText, convertedArray } = rsaModel.convertTextToNumbers(message);
     res.json({ convertedText, convertedArray });
 };
+// Nueva ruta para cifrar números
+exports.encryptNumbers = (req, res) => {
+    const { numbers, e, n } = req.body;
+    if (!numbers || !e || !n) {
+        return res.status(400).json({ error: 'Números, e y n deben ser válidos' });
+    }
+
+    const encryptedNumbers = rsaModel.encryptNumbers(numbers, e, n);
+    res.json({ encryptedText: encryptedNumbers });
+};
