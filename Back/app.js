@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 app.post('/calculate', rsaController.calculateN);
 app.post('/calculateE', rsaController.calculateE);
 app.post('/calculateD', rsaController.calculateD);
-app.post('/convertMessage', rsaController.convertMessage);
+app.post('/convertText', rsaController.convertText);
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
