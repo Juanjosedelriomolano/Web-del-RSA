@@ -49,14 +49,29 @@ function convertTextToNumbers(text) {
         'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19,
         'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26, ' ': 0
     };
-    const convertedArray = text.toUpperCase().split('').map(char => alphabetMap[char] || '');
-    const convertedText = convertedArray.join('');
+    // Convertimos cada carácter a su valor correspondiente o 0 si no está en el mapa
+    const convertedArray = text.toUpperCase().split('').map(char => {
+        return alphabetMap.hasOwnProperty(char) ? alphabetMap[char] : 0;
+    });
+
+    const convertedText = convertedArray.join(''); // Cadena completa de números para mostrar
     return { convertedText, convertedArray };
+}
+
+// Función para encriptar un número usando el algoritmo RSA
+function encryptNumber(number, e, n) {
+    return Math.pow(number, e) % n; // Encriptar el número
+}
+
+// Función para cifrar un arreglo de números
+function encryptNumbers(numbers, e, n) {
+    return numbers.map(number => encryptNumber(number, e, n));
 }
 
 module.exports = {
     calculateN,
     calculateE,
     calculateD,
-    convertTextToNumbers
+    convertTextToNumbers,
+    encryptNumbers
 };
