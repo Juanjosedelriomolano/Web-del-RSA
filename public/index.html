@@ -116,7 +116,7 @@
     <div class="shape square">
         <h2><button id="shape_button" onclick="window.totiente.showModal();">ℹ️</button>Función Totiente de Euler (φ)</h2>
         <p>Se calcula mediante la siguiente ecuación:</p>
-        <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1)</p>
+        <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputp">a</span></p> <!-- operar el a y cambiarlo -->
         <button class="evaluacion">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
@@ -163,21 +163,32 @@
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape rhomboid">
-        <h2><button id="shape_button" onclick="window.texto_cifrado.showModal();">ℹ️</button>Introduce el mensaje para aplicar el cifrado</h2>
-        <input type="text">
-        <p class="aviso">Número de caracteres disponibles: <span id="disponibles">?</span> (<span id="utilizados">?</span> utilizados)</p>
-        <button class="evaluacion">Evaluación</button>
+        <h2>
+            <button id="shape_button" onclick="window.texto_cifrado.showModal();">ℹ️</button>
+            Introduce el mensaje para aplicar el cifrado
+        </h2>
+        <input type="text" id="messageInput" maxlength="20" placeholder="Escribe tu mensaje aquí...">
+        <p class="aviso">
+            Número de caracteres disponibles: 
+            <span id="disponibles">20</span> 
+            (<span id="utilizados">0</span> utilizados)
+        </p>
+        <button class="evaluacion" id="encryptBtn" onclick="sendToBackend()" disabled>Cifrar</button>
     </div>
+    
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square">
         <h2>Cifrado</h2>
         <form action="#">
-            <label>M = <input type="text"></label>
+            <label>M = <input type="text" id="mValue" disabled></label>
         </form>
-        <button id="publica">Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)</button>
+        <button id="publica" disabled>
+            Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)
+        </button>
         <button class="evaluacion">Evaluación</button>
     </div>
+    
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square">
@@ -344,7 +355,7 @@
         <p>Ahora que tienes tus claves pública y privada, estamos listos para cifrar tu mensaje usando el algoritmo RSA. Ten en cuenta lo siguiente:</p>
                     
         <ol>
-            <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Puede ser cualquier información sensible, como un mensaje o una contraseña. Asegúrate de que el texto esté en un formato que el sistema pueda procesar fácilmente, utilizando solo caracteres alfanuméricos y evitando caracteres especiales (por ejemplo: !, ?, #, &, @) y otros símbolos que puedan complicar el cifrado.</li>
+            <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Puede ser cualquier información sensible, como un mensaje o una contraseña. Asegúrate de que el texto esté en un formato que el sistema pueda procesar fácilmente, utilizando solo caracteres alfabético y evitando caracteres especiales y numeros (por ejemplo: 1,2, !, ?, #, &, @) y otros símbolos que puedan complicar el cifrado.</li>
             <li><strong>Preparación del Texto:</strong> Recuerda que, como mencionamos antes, el módulo "n" en RSA es el resultado de multiplicar dos números grandes. Esto se hace para asegurar que el sistema pueda manejar mensajes más largos y complejos durante el cifrado.</li>
             <li><strong>Cifrado:</strong> Una vez que tengas el texto listo, escríbelo en el campo proporcionado y procede con el cifrado. El algoritmo RSA transformará tu texto en un código que solo puede ser descifrado por alguien que tenga la clave privada correcta.</li>
         </ol>
@@ -456,48 +467,38 @@
           .catch(error => console.error('Error:', error));
       }
   }
+    const messageInput = document.getElementById('messageInput');
+    const encryptBtn = document.getElementById('encryptBtn');
+    const mValue = document.getElementById('mValue');
+    const disponibles = document.getElementById('disponibles');
+    const utilizados = document.getElementById('utilizados');    
 
- function validateMessageLength() {
-          const mensajeInput = document.getElementById('mensaje');
-          const errorMessage = document.getElementById('error-message');
-          const mensaje = mensajeInput.value;
+// Limitar caracteres y actualizar contadores
+messageInput.addEventListener('input', () => {
+    const length = messageInput.value.length;
+    disponibles.textContent = 20 - length;
+    utilizados.textContent = length;
+    encryptBtn.disabled = length === 0;
+});
 
-          if (mensaje.length > nValue) {
-              mensajeInput.value = mensaje.substring(0, nValue);
-              errorMessage.textContent = 'El mensaje no puede superar el tamaño de n.';
-          } else {
-              errorMessage.textContent = '';
-          }
+// Función para enviar el mensaje al backend
+function sendToBackend() {
+    const message = messageInput.value;
 
-          // Convertir el mensaje a número ASCII y mostrar
-          convertirAMensajeNumerico();
-      }
-
-      function convertirAMensajeNumerico() {
-          const mensaje = document.getElementById('mensaje').value;
-
-          if (mensaje.trim() === '') {
-              document.getElementById('textoCifrado').value = '';
-              return;
-          }
-
-          fetch('/convertMessage', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ message: mensaje, n: nValue })
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.asciiMessage) {
-                  document.getElementById('textoCifrado').value = data.asciiMessage;
-              } else {
-                  document.getElementById('error-message').textContent = data.error;
-              }
-          })
-          .catch(error => console.error('Error:', error));
-      }
+    fetch('/convertText', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar el texto convertido en el campo mValue
+        mValue.value = data.convertedText;
+    })
+    .catch(error => console.error('Error:', error));
+}
 
   </script>
 
