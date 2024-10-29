@@ -167,7 +167,7 @@
             <button id="shape_button" onclick="window.texto_cifrado.showModal();">ℹ️</button>
             Introduce el mensaje para aplicar el cifrado
         </h2>
-        <input type="text" id="messageInput" maxlength="20" placeholder="Escribe tu mensaje aquí...">
+        <input type="text" id="messageInput" maxlength="20" oninput="validateInput()" placeholder="Escribe tu mensaje aquí...">
         <p class="aviso">
             Número de caracteres disponibles: 
             <span id="disponibles">20</span> 
@@ -183,10 +183,13 @@
         <form action="#">
             <label>M = <input type="text" id="mValue" disabled></label>
         </form>
-        <button id="publica" disabled>
+        <button id="publica">
             Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)
         </button>
         <button class="evaluacion">Evaluación</button>
+        
+        <!-- Nuevo campo para mostrar el texto cifrado -->
+        <label>Texto Cifrado = <input type="text" id="encryptedText" disabled></label>
     </div>
     
     <div class="arrow-line down"></div>
@@ -432,8 +435,7 @@
                // Reiniciar el valor de e en la llave pública
                document.getElementById('output-e').textContent = 'e';
                document.getElementById('output-e1').textContent = 'e';
-               document.getElementById('output-e2').textContent = 'e';
-               document.getElementById('output-e3').textContent = 'e';
+
           })
           .catch(error => console.error('Error:', error));
       }
@@ -441,6 +443,7 @@
   function updatePublicKey() {
           const e = document.getElementById('canE').value;
           document.getElementById('output-e').textContent = e || 'e';
+          document.getElementById('output-e1').textContent = e || 'e';
       }
 
       function calculateD() {
@@ -473,6 +476,13 @@
     const disponibles = document.getElementById('disponibles');
     const utilizados = document.getElementById('utilizados');    
 
+    function validateInput() {
+    const inputField = document.getElementById('messageInput');
+    
+    // Expresión regular que permite solo letras y espacios
+    inputField.value = inputField.value.replace(/[^a-zA-Z\s]/g, '');}
+
+
 // Limitar caracteres y actualizar contadores
 messageInput.addEventListener('input', () => {
     const length = messageInput.value.length;
@@ -499,6 +509,26 @@ function sendToBackend() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+document.getElementById('publica').addEventListener('click', function() {
+        const e = parseInt(document.getElementById('canE').value);
+        const n = parseInt(document.getElementById('output-n3').textContent);
+        const convertedArray = mValue.value.split('').map(Number); // Asumiendo que `mValue` contiene los números separados por comas.
+
+        // Enviar al backend para cifrar
+        fetch('/encrypt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ numbers: convertedArray, e, n })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('encryptedText').value = data.encryptedText.join(', ');
+        })
+        .catch(error => console.error('Error:', error));
+    });
 
   </script>
 
