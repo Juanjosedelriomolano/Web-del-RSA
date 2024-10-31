@@ -7,40 +7,6 @@ body { /*Estructura de la página web*/
     margin: 0;
   }
   
-  header {
-    background-color: black;
-    min-height: 40px;
-    display: flex;
-    justify-content: space-between; /* Distribuye los elementos: botón a la izquierda y texto a la derecha */
-    align-items: center;            /* Alinea verticalmente al centro */
-    padding: 10px;
-  }
-  
-  header div {
-    display: flex;
-    flex-direction: column;
-    margin-right: 60vw;  /* Ajusta la distancia del texto con el botón de forma relativa al ancho del viewport */
-  }
-  
-  header p {
-    color: white;
-    margin: 5px 0;  /* Ajusta los márgenes de los párrafos */
-    font-size: 1.2vw; /* Ajusta el tamaño del texto de forma relativa al ancho de la pantalla */
-  }
-  
-  header button {
-    background-color: #d9d9d9;
-    border: none;
-    border-radius: 10px;
-    padding: 1vw 2vw; /* Usamos vw (viewport width) para hacer el botón más responsive */
-    font-size: 1vw;   /* Tamaño del texto en el botón basado en el tamaño de la pantalla */
-  }
-  
-  header span {
-    color: white;
-  }
-  
-  
   dialog{
     background-color: #fff;
     position: fixed;
@@ -54,7 +20,7 @@ body { /*Estructura de la página web*/
   .rsa-text{/*div que permite controlar el texto de la página*/
       width: 650px;
       height: 300px;
-      top: 55%;
+      top: 40%;
       left: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
@@ -82,150 +48,11 @@ body { /*Estructura de la página web*/
     border-radius: 40px;
     margin: 5px auto;
    }
-  
-   .diagram-container{
-    /*flex-direction: column;
-    align-items: center;
-    justify-content: center;*/
-    top: 91%;
-    left: 15%;
-    position: absolute;
+
+   .rsa-text button a{
+    text-decoration: none;
+    color: black;
    }
-  
-   .diagram-container button{
-    position: relative;
-    left: 29vw;   /* Usando vw para la alineación horizontal */
-    height: 8vh;  /* Ajuste de altura relativo al viewport */
-    width: 15vw;  /* Ancho ajustado al viewport */
-    background-color: #d9d9d9;
-    border: none;
-    outline: none;
-    font-size: 2.5em;
-    border-radius: 2em;
-    margin: 0.1em auto;
-   }
-  
-   .arrow-container {
-    display: flex;
-    flex-direction: column;
-    gap: 4vh;  /* Espaciado entre flechas en vh */
-  }
-  
-  .arrow-line {
-    position: relative;
-    display: flex;
-  }
-  
-  .arrow-line::before {
-    content: '';
-    position: sticky;
-    background-color: #333;
-  }
-  
-  .arrow-line.down::before {
-    height: 11vh;   /* Ajuste de altura con vh */
-    width: 0.2vw;   /* Ancho con vw */
-    bottom: 0;
-    left: 52%;
-    transform: translateX(60%);
-  }
-  
-  .arrow {
-    width: 0;
-    height: 0;
-    border-left: 2vw solid transparent;  /* Uso de vw para el tamaño de las flechas */
-    border-right: 2vw solid transparent;
-  }
-  
-  .arrow.down {
-    border-top: 4vh solid #333;  /* Ajuste de tamaño de la flecha con vh */
-    position: sticky;
-    left: 52%;
-    transform: translateX(-44%); /* Ajuste horizontal con vw */
-  }
-  
-  .shape {
-    width: 600px;            /* Establece el ancho del elemento en 200 píxeles */
-    padding: 80px;           /* Agrega un relleno interno de 20 píxeles en todos los lados */
-    margin: 5px auto;        /* Margen de 5px arriba y abajo; auto en los lados izquierdo y derecho para centrar el elemento horizontalmente */
-    position: relative;      /* Define la posición del elemento como relativa (para futuros ajustes de posición) */
-    display: grid;
-    text-align: center;      /* Alinea el texto dentro del elemento al centro horizontalmente */
-    align-items: center;     /* Alinea verticalmente el contenido dentro del contenedor flex al centro */
-    justify-content: center; /* Alinea horizontalmente el contenido dentro del contenedor flex al centro */
-  }
-  
-  .shape.rhomboid {
-    background-color: #9C27B0;
-    transform: skew(-20deg);
-    left: 6vw;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .shape.rhomboid h2{
-    position: relative;
-    top: -65px; /* Mueve el h2 hacia arriba */
-  }
-  
-  .shape.rhomboid p{
-    position: relative;
-    top: -50px; /* Mueve el h2 hacia arriba */
-    text-align: justify;
-  }
-  
-  .shape.rhomboid input{
-    width: 622px; 
-    height: 40px;
-    align-items: center;
-  }
-  
-  .shape.square{
-    background-color: #3f51b5;
-    line-height: normal;
-    left: 9vw;
-  }
-  
-  .shape.square h2{
-    position: relative;
-    top: -65px; 
-  }
-  
-  .shape.square p{
-    position: relative;
-    top: -50px;
-    right: 216px; 
-  }
-  
-  .shape.square ol{
-    position: relative;
-    top: -50px;
-    padding-left: 0; /* Elimina el padding a la izquierda */
-    margin-left: 0;  /* Elimina el margen a la izquierda */
-    list-style-position: inside; /* Mueve los números dentro del contenido */
-  }
-  
-  .shape.square ol li{
-    margin-bottom: 5px; /* Ajusta el margen inferior para reducir la separación */
-    line-height: 1.2; /* Controla la altura de línea */
-  }
-  
-  .shape.square form{
-    position: relative;
-    top: -50px;
-  }
-  
-  .shape.square input{
-    width: 558px;
-  }
-  
-  .ecuacion{
-    position: relative; 
-    text-align: center;
-    left: -8px;
-    transform: translateY(48px);
-    font-size: 25px;
-  }
   
   .modal_button{
     background-color: #d9d9d9;
@@ -234,24 +61,14 @@ body { /*Estructura de la página web*/
     border-radius: 40px;
   }
   
-  .aviso{
-    position: relative !important;
-    top: 50px !important;
-    right: 54px !important;
-  }
-  
+ 
+  /*
   .llaves{
     color: #f5f5f5;
     text-align: left;
-  }
+  }*/
   
-  .evaluacion{
-    position: absolute !important;
-    font-size: 1em !important;
-    height: 5vh !important;
-    right: -9em !important;
-    bottom: 10px !important;
-  }
+  
   
   #mensaje{
     position: static;
@@ -261,78 +78,9 @@ body { /*Estructura de la página web*/
     font-size: 1em;
   }
   
-  #mensaje1{
-    position: static;
-    height: 3vh;
-    width: 2vw; 
-    background-color: #d9d9d9;
-    font-size: 1em;
-  }
-  
-  #shape_button{
-    position: static;
-    height: 5vh;
-    width: 3vw;
-    background-color: #d9d9d9;
-    font-size: 1em;
-  }
-  
-  #Square{
-    padding-bottom: 0px;
-  }
-  
-  #arrow_buttom{
-    /*width: 0;
-    height: 0;
-    border-left: 2vw solid transparent;
-    border-right: 2vw solid transparent;
-    margin: 0 auto;
-    border-top: 4vh solid #333;/* Elimina el fondo */
-    background-color: transparent; 
-    left: 1%;
-  }
-  
-  #privada{
-    position: relative;
-    top: 0px;
-    left: 5px;
-    height: 20px;
-    width: 170px;
-    background-color: #f8f6f6fe;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    font-size: 1em;
-  }
-  
-  #publica{
-    position: relative;
-    top: 0px;
-    left: 5px;
-    height: 20px;
-    width: 170px;
-    background-color: #f8f6f6fe;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    font-size: 1em;
-  }
-  
   @media (max-width:881px){/*Condicional que se activa si el ancho alcanza los 680px*/
     .rsa-text button{
       left: 223px;
-    }
-    .shape.rhomboid{
-        left: -10vw;
-    }
-    .shape.square{
-      left: -12vw;
-    }
-    .shape.square ol{
-      padding-left: 49px;
-    }
-    .evaluacion{
-      right: -20em !important;
     }
   }
   
