@@ -143,7 +143,7 @@
         <div class="shape square">
             <h2>Cifrado</h2>
             <form action="#">
-                <label>M = <input type="text"></label>
+                <label><button id="shape_button" onclick="window.modal_cifrado.showModal();">ℹ️</button>M = <input type="text"></label>
             </form>
             <button id="publica">Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)</button>
             <button class="evaluacion">Evaluación</button>
@@ -343,6 +343,16 @@
         </ol>
                     
         <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
+    </dialog>
+    <dialog id="modal_cifrado">
+        <p>Para generar un mensaje M,  se asigna un número a cada carácter de una cadena. Utilizaremos la siguiente codificación:</p>
+
+        <p>Espacio = 0, A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13, N = 14, Ñ = 15, O = 16, P = 17, Q = 18, R = 19, S = 20, T = 21, U = 22, V = 23, W = 24, X = 25, Y = 26, Z = 27.</p>
+                    
+        <p>Las letras minúsculas tendrán el mismo valor que sus equivalentes en mayúscula (por ejemplo, 'e' también se asigna como 5).</p>
+                    
+        <p>Por ejemplo, para la cadena "HOLA", se convertiría en los números correspondientes: H (8), O (16), L (12), A (1), formando así el mensaje M como una secuencia numérica: M = [8, 16, 12, 1].</p>
+        <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
     </dialog>
 
     <script>
