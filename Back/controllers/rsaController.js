@@ -4,7 +4,8 @@ const rsaModel = require('../models/rsa');
 exports.calculateN = (req, res) => {
     const { p, q } = req.body;
     const n = rsaModel.calculateN(p, q);
-    res.json({ n });
+    const a = rsaModel.calculateA(p, q);
+    res.json({ n, a });
 };
 
 // Ruta para calcular e
@@ -49,4 +50,21 @@ exports.encryptNumbers = (req, res) => {
 
     const encryptedNumbers = rsaModel.encryptNumbers(numbers, e, n);
     res.json({ encryptedText: encryptedNumbers });
+};
+
+// Nueva ruta para descifrar números
+exports.decryptNumbers = (req, res) => {
+    const { encryptedArray, d, n } = req.body;
+    if (!encryptedArray || !d || !n) {
+        return res.status(400).json({ error: 'El arreglo encriptado, d y n deben ser válidos' });
+    }
+
+    // Descifrar el arreglo de números
+    const decryptedNumbers = rsaModel.decryptNumbers(encryptedArray, d, n);
+
+    // Convertir los números descifrados a texto
+    const decryptedText = rsaModel.convertNumbersToText(decryptedNumbers);
+
+    // Enviar el resultado
+    res.json({ decryptedText, decryptedNumbers });
 };
