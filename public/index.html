@@ -116,7 +116,7 @@
     <div class="shape square">
         <h2><button id="shape_button" onclick="window.totiente.showModal();">ℹ️</button>Función Totiente de Euler (φ)</h2>
         <p>Se calcula mediante la siguiente ecuación:</p>
-        <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputa">a</span></p>
+        <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputz">a</span></p>
         <button class="evaluacion">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
@@ -142,7 +142,7 @@
                 <div class="arrow down"></div>
             </button>
             <li>Algoritmo de Euclides</li>
-            <button id="arrow_buttom" onclick="window.algoritmo_euclides.showModal();">
+            <button id="arrow_buttom" onclick="window.algoritmo_euclides.showModal(), showEuclideanAlgorithm();">
                 <div class="arrow down"></div>
             </button>
             <li>Verificación de Coprimalidad</li>
@@ -150,7 +150,7 @@
                 <div class="arrow down"></div>
             </button>
             <li>Algoritmo Extendido de Euclides</li>
-            <button id="arrow_buttom" onclick="window.algoritmo_extendido.showModal();">
+            <button id="arrow_buttom" onclick="window.algoritmo_extendido.showModal(), showExtendedEuclideanAlgorithm();">
                 <div class="arrow down"></div>
             </button>
             <li>Cálculo del Inverso Multiplicativo d</li>
@@ -284,7 +284,7 @@
 
         <p>e × d = 1 (MOD φ(n))</p>
 
-        <p>Ejemplo: Supongamos que φ(n) = 40 y e = 7.</p>
+        <p>Ejemplo: Supongamos que φ(n) = <span id="output-n5">40</span> y e = <span id="output-e2">7</span></p>
 
         <ol>
             <li>Inicialización</li>
@@ -297,51 +297,27 @@
     </dialog>
     <dialog id="inicializacion">
         <p>Comienza con a = φ(n) y b = e.</p>
-        <p>En nuestro caso: a = 40 y b = 7.</p>
+        <p>En nuestro caso: a = <span id="output-n6">40</span> y b = <span id="output-e3">7</span>.</p>
         <button class="modal_button" onclick="window.inicializacion.close();">Cerrar</button>
     </dialog>
     <dialog id="algoritmo_euclides">
         <p>Aplica el algoritmo estándar para encontrar el máximo común divisor (MCD) de a y b.</p>
-        
         <p>Proceso:</p>
-
-        <p>Divide 40 entre 7. El cociente es 5 y el residuo es 5 (40 = 7 × 5 + 5).</p>
-        <p>Divide 7 entre 5. El cociente es 1 y el residuo es 2 (7 = 5 × 1 + 2).</p>
-        <p>Divide 5 entre 2. El cociente es 2 y el residuo es 1 (5 = 2 × 2 + 1).</p>
-        <p>Divide 2 entre 1. El cociente es 2 y el residuo es 0 (2 = 1 × 2 + 0).</p>
-
-        <p>El último residuo no nulo es 1, por lo que MCD(40, 7) = 1</p>
-        <button class="modal_button" onclick="window.algoritmo_euclides.close();">Cerrar</button>
+        <div id="mcd-process"></div>
+        <p id="mcd-result"></p>
+        <button class="modal_button" onclick="document.getElementById('algoritmo_euclides').close();">Cerrar</button>
     </dialog>
     <dialog id="verificacion">
         <p>Asegúrate de que MCD(φ(n), e) = 1.</p>
-        <p>En nuestro caso, MCD(40, 7) = 1, así que 40 y 7 son coprimos.</p>
+        <p>En nuestro caso, MCD(<span id="output-n7">40</span>, <span id="output-e4">7</span>) = 1, así que <span id="output-n8">40</span> y <span id="output-e5">7</span> son coprimos.</p>
         <button class="modal_button" onclick="window.verificacion.close();">Cerrar</button>
     </dialog>
     <dialog id="algoritmo_extendido">
-        <p>Utiliza este algoritmo para encontrar “x” e “y” tales que: e × x + φ(n) × y = 1</p>
-        
-        <p>Proceso</p>
-
-        <p>Utiliza las ecuaciones obtenidas en el paso anterior: 1 = 5 − 2 × 2</p>
-
-        <p>Sustituye 2 = 7 − 5:</p>
-        <p>1 = 5 − (7−5) × 2 </p>
-        <p>1 = 5 × 3 − 7 × 2</p>
-
-        <br>
-
-        <p>Sustituye 5 = 40 − 7 × 5:</p>
-        <p>1 = (40 − 7 × 5) × 3 − 7 × 2 </p>
-        <p>1 = 40 × 3 − 7 × 5 × 3 − 7 × 2</p>
-        <p>1 = 40 × 3 − 7 × 15 − 7 × 2</p>
-        <p>1 = 40 × 3 − 7 × 17</p>
-
-        <br>
-
-        <p>Así que x = −17 e y = 3.</p>
-        <button class="modal_button" onclick="window.algoritmo_extendido.close();">Cerrar</button>
+        <p>Proceso del Algoritmo Extendido de Euclides para encontrar x e y en la ecuación: e × x + φ(n) × y = 1</p>
+        <div id="extended-process"></div>
+        <button class="modal_button" onclick="document.getElementById('algoritmo_extendido').close();">Cerrar</button>
     </dialog>
+    
     <dialog id="inverso_multiplicativo">
         <p>El inverso multiplicativo “d” es “x” (en módulo φ(n)).</p>
         
@@ -367,6 +343,9 @@
         <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
     </dialog>
     <input type="hidden" id="encryptedArrayField" />
+    <!-- Este div estará oculto en la página -->
+    <div id="output-n9" style="display:none;"></div>
+    <div id="output-e6" style="display:none;"></div>
     <script>
 
       function calculateN() {
@@ -394,16 +373,17 @@
               .then(response => response.json())
               .then(data => {
                   console.log('Valor de n calculado:', data.n);
-                  nValue = data.n;
+                  document.getElementById('outputz').textContent = data.z; //a es cambiado a x por problemas de datos
                   document.getElementById('output-n').textContent = data.n;
                   document.getElementById('output-n1').textContent = data.n;
                   document.getElementById('output-n2').textContent = data.n;
                   document.getElementById('output-n3').textContent = data.n;
                   document.getElementById('output-n4').textContent = data.n;
-                  document.getElementById('outputa').textContent = data.a;
-                  document.getElementById('n-value').style.display = 'block'; // Muestra el valor de n (puedes ocultarlo si no quieres mostrarlo)
-                  document.getElementById('error-message').textContent = '';
-
+                  document.getElementById('output-n5').textContent = data.n;
+                  document.getElementById('output-n6').textContent = data.n;
+                  document.getElementById('output-n7').textContent = data.n;
+                  document.getElementById('output-n8').textContent = data.n;
+                  document.getElementById('output-n9').textContent = data.n;
 
               })
           .catch(error => console.error('Error:', error));
@@ -437,6 +417,10 @@
                // Reiniciar el valor de e en la llave pública
                document.getElementById('output-e').textContent = 'e';
                document.getElementById('output-e1').textContent = 'e';
+               document.getElementById('output-e2').textContent = 'e';
+               document.getElementById('output-e3').textContent = 'e';
+               document.getElementById('output-e4').textContent = 'e';
+               document.getElementById('output-e5').textContent = 'e';
 
           })
           .catch(error => console.error('Error:', error));
@@ -446,6 +430,12 @@
           const e = document.getElementById('canE').value;
           document.getElementById('output-e').textContent = e || 'e';
           document.getElementById('output-e1').textContent = e || 'e';
+          document.getElementById('output-e2').textContent = e || 'e';
+          document.getElementById('output-e3').textContent = e || 'e';
+          document.getElementById('output-e4').textContent = e || 'e';
+          document.getElementById('output-e5').textContent = e || 'e';
+          document.getElementById('output-e6').textContent = e || 'e';
+
       }
 
       function calculateD() {
@@ -466,7 +456,6 @@
               console.log('Valor de d calculado:', data.d);
               document.getElementById('output-d').textContent = data.d;
               document.getElementById('output-d1').textContent = data.d;
-              document.getElementById('output-d2').textContent = data.d;
               
           })
           .catch(error => console.error('Error:', error));
@@ -560,6 +549,64 @@ document.getElementById('privada').addEventListener('click', function() {
     })
     .catch(error => console.error('Error:', error));
 });
+
+function showEuclideanAlgorithm() {
+    const a = parseInt(document.getElementById('output-n6').textContent);
+    const b = parseInt(document.getElementById('output-e3').textContent);
+
+    fetch('/calculateMCD', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ a, b })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const processContainer = document.getElementById('mcd-process');
+        processContainer.innerHTML = ''; // Limpia el contenido anterior
+
+        data.process.forEach(step => {
+            const stepElement = document.createElement('p');
+            stepElement.textContent = step;
+            processContainer.appendChild(stepElement);
+        });
+
+        document.getElementById('mcd-result').textContent = `El MCD de ${a} y ${b} es ${data.mcd}`;
+        document.getElementById('algoritmo_euclides').showModal();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function showExtendedEuclideanAlgorithm() {
+    const a = parseInt(document.getElementById('output-n9').textContent);
+    const b = parseInt(document.getElementById('output-e6').textContent);
+
+    fetch('/calculateEE', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ a, b })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const processContainer = document.getElementById('extended-process');
+        processContainer.innerHTML = ''; // Limpia el contenido anterior
+
+        data.steps.forEach(step => {
+            const stepElement = document.createElement('p');
+            stepElement.textContent = step;
+            processContainer.appendChild(stepElement);
+        });
+
+        // Mostrar el resultado final
+        processContainer.innerHTML += `<p>Resultado final: x = ${data.x}, y = ${data.y}</p>`;
+        document.getElementById('algoritmo_extendido').showModal();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 
   </script>
 
