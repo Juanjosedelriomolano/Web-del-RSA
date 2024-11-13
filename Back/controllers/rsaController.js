@@ -4,8 +4,8 @@ const rsaModel = require('../models/rsa');
 exports.calculateN = (req, res) => {
     const { p, q } = req.body;
     const n = rsaModel.calculateN(p, q);
-    const a = rsaModel.calculateA(p, q);
-    res.json({ n, a });
+    const z = rsaModel.calculateA(p, q);
+    res.json({ n, z });
 };
 
 // Ruta para calcular e
@@ -67,4 +67,17 @@ exports.decryptNumbers = (req, res) => {
 
     // Enviar el resultado
     res.json({ decryptedText, decryptedNumbers });
+};
+
+exports.calculateMCD = (req, res) => {
+    const { a, b } = req.body;
+    const result = rsaModel.calculateMCD(a, b);
+    res.json(result);
+};
+
+exports.calculateEE = (req, res) => {
+    const { a, b } = req.body;
+    const result1 = extendedEuclidean(a, b);
+    console.log(result1); // Verifica si el resultado es correcto
+    res.json(result1);
 };
