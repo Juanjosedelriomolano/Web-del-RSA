@@ -20,6 +20,8 @@ app.post('/calculateD', rsaController.calculateD);
 app.post('/convertText', rsaController.convertText);
 app.post('/encrypt', rsaController.encryptNumbers);
 app.post('/decrypt', rsaController.decryptNumbers);
+app.post('/calculateMCD', rsaController.calculateMCD);
+app.post('/calculateEE', rsaController.calculateEE);
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
