@@ -94,6 +94,44 @@ function convertNumbersToText(numbersArray) {
     return numbersArray.map(number => alphabetMap[number] || '?').join('');
 }
 
+function calculateMCD(a, b) {
+    let steps = [];
+    while (b !== 0) {
+        let quotient = Math.floor(a / b);
+        let remainder = a % b;
+        steps.push(`Divide ${a} entre ${b}. El cociente es ${quotient} y el residuo es ${remainder} (${a} = ${b} × ${quotient} + ${remainder}).`);
+        a = b;
+        b = remainder;
+    }
+    steps.push(`El último residuo no nulo es ${a}, por lo que MCD(a, b) = ${a}`);
+    return { mcd: a, process: steps };
+}
+
+// Modelo (ejemplo simplificado)
+function extendedEuclidean(a, b) {
+    let x0 = 1, x1 = 0, y0 = 0, y1 = 1;
+    const steps = [];
+
+    while (b !== 0) {
+        const q = Math.floor(a / b);
+        const r = a % b;
+        a = b;
+        b = r;
+
+        const xTemp = x1;
+        const yTemp = y1;
+        x1 = x0 - q * x1;
+        y1 = y0 - q * y1;
+        x0 = xTemp;
+        y0 = yTemp;
+
+        steps.push(`Paso: ${a} = ${b} * ${q} + ${r}`);
+    }
+    
+    return { gcd: a, x: x0, y: y0, steps };
+}
+
+
 module.exports = {
     calculateN,
     calculateA,
@@ -102,5 +140,7 @@ module.exports = {
     convertTextToNumbers,
     encryptNumbers,
     decryptNumbers,
-    convertNumbersToText
+    convertNumbersToText,
+    calculateMCD,
+    extendedEuclidean
 };
