@@ -12,11 +12,18 @@ dialog{
     background-color: #fff;
     position: fixed;
     width: 600px;
-    max-width: 100%;
+    max-width: 50%;
     padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0.2);
 }
+
+/*
+dialog input{
+  position: relative;
+  left: 24px;
+  width: 100px;
+}*/
 
 header {
   position: fixed;
@@ -62,10 +69,17 @@ header span {
     padding-right: 1vw; /* Añadir separación del borde derecho */
 }
 
+label span{
+position: relative;
+left: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .diagram-container{
-    /*flex-direction: column;
-    align-items: center;
-    justify-content: center;*/
     top: 20%;
     left: 15%;
     position: absolute;
@@ -202,7 +216,7 @@ header span {
     position: relative; 
     text-align: center;
     left: -8px;
-    transform: translateY(48px);
+    transform: translateY(17px);
     font-size: 25px;
   }
 
@@ -227,6 +241,63 @@ header span {
     bottom: 10px !important;
   }
 
+  .last_buttons{
+    position: relative !important;
+    height: 5vh !important;
+    width: 2vw !important;
+    background-color: #d9d9d9 !important;
+    font-size: 1em !important;
+    left: -15em !important;
+    bottom: 2vw !important;
+  }
+
+  .formula{
+    position: relative;
+    margin-left: 40%;
+  }
+
+  .margen_derecho{
+    right: 5%;
+  }
+
+  .puntaje{
+    position: relative !important;
+    top:5em !important;
+  }
+
+  .puntaje1{
+    position: relative !important;
+    top:0em !important;
+  }
+
+  .ecuaciones{
+    left: -8px;
+    transform: translateY(60px);
+    font-size: 25px;
+  }
+
+  .entrada{
+    position: relative !important;
+    left: 13px !important;
+  }
+
+  .correcto{
+    color: #32AA0D;
+  }
+
+  .incorrecto{
+    color: #E41515;
+  }
+
+  .boton_final{
+    position: relative;
+    left: 85%;
+    background-color: #d9d9d9;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+  }
+
   #mensaje{
     position: static;
     height: 3vh;  /* Ajuste de altura relativo al viewport */
@@ -244,6 +315,7 @@ header span {
     background-color: #d9d9d9;
     font-size: 1em;
     margin-right: 1vw;
+    padding-bottom: 3vw;
   }
 
   #Square{
@@ -293,5 +365,10 @@ header span {
     }
     .evaluacion{
       right: -20em !important;
+    }
+
+    #shape_button{
+      height: 7vh;
+      width: 4vw;
     }
   }
