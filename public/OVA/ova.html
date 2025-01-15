@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OVA</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Keania+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Aplica la fuente personalizada a los encabezados */
+        #shape_button {
+            font-family: 'Keania One', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <button class="modal_button">Ir al inicio</button>
+        <button class="modal_button"><a href="..\index.html">Ir al inicio</a></button><!--.. indica que debe ir un nivel hacia arriba en la estructura de carpetas.-->
         <div>
             <p>Llave pública = (<span id="output-e">e</span>,<span id="output-n">n</span>)</p>
             <p>Llave privada = (<span id="output-d">d</span>,<span id="output-n1">n</span>)</p>
@@ -17,7 +27,7 @@
     </header>
     <div class="diagram-container">
         <div class="shape rhomboid">
-            <h2><button id="shape_button" onclick="window.modal_rsa.showModal();">ℹ️</button>El Módulo RSA (n) y la Elección de Números Primos</h2>
+            <h2><button id="shape_button" onclick="window.modal_rsa.showModal();">¡</button>El Módulo RSA (n) y la Elección de Números Primos</h2>
             <p>Selecciona dos números primos distintos.</p>
             <form action="#">
                 <label>n =</label>
@@ -79,20 +89,31 @@
                     <option value="97">97</option>
                   </select>
           </form>
-          <button class="evaluacion">Evaluación</button>
+          <p class="puntaje">Puntuación: <span id="puntuacion">¿?</span>/1</p>
+          <button class="evaluacion" onclick="showDialog()">Evaluación</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape square">
-            <h2><button id="shape_button" onclick="window.totiente.showModal();">ℹ️</button>Función Totiente de Euler (φ)</h2>
+            <h2><button id="shape_button" onclick="showTotiente()">¡</button>Función Totiente de Euler (&phi;)</h2>
             <p>Se calcula mediante la siguiente ecuación:</p>
-            <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1)</p>
-            <button class="evaluacion">Evaluación</button>
+            <p class="ecuacion">&phi;(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1)</p>
+            <p class="puntaje">Puntuación: <span id="puntuacion1">¿?</span>/1</p>
+            <button class="evaluacion" onclick="showDialog1()">Evaluación</button>
         </div>
+        <!--
+        <script>
+            // Asegurarse de que el contenido se muestre desde el inicio
+            function showTotiente() {
+                window.totiente.showModal();
+                window.totiente.scrollTop = 0; // Forzar que el contenido comience desde el inicio
+            }
+        </script>
+        -->        
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape rhomboid">
-            <h2><button id="shape_button" onclick="window.exponente_cifrado.showModal();">ℹ️</button>Exponente de Cifrado (e)</h2>
+            <h2><button id="shape_button" onclick="window.exponente_cifrado.showModal();">¡</button>Exponente de Cifrado (e)</h2>
             <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
             <form action="#">
                 <label>e =</label>
@@ -100,12 +121,13 @@
                   <!-- Las opciones de e se generarán dinámicamente aquí -->
               </select>          
           </form>
-          <button class="evaluacion">Evaluación</button>
+          <p class="puntaje">Puntuación: <span id="puntuacion2">¿?</span>/1</p>
+          <button class="evaluacion" onclick="showDialog2()">Evaluación</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape square" id="Square">
-            <h2><button id="shape_button" onclick="window.exponente_descifrado.showModal();">ℹ️</button>Exponente de Descifrado (d)</h2>
+            <h2><button id="shape_button" onclick="window.exponente_descifrado.showModal();">¡</button>Exponente de Descifrado (d)</h2>
             <ol>
                 <li>Inicialización</li>
                 <button id="arrow_buttom" onclick="window.inicializacion_span.showModal();">
@@ -115,12 +137,8 @@
                 <button id="arrow_buttom" onclick="window.algoritmo_euclides_span.showModal();">
                     <div class="arrow down"></div>
                 </button>
-                <li>Verificación de Coprimalidad</li>
-                <button id="arrow_buttom" onclick="window.verificacion_span.showModal();">
-                    <div class="arrow down"></div>
-                </button>
                 <li>Algoritmo Extendido de Euclides</li>
-                <button id="arrow_buttom" onclick="window.algoritmo_extendido_span.showModal();">
+                <button id="arrow_buttom" onclick="show_AE_span()">
                     <div class="arrow down"></div>
                 </button>
                 <li>Cálculo del Inverso Multiplicativo d</li>
@@ -128,233 +146,1220 @@
                     <div class="arrow down"></div>
                 </button>
             </ol>
-            <button class="evaluacion">Evaluación</button>
+            <p class="puntaje1">Puntuación: <span id="puntuacion3">¿?</span>/1</p>
+            <button class="evaluacion" onclick="showDialog3()">Evaluación</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape rhomboid">
-            <h2><button id="shape_button" onclick="window.texto_cifrado.showModal();">ℹ️</button>Introduce el mensaje para aplicar el cifrado</h2>
+            <h2><button id="shape_button" onclick="window.texto_cifrado.showModal();">¡</button>Introduce el mensaje para aplicar el cifrado</h2>
             <input type="text">
             <p class="aviso">Número de caracteres disponibles: <span id="disponibles">?</span> (<span id="utilizados">?</span> utilizados)</p>
-            <button class="evaluacion">Evaluación</button>
+            <button class="evaluacion">Transformar</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape square">
-            <h2>Cifrado</h2>
+            <h2 class="margen_derecho"><button id="shape_button" onclick="window.modal_cifrado.showModal();">¡</button>Cifrado</h2>
             <form action="#">
-                <label><button id="shape_button" onclick="window.modal_cifrado.showModal();">ℹ️</button>M = <input type="text"></label>
+                <label>M = <input type="text"></label>
             </form>
             <button id="publica">Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)</button>
-            <button class="evaluacion">Evaluación</button>
+            <p class="ecuaciones">C = M**e (MOD n)</p>
+            <p class="puntaje">Puntuación: <span id="puntuacion4">¿?</span>/1</p>
+            <button class="evaluacion" onclick="showDialog4()">Evaluación</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape square">
-            <h2>Descifrado</h2>
+            <h2 class="margen_derecho"><button id="shape_button" onclick="window.modal_descifrado.showModal();">¡</button>Descifrado</h2>
             <form action="#">
                 <label>M = <input type="text"></label>
             </form>
             <button id="privada">Llave privada = (<span id="output-d1">d</span>,<span id="output-n4">n</span>)</button>
-            <button class="evaluacion">Evaluación</button>
+            <p class="ecuaciones">M = C**d (MOD n)</p>
+            <p class="puntaje">Puntuación: <span id="puntuacion5">¿?</span>/1</p>
+            <button class="evaluacion" onclick="showDialog5()">Evaluación</button>
         </div>
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
-        <button>Fin</button>
+        <button onclick="show_results()" id="botonResultados">Fin</button>
     </div>
     <dialog id="modal_rsa">
         <p>El módulo "n" se obtiene multiplicando dos números primos distintos, "p" y "q". La seguridad del sistema RSA depende en gran medida de la dificultad de factorizar este módulo en sus factores primos originales.</p>
 
         <p>En Aplicaciones Reales:</p>
                     
-        <ol>
-            <li>Números primos "p" y "q" son muy grandes (hasta 2048 bits, ~617 dígitos).</li>
-            <li>Esto asegura que "n" sea lo suficientemente grande para mantener la seguridad.</li>
-        </ol>
+        <ul>
+            <li>En aplicaciones de seguridad, los números primos “p” y “q” son extremadamente grandes, con longitudes de hasta 2048 bits (aproximadamente 617 dígitos). Esta magnitud asegura que “n” sea lo suficientemente grande como para mantener la seguridad del sistema, ya que la factorización de números grandes es un proceso computacionalmente difícil.</li>
+        </ul>
                     
         <p>Para Ejemplos Educativos:</p>
-                    
-        <ol>
-            <li>Una cifra: 2, 3, 5, 7</li>
-            <li>Dos cifras: 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97</li>
-        </ol>
+        <p>Para simplificar el aprendizaje y la comprensión del algoritmo RSA, se utilizan números primos pequeños:</p>
+        <p>Una cifra: 2, 3, 5, 7</p>
+        <p>Dos cifras: 11</p>
+        
+        <p>El uso de números primos pequeños facilita el estudio del algoritmo RSA al evitar la complejidad asociada con números extremadamente grandes, lo que hace que el proceso sea más accesible sin sacrificar los conceptos clave.</p>
 
-        <p>Usar números primos pequeños simplifica el aprendizaje del algoritmo RSA al evitar la complejidad de números grandes.</p>
+        <p>Definición de número primo:</p>
+        <ul>
+            <li>Un número primo es un número entero mayor que 1 que solo tiene dos divisores positivos: 1 y él mismo. En otras palabras, un número primo no puede ser dividido de manera exacta por ningún otro número aparte de 1 y el propio número.</li>
+        </ul>
         <button class="modal_button" onclick="window.modal_rsa.close();">Cerrar</button>
     </dialog>
     <dialog id="totiente">
-        <p>La Función Totiente de Euler, φ(n), cuenta cuántos números enteros menores que "n" son coprimos con "n" (es decir, tienen un máximo común divisor de 1 con "n"). Para un número entero "n" que es el producto de dos números primos distintos "p" y "q", se calcula como:</p>
+        <p>La Función Totiente de Euler, denotada como &phi;(n), calcula la cantidad de números enteros menores que “n” son coprimos con “n”. Dos números son coprimos si su Máximo Común Divisor (MCD) es 1, es decir, no tienen factores primos en común.</p>
+
+        <ul>
+            <li>Definición de &phi;(n):Para un número entero "n" que es el producto de dos números primos distintos p y q, la función totiente se calcula como:</li>
+        </ul>
                     
-        <p>φ(n)=(p−1)×(q−1)</p>
+        <p class="formula">&phi;(n)=(p−1)×(q−1)</p>
+
+        <p>Este cálculo solo es válido cuando "n" es el producto de dos números primos distintos.</p>
+
+        <ul>
+            <li>Definición de Máximo Común Divisor:El MCD de dos números es el mayor número que puede dividir a ambos sin dejar residuo. Si el MCD de dos números es 1, esto indica que esos dos números no comparten ningún divisor común excepto 1. En otras palabras, son "primos entre sí" o "coprimos".</li>
+        </ul>
+
+        <p>Ejemplo:</p>
+
+        <p class="formula">MCD(8,15)=1</p>
+
+        <ul>
+            <li>Los factores de 8 son: 1, 2, 4, 8</li>
+            <li>Los factores de 15 son: 1, 3, 5, 15</li>
+        </ul>        
+        <p>Como solo tienen 1 como divisor común, se dice que 8 y 15 son coprimos.</p>
+        
+        <p>Uso de &phi;(n) en el Algoritmo RSA:</p>
+        <ul>
+            <li>En el algoritmo RSA, la función totiente &phi;(n) juega un papel crucial en la generación de las claves.</li>
+        </ul>
+
+        <p>Generación de la clave pública y privada:</p>
+
+        <p>Clave pública (e, n):</p>
+        <p>El número e es un número pequeño y público, elegido de forma que sea coprimo con &phi;(n) (es decir, MCD(e, &phi;(n)) = 1). Este número "e" se utiliza para cifrar los datos. “e” es uno de los parámetros de la clave pública.</p>
+
+        <p>Clave privada (d, n):</p>
+        <p>El número "d" es calculado como el inverso modular de "e" con respecto a &phi;(n). Esto significa que debe cumplirse la siguiente congruencia:</p>
+
+        <p class="formula">e × d ≡ 1 (MOD &phi;(n))</p>
+        <p>El número “d” se utiliza para descifrar los datos y forma parte de la clave privada.</p>
+        <br>
+        <p>El papel de &phi;(n) en la clave privada:</p>
+        <p>La función &phi;(n) se utiliza en el cálculo de “d”, la clave privada. La congruencia: </p>
+        <p class="formula">e × d ≡ 1 (MOD &phi;(n))</p>
+        <p>Asegura que “d” sea el número que, al multiplicarse por “e”, da como resultado un número que es congruente con 1 módulo &phi;(n).</p>
         <button class="modal_button" onclick="window.totiente.close();">Cerrar</button>
     </dialog>
     <dialog id="exponente_cifrado">
-        <p>El exponente de cifrado "e", también conocido como exponente público, es un número entero positivo que se usa en el algoritmo RSA. Para ser válido, el exponente de cifrado "e" debe cumplir dos condiciones:</p>
+        <p>El exponente de cifrado "e", también conocido como exponente público, es un número entero positivo utilizado en el algoritmo RSA. Este exponente forma parte de la clave pública y se emplea para cifrar los datos.</p>
+
+        <p>Para que "e" sea válido en el algoritmo RSA, debe cumplir dos condiciones fundamentales:</p>
 
         <ol>
-            <li><strong>Rango:</strong>Debe ser mayor que 1 y menor que φ(n), es decir, 1&lt;e&lt;φ(n).</li>
-            <li><strong>Coprimalidad:</strong> "e" y φ(n) deben ser coprimos, lo que significa que su máximo común divisor (MCD) debe ser 1. Esto asegura que "e" tenga una relación adecuada con φ(n) para el proceso de cifrado.</li>
+            <li>Rango de "e"</li>
+                <ul>
+                    <li>El valor de "e" debe ser mayor que 1 y menor que &phi;(n).</li>
+                    <li>Esto se expresa matemáticamente como:</li>
+                </ul>
+            <p class="formula">1 < e < &phi;(n)</p>
+            <p>Esto asegura que "e" esté dentro del rango adecuado para el proceso de cifrado.</p>
+            <li>Coprimalidad con &phi;(n)</li>
+                <ul>
+                    <li>"e" debe ser coprimo con &phi;(n), lo que significa que el Máximo Común Divisor (MCD) entre "e" y &phi;(n) debe ser 1.</li>
+                    <p class="formula">  MCD(e,&phi;(n)) = 1</p>
+                    <li>Esta propiedad es crucial porque permite calcular el inverso modular de "e" con respecto a &phi;(n), necesario para determinar el parámetro "d" de la clave privada. Sin la coprimalidad entre "e" y &phi;(n), sería imposible calcular "d", lo que haría inviable el proceso de descifrado en el sistema RSA.</li>
+                </ul>
         </ol>
         <button class="modal_button" onclick="window.exponente_cifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="exponente_descifrado">
-        <p>El exponente de descifrado "d" es esencial en el algoritmo RSA. Se calcula encontrando el inverso multiplicativo de "e" módulo φ(n). Esto significa encontrar un número "d" tal que:</p>
+        <p>El exponente de descifrado "d" es esencial en el algoritmo RSA. Se calcula encontrando el inverso multiplicativo de "e" módulo &phi;(n). Esto implica hallar un número “d” tal que se cumpla la siguiente congruencia:</p>
 
-        <p>e × d = 1 (MOD φ(n))</p>
+        <p class="formula">e × d = 1 (MOD &phi;(n))</p>
 
-        <p>Ejemplo: Supongamos que φ(n) = 40 y e = 7.</p>
+        <p>Ejemplo: Supongamos que &phi;(n) = 40 y e = 7.</p>
 
         <ol>
-            <li>Inicialización<button id="mensaje" onclick="window.inicializacion.showModal();">ℹ️</button></li>
-            <li>Algoritmo de Euclides<button id="mensaje" onclick="window.algoritmo_euclides.showModal();">ℹ️</button></li>
-            <li>Verificación de Coprimalidad<button id="mensaje" onclick="window.verificacion.showModal();">ℹ️</button></li>
-            <li>Algoritmo Extendido de Euclides<button id="mensaje" onclick="window.algoritmo_extendido.showModal();">ℹ️</button></li>
-            <li>Cálculo del Inverso Multiplicativo d<button id="mensaje" onclick="window.inverso_multiplicativo.showModal();">ℹ️</button></li>
+            <li>Inicialización<button id="mensaje" onclick="window.inicializacion.showModal();">¡</button></li>
+            <li>Algoritmo de Euclides<button id="mensaje" onclick="window.algoritmo_euclides.showModal();">¡</button></li>
+            <li>Algoritmo Extendido de Euclides<button id="mensaje" onclick="show_AE()">¡</button></li>
+            <li>Cálculo del Inverso Multiplicativo d<button id="mensaje" onclick="window.inverso_multiplicativo.showModal();">¡</button></li>
         </ol>
         <button class="modal_button" onclick="window.exponente_descifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="inicializacion">
-        <p>Comienza con a = φ(n) y b = e.</p>
+        <p>Comienza con a = &phi;(n) y b = e.</p>
         <p>En nuestro caso: a = 40 y b = 7.</p>
         <button class="modal_button" onclick="window.inicializacion.close();">Cerrar</button>
     </dialog>
     <dialog id="algoritmo_euclides">
-        <p>Aplica el algoritmo estándar para encontrar el máximo común divisor (MCD) de a y b.</p>
+        <p>Aplicación del algoritmo de Euclides para encontrar el máximo común divisor (MCD) de a y b</p>
         
         <p>Proceso:</p>
 
-        <p>Divide 40 entre 7. El cociente es 5 y el residuo es 5 (40 = 7 × 5 + 5).</p>
-        <p>Divide 7 entre 5. El cociente es 1 y el residuo es 2 (7 = 5 × 1 + 2).</p>
-        <p>Divide 5 entre 2. El cociente es 2 y el residuo es 1 (5 = 2 × 2 + 1).</p>
-        <p>Divide 2 entre 1. El cociente es 2 y el residuo es 0 (2 = 1 × 2 + 0).</p>
+        <p>Divide 40 entre 7. El cociente es 5 y el residuo es 5:</p>
+        <p>40 = 7(5) + 5</p>
+        <p>Divide 7 entre 5. El cociente es 1 y el residuo es 2:</p>
+        <p>7 = 5(1) + 2</p>
+        <p>Divide 5 entre 2. El cociente es 2 y el residuo es 1:</p>
+        <p>5 = 2(2) + 1</p>
+        <p>Divide 2 entre 1. El cociente es 2 y el residuo es 0:</p>
+        <p>2 = 1(2) + 0</p>
 
-        <p>El último residuo no nulo es 1, por lo que MCD(40, 7) = 1</p>
+        <p>Conclusión:</p>
+        <p>El último residuo no nulo es 1, por lo que máximo común divisor es: MCD(40, 7) = 1</p>
+        <p>Esto significa que 40 y 7 son coprimos, ya que su máximo común divisor es 1.</p>
         <button class="modal_button" onclick="window.algoritmo_euclides.close();">Cerrar</button>
     </dialog>
-    <dialog id="verificacion">
-        <p>Asegúrate de que MCD(φ(n), e) = 1.</p>
-        <p>En nuestro caso, MCD(40, 7) = 1, así que 40 y 7 son coprimos.</p>
-        <button class="modal_button" onclick="window.verificacion.close();">Cerrar</button>
-    </dialog>
     <dialog id="algoritmo_extendido">
-        <p>Utiliza este algoritmo para encontrar “x” e “y” tales que: e × x + φ(n) × y = 1</p>
-        
-        <p>Proceso</p>
+        <p>El algoritmo extendido de Euclides se utiliza para resolver ecuaciones de la forma de la ecuación de Bézout:</p>
+        <p class="formula">a(x) + b(y) = MCD (a, b)</p>
 
-        <p>Utiliza las ecuaciones obtenidas en el paso anterior: 1 = 5 − 2 × 2</p>
+        <p>En el caso de RSA, la ecuación que estamos resolviendo es:</p>
+        <p class="formula">40(x) + 7(y) = 1</p>
 
-        <p>Sustituye 2 = 7 − 5:</p>
-        <p>1 = 5 − (7−5) × 2 </p>
-        <p>1 = 5 × 3 − 7 × 2</p>
+        <p>Proceso:</p>
+        <p>Una vez desarrollado el algoritmo de Euclides, retrocedemos en los cálculos para expresar el MCD (en este caso 1) como una combinación lineal de 40 y 7.</p>
 
+        <p>De la división 40/7: 40 = 7(5) + 5, Despejamos el resto 5</p>
+        <p>5 = 40 − 7(5)</p>
+        <p>De la división 7/5: 7 = 5(1) + 2, Despejamos el resto 2</p>
+        <p>2 = 7 − 5(1)</p>
+        <p>De la división 5/2: 5 = 2(2) + 1, Despejamos el resto 1</p>
+        <p>1 = 5 − 2(2)</p>
+
+        <p>Retroceso para obtener la combinación lineal:</p>
+        <p>A partir de la última ecuación obtenida, que es 1 = 5 − 2(2), reemplazamos el valor de 2 por la expresión obtenida de la segunda división: 7 − 5(1)</p>
+        <p class="formula">1 = 5 − 2(7 − 5)</p>    
         <br>
-
-        <p>Sustituye 5 = 40 − 7 × 5:</p>
-        <p>1 = (40 − 7 × 5) × 3 − 7 × 2 </p>
-        <p>1 = 40 × 3 − 7 × 5 × 3 − 7 × 2</p>
-        <p>1 = 40 × 3 − 7 × 15 − 7 × 2</p>
-        <p>1 = 40 × 3 − 7 × 17</p>
-
+        <p>Distribuimos y agrupamos los términos semejantes para simplificar la expresión:</p>
+        <p>1 = 5 − 2(7) + 2(5)</p>   
+        <p>1 = 3(5) − 2(7)</p>
+        <p>Ahora, reemplazamos el 5 por la expresión 40 − 5(7), que obtuvimos de la primera división:</p>
+        <p>1 = 3(40 − 5(7)) − 2(7)</p>
+        <p>Distribuimos y agrupamos los términos semejantes para simplificar la expresión:</p>
+        <p>1 = 3(40) − 15(7) − 2(7)</p>
+        <p>1 = 3(40) − 17(7)</p>
         <br>
-
-        <p>Así que x = −17 e y = 3.</p>
+        <p>Resultado final</p>
+        <p>Así, hemos expresado el MCD 1 como una combinación lineal de 40 y 7:</p>
+        <p class="formula">1 = 3(40) − 17(7)</p>
+        <p>Por lo tanto, los valores de “x” e “y” son:</p>
+        <p class="formula">x=3 y=−17</p>
         <button class="modal_button" onclick="window.algoritmo_extendido.close();">Cerrar</button>
     </dialog>
     <dialog id="inverso_multiplicativo">
-        <p>El inverso multiplicativo “d” es “x” (en módulo φ(n)).</p>
-        
-        <p>En nuestro ejemplo, d = −17. Para obtener un valor positivo, ajustamos el resultado en el módulo: d = −17 MOD 40 = 23.</p>
-
-        <p>Verifica que e × d = 1 (MOD φ(n)):</p>
-
-        <p>7 × 23 = 161</p>
+        <p>El inverso multiplicativo “d” es “y” (en módulo &phi;(n)).</p>
+                
+        <p>En nuestro ejemplo, d = -17. Para obtener un valor positivo, ajustamos el resultado en el módulo: d = -17 MOD 40 = 23.</p>
+            
+        <p>Nota: La notación ≡ significa que los dos números son congruentes en el sistema modular, es decir, que tienen el mismo residuo al dividirse por el módulo. Verifica que e × d ≡ 1 (MOD &phi;(n)):</p>
+            
+        <p>7(23) = 161</p>
         <p>161 MOD 40 = 1</p>
-
+            
         <p>Entonces, el exponente de descifrado “d” es 23.</p>
         <button class="modal_button" onclick="window.inverso_multiplicativo.close();">Cerrar</button>
     </dialog>
     <dialog id="inicializacion_span">
-        <p>Comienza con a = φ(n) y b = e.</p>
+        <p>Comienza con a = &phi;(n) y b = e.</p>
         <p>En nuestro caso: a = <span id="inicializacion_r1">40</span> y b = <span id="inicializacion_r2">7</span>.</p>
         <button class="modal_button" onclick="window.inicializacion_span.close();">Cerrar</button>
     </dialog>
     <dialog id="algoritmo_euclides_span">
-        <p>Aplica el algoritmo estándar para encontrar el máximo común divisor (MCD) de a y b.</p>
+        <p>Aplicación del algoritmo de Euclides para encontrar el máximo común divisor (MCD) de a y b</p>
         
         <p>Proceso:</p>
 
-        <p>Divide <span id="inicializacion_r1">40</span> entre <span id="inicializacion_r2">7</span>. El cociente es <span id="cociente1">5</span> y el residuo es <span id="residuo1">5</span> (<span id="inicializacion_r1">40</span> = <span id="inicializacion_r2">7</span> × <span id="cociente1">5</span> + <span id="residuo1">5</span>).</p>
-        <p>Divide <span id="inicializacion_r2">7</span> entre <span id="cociente1">5</span>. El cociente es <span id="cociente2">1</span> y el residuo es <span id="residuo2">2</span> (<span id="inicializacion_r2">7</span> = <span id="cociente1">5</span> × <span id="cociente2">1</span> + <span id="residuo2">2</span>).</p>
-        <p>Divide <span id="cociente1">5</span> entre <span id="residuo2">2</span>. El cociente es <span id="cociente3">2</span> y el residuo es <span id="residuo3">1</span> (<span id="cociente1">5</span> = <span id="residuo2">2</span> × <span id="cociente3">2</span> + <span id="residuo3">1</span>).</p>
-        <p>Divide <span id="residuo2">2</span> entre <span id="residuo3">1</span>. El cociente es <span id="cociente4">2</span> y el residuo es <span id="residuo4">0</span> (<span id="residuo2">2</span> = <span id="residuo3">1</span> × <span id="cociente4">2</span> + <span id="residuo4">0</span>).</p>
+        <p>Divide <span id="inicializacion_r1">40</span> entre <span id="inicializacion_r2">7</span>. El cociente es <span id="cociente1">5</span> y el residuo es <span id="residuo1">5</span>:</p>
+        <p><span id="inicializacion_r1">40</span> = <span id="inicializacion_r2">7</span>(<span id="cociente1">5</span>) + <span id="residuo1">5</span></p>
+        <p>Divide <span id="inicializacion_r2">7</span> entre <span id="cociente1">5</span>. El cociente es <span id="cociente2">1</span> y el residuo es <span id="residuo2">2</span>:</p>
+        <p><span id="inicializacion_r2">7</span> = <span id="cociente1">5</span>(<span id="cociente2">1</span>) + <span id="residuo2">2</span></p>
+        <p>Divide <span id="cociente1">5</span> entre <span id="residuo2">2</span>. El cociente es <span id="cociente3">2</span> y el residuo es <span id="residuo3">1</span>:</p>
+        <p><span id="cociente1">5</span> = <span id="residuo2">2</span>(<span id="cociente3">2</span>) + <span id="residuo3">1</span></p>
+        <p>Divide <span id="residuo2">2</span> entre <span id="residuo3">1</span>. El cociente es <span id="cociente4">2</span> y el residuo es <span id="residuo4">0</span>:</p>
+        <p><span id="residuo2">2</span> = <span id="residuo3">1</span>(<span id="cociente4">2</span>) + <span id="residuo4">0</span></p>
 
-        <p>El último residuo no nulo es <span id="residuo3">1</span>, por lo que MCD(<span id="inicializacion_r1">40</span>, <span id="inicializacion_r2">7</span>) = <span id="residuo3">1</span></p>
+        <p>Conclusión:</p>
+        <p>El último residuo no nulo es <span id="residuo3">1</span>, por lo que máximo común divisor es: MCD(<span id="inicializacion_r1">40</span>, <span id="inicializacion_r2">7</span>) = <span id="residuo3">1</span></p>
+        <p>Esto significa que <span id="inicializacion_r1">40</span> y <span id="inicializacion_r2">7</span> son coprimos, ya que su máximo común divisor es <span id="residuo3">1</span>.</p>
         <button class="modal_button" onclick="window.algoritmo_euclides_span.close();">Cerrar</button>
     </dialog>
-    <dialog id="verificacion_span">
-        <p>Asegúrate de que MCD(φ(n), e) = 1. </p>
-        <p>En nuestro caso, MCD(<span id="inicializacion_r1">40</span>, <span id="inicializacion_r2">7</span>) = <span id ="MCD">1</span>, así que <span id="inicializacion_r1">40</span> y <span id="inicializacion_r2">7</span> son coprimos.</p>
-        <button class="modal_button" onclick="window.verificacion_span.close();">Cerrar</button>
-    </dialog>
     <dialog id="algoritmo_extendido_span">
-        <p>Utiliza este algoritmo para encontrar “x” e “y” tales que: e × x + φ(n) × y = 1</p>
-        
-        <p>Proceso</p>
+        <p>El algoritmo extendido de Euclides se utiliza para resolver ecuaciones de la forma de la ecuación de Bézout:</p>
+        <p class="formula">a(x) + b(y) = MCD (a, b)</p>
 
-        <p>Utiliza las ecuaciones obtenidas en el paso anterior: <span id="residuo3">1</span> = <span id="cociente1">5</span> − <span id="residuo2">2</span> ×  <span id="cociente3">2</span></p>
+        <p>En el caso de RSA, la ecuación que estamos resolviendo es:</p>
+        <p class="formula"><span id="inicializacion_r1">40</span>(x) + <span id="inicializacion_r2">7</span>(y) = 1</p>
+    
+        <p>Proceso:</p>
+        <p>Una vez desarrollado el algoritmo de Euclides, retrocedemos en los cálculos para expresar el MCD (en este caso 1) como una combinación lineal de <span id="inicializacion_r1">40</span> y <span id="inicializacion_r2">7</span>.</p>
 
-        <p>Sustituye <span id="residuo2">2</span> = <span id="inicializacion_r2">7</span> − <span id="???">5</span>:</p>
-        <p><span id="residuo3">1</span> = <span id="cociente1">5</span> − (<span id="inicializacion_r2">7</span>−<span id="???">5</span>) ×  <span id="cociente3">2</span> </p>
-        <p><span id="residuo3">1</span> = <span id="cociente1">5</span> × <span id="???">3</span> − <span id="???">7</span> ×  <span id="cociente3">2</span></p>
+        <p>De la división <span id="inicializacion_r1">40</span>/<span id="inicializacion_r2">7</span>:<span id="inicializacion_r1">40</span> = <span id="inicializacion_r2">7</span>(<span id="cociente1">5</span>) + <span id="residuo1">5</span>, Despejamos el resto <span id="residuo1">5</span></p>
+        <p><span id="residuo1">5</span> = <span id="inicializacion_r1">40</span> − <span id="inicializacion_r2">7</span>(<span id="cociente1">5</span>)</p>
+        <p>De la división <span id="inicializacion_r2">7</span>/<span id="cociente1">5</span>:<span id="inicializacion_r2">7</span> = <span id="cociente1">5</span>(<span id="cociente2">1</span>) + <span id="residuo2">2</span>, Despejamos el resto <span id="residuo2">2</span></p>
+        <p><span id="residuo2">2</span> = <span id="inicializacion_r2">7</span> − <span id="cociente1">5</span>(<span id="cociente2">1</span>)</p>
+        <p>De la división <span id="cociente1">5</span>/<span id="residuo2">2</span>:<span id="cociente1">5</span> = <span id="residuo2">2</span>(<span id="cociente3">2</span>) + <span id="residuo3">1</span>, Despejamos el resto <span id="residuo3">1</span></p>
+        <p><span id="residuo3">1</span> = <span id="cociente1">5</span> − <span id="residuo2">2</span>(<span id="cociente3">2</span>)</p>
 
+        <p>Retroceso para obtener la combinación lineal:</p>
+        <p>A partir de la última ecuación obtenida, que es <span id="residuo3">1</span> = <span id="cociente1">5</span> − <span id="residuo2">2</span>(<span id="cociente3">2</span>) , reemplazamos el valor de 2 por la expresión obtenida de la segunda división: <span id="inicializacion_r2">7</span> − <span id="cociente1">5</span>(<span id="cociente2">1</span>)</p>
+        <p class="formula"><span id="residuo3">1</span> = <span id="cociente1">5</span> − <span id="residuo2">2</span>(<span id="inicializacion_r2">7</span> − <span id="resultadoCociente">5</span>)</p>    
         <br>
-
-        <p>Sustituye <span id="cociente1">5</span> = <span id="inicializacion_r1">40</span> − <span id="inicializacion_r2">7</span> × <span id="???">5</span>:</p>
-        <p>1 = (<span id="inicializacion_r1">40</span> − <span id="inicializacion_r2">7</span> × <span id="???">5</span>) × <span id="???">3</span> − <span id="???">7</span> × <span id="cociente3">2</span> </p>
-        <p>1 = <span id="inicializacion_r1">40</span> × <span id="???">3</span> − <span id="inicializacion_r2">7</span> × <span id="???">5</span> × <span id="???">3</span> − <span id="???">7</span> × <span id="cociente3">2</span></p>
-        <p>1 = <span id="inicializacion_r1">40</span> × <span id="???">3</span> − <span id="inicializacion_r2">7</span> × <span id="???">15</span> − <span id="???">7</span> × <span id="cociente3">2</span></p>
-        <p>1 = <span id="inicializacion_r1">40</span> × <span id="???">3</span> − <span id="inicializacion_r2">7</span> × <span id="???">17</span></p>
-
+        <p>Distribuimos y agrupamos los términos semejantes para simplificar la expresión:</p>
+        <p><span id="residuo3">1</span> = <span id="cociente1">5</span> − <span id="residuo2">2</span>(<span id="inicializacion_r2">7</span>) + <span id="residuo2">2</span>(<span id="resultadoCociente">5</span>)</p>   
+        <p><span id="residuo3">1</span> = <span id="sumaCoeficiente">3</span>(<span id="resultadoCociente">5</span>) − <span id="residuo2">2</span>(<span id="inicializacion_r2">7</span>)</p>
+        <p>Ahora, reemplazamos el <span id="resultadoCociente">5</span> por la expresión <span id="inicializacion_r1">40</span> − <span id="cociente1">5</span>(<span id="inicializacion_r2">7</span>), que obtuvimos de la primera división:</p>
+        <p><span id="residuo3">1</span> = <span id="sumaCoeficiente">3</span>(<span id="inicializacion_r1">40</span> − <span id="cociente1">5</span>(<span id="inicializacion_r2">7</span>)) − <span id="residuo2">2</span>(<span id="inicializacion_r2">7</span>)</p>
+        <p>Distribuimos y agrupamos los términos semejantes para simplificar la expresión:</p>
+        <p><span id="residuo3">1</span> = <span id="sumaCoeficiente">3</span>(<span id="inicializacion_r1">40</span>) − <span id="multiplicacionCoeficiente">15</span>(<span id="inicializacion_r2">7</span>) − <span id="residuo2">2</span>(<span id="inicializacion_r2">7</span>)</p>
+        <p><span id="residuo3">1</span> = <span id="sumaCoeficiente">3</span>(<span id="inicializacion_r1">40</span>) − <span id="multiplicacionCoeficiente1">17</span>(<span id="inicializacion_r2">7</span>)</p>
         <br>
-
-        <p>Así que x = <span id="resultadoX">-17</span> e y = <span id="resultadoY">3</span>.</p>
+        <p>Resultado final</p>
+        <p>Así, hemos expresado el MCD 1 como una combinación lineal de <span id="inicializacion_r1">40</span> y <span id="inicializacion_r2">7</span>:</p>
+        <p class="formula"><span id="residuo3">1</span> = <span id="sumaCoeficiente">3</span>(<span id="inicializacion_r1">40</span>) − <span id="multiplicacionCoeficiente1">17</span>(<span id="inicializacion_r2">7</span>)</p>
+        <p>Por lo tanto, los valores de “x” e “y” son:</p>
+        <p class="formula">x=<span id="sumaCoeficiente">3</span> y=<span id="multiplicacionCoeficiente1">−17</span></p>
         <button class="modal_button" onclick="window.algoritmo_extendido_span.close();">Cerrar</button>
     </dialog>
     <dialog id="inverso_multiplicativo_span">
-        <p>El inverso multiplicativo “d” es “x” (en módulo φ(n)).</p>
+        <p>El inverso multiplicativo “d” es “y” (en módulo &phi;(n)).</p>
         
-        <p>En nuestro ejemplo, d = <span id="resultadoX">-17</span>. Para obtener un valor positivo, ajustamos el resultado en el módulo: d = <span id="resultadoX">-17</span> MOD <span id="inicializacion_r1">40</span> = <span id="resultM">23</span>.</p>
+        <p>En nuestro ejemplo, d = -<span id="multiplicacionCoeficiente1">17</span>. Para obtener un valor positivo, ajustamos el resultado en el módulo: d = -<span id="multiplicacionCoeficiente1">17</span> MOD <span id="inicializacion_r1">40</span> = <span id="resultM">23</span>.</p>
 
-        <p>Verifica que e × d = 1 (MOD φ(n)):</p>
+        <p>Nota: La notación ≡ significa que los dos números son congruentes en el sistema modular, es decir, que tienen el mismo residuo al dividirse por el módulo. Verifica que e × d ≡ 1 (MOD &phi;(n)):</p>
 
-        <p><span id="inicializacion_r2">7</span> × <span id="resultM">23</span> = <span id="resultadoIM">161</span></p>
+        <p><span id="inicializacion_r2">7</span>(<span id="resultM">23</span>) = <span id="resultadoIM">161</span></p>
         <p><span id="resultadoIM">161</span> MOD <span id="inicializacion_r1">40</span> = <span id="verificacion_resultado">1</span></p>
 
         <p>Entonces, el exponente de descifrado “d” es <span id="resultM">23</span>.</p>
         <button class="modal_button" onclick="window.inverso_multiplicativo_span.close();">Cerrar</button>
     </dialog>
     <dialog id="texto_cifrado">
-        <p>Ahora que tienes tus claves pública y privada, estamos listos para cifrar tu mensaje usando el algoritmo RSA. Ten en cuenta lo siguiente:</p>
+        <p>Ahora que tienes tus claves pública y privada, estamos listos para cifrar tu mensaje usando el algoritmo RSA. Ten en cuenta los siguientes pasos:</p>
                     
         <ol>
-            <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Puede ser cualquier información sensible, como un mensaje o una contraseña. Asegúrate de que el texto esté en un formato que el sistema pueda procesar fácilmente, utilizando solo caracteres alfanuméricos y evitando caracteres especiales (por ejemplo: !, ?, #, &, @) y otros símbolos que puedan complicar el cifrado.</li>
-            <li><strong>Preparación del Texto:</strong> Recuerda que, como mencionamos antes, el módulo "n" en RSA es el resultado de multiplicar dos números grandes. Esto se hace para asegurar que el sistema pueda manejar mensajes más largos y complejos durante el cifrado.</li>
-            <li><strong>Cifrado:</strong> Una vez que tengas el texto listo, escríbelo en el campo proporcionado y procede con el cifrado. El algoritmo RSA transformará tu texto en un código que solo puede ser descifrado por alguien que tenga la clave privada correcta.</li>
+            <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Este puede ser cualquier tipo de información sensible, como un mensaje o una contraseña. Asegúrate de que el texto esté en un formato adecuado para el sistema, utilizando únicamente letras del abecedario y evitando caracteres especiales (por ejemplo, !, ?, #, &, @) y otros símbolos que puedan interferir con el proceso de cifrado.</li>
+            <li><strong>Preparación del Texto:</strong> Recuerda que, como mencionamos anteriormente, el módulo “n” en RSA es el resultado de multiplicar dos números grandes. Esto permite que el sistema maneje mensajes más largos y complejos durante el cifrado.</li>
+            <li><strong>Cifrado:</strong> Una vez que tengas el texto listo, introdúcelo en el campo correspondiente y procede con el cifrado. El algoritmo RSA transformará tu texto en una cadena numerica que solo podrá ser descifrado por alguien que posea la clave privada correcta.</li>
         </ol>
                     
         <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="modal_cifrado">
-        <p>Para generar un mensaje M,  se asigna un número a cada carácter de una cadena. Utilizaremos la siguiente codificación:</p>
+        <p>Para generar un mensaje M, se asigna un número a cada letra del abecedario utilizando la siguiente codificación:</p>
 
         <p>Espacio = 0, A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13, N = 14, Ñ = 15, O = 16, P = 17, Q = 18, R = 19, S = 20, T = 21, U = 22, V = 23, W = 24, X = 25, Y = 26, Z = 27.</p>
                     
-        <p>Las letras minúsculas tendrán el mismo valor que sus equivalentes en mayúscula (por ejemplo, 'e' también se asigna como 5).</p>
+        <p>Las letras minúsculas se asignan con el mismo valor que sus equivalentes en mayúsculas (por ejemplo, la letra 'e' también se asigna como 5).</p>
+        <p>Ejemplo: Para la cadena "HOLA", la conversión sería:</p>
+
+        <ul>
+            <li>H = 8, O = 16, L = 12, A = 1.</li>
+        </ul>
                     
-        <p>Por ejemplo, para la cadena "HOLA", se convertiría en los números correspondientes: H (8), O (16), L (12), A (1), formando así el mensaje M como una secuencia numérica: M = [8, 16, 12, 1].</p>
+        <p>Esto forma la secuencia numérica del mensaje M:</p>
+
+        <p class="formula">M = [8, 16, 12, 1]</p>
         <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
     </dialog>
+    <!--
+    <dialog id="modal_cifrado">
+        <h2>¿Qué es Cifrado en RSA?</h2>
+            <p>El cifrado en RSA consiste en convertir un mensaje legible (el mensaje original) en un formato codificado utilizando una clave pública.</p>
 
+            <p>Fórmula:</p>
+            <p class="formula">C = M**e (MOD n)</p>
+                        
+            <p>C: Mensaje cifrado.</p>
+            <p>M: Mensaje original.</p>
+            <p>e: Exponente público (parte de la clave pública).</p>
+            <p>n: Módulo (parte de la clave pública).</p>
+                        
+        <p>Proceso: Para cifrar el mensaje “M”, se eleva “M” a la potencia “e” y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
+        <br>
+        <p>Para generar un mensaje M, se asigna un número a cada letra del abecedario utilizando la siguiente codificación:</p>
+
+        <p>Espacio = 0, A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13, N = 14, Ñ = 15, O = 16, P = 17, Q = 18, R = 19, S = 20, T = 21, U = 22, V = 23, W = 24, X = 25, Y = 26, Z = 27.</p>
+                    
+        <p>Las letras minúsculas se asignan con el mismo valor que sus equivalentes en mayúsculas (por ejemplo, la letra 'e' también se asigna como 5).</p>
+        <p>Ejemplo: Para la cadena "HOLA", la conversión sería:</p>
+
+        <ul>
+            <li>H = 8, O = 16, L = 12, A = 1.</li>
+        </ul>
+                    
+        <p>Esto forma la secuencia numérica del mensaje M:</p>
+
+        <p class="formula">M = [8, 16, 12, 1]</p>
+        <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
+    </dialog>
+    -->
+    <dialog id="modal_descifrado">
+        <h2>¿Qué es Descifrado en RSA?</h2>
+            <p>El descifrado en RSA consiste en convertir un mensaje cifrado de vuelta a su forma original usando una clave privada.</p>
+
+            <p>Fórmula:</p>
+
+            <p class="formula">M = C**d (MOD n)</p>
+                        
+            <p>M: Mensaje original recuperado.</p>
+            <p>C: Mensaje cifrado.</p>
+            <p>d: Exponente privado (parte de la clave privada).</p>
+            <p>n: Módulo (parte de la clave pública y privada).</p>
+                        
+            <p>Proceso: Para descifrar el mensaje “C”, se eleva “C” a la potencia “d”  y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
+        <button class="modal_button" onclick="window.modal_descifrado.close();">Cerrar</button>
+    </dialog>   
+    <dialog id="questionModal">
+        <div id="pregunta"></div>
+        <div id="opciones"></div>
+        <br>
+        <div class="comprobacion">
+            <button class="modal_button" onclick="validarRespuesta()">Responder</button>
+            <button class="modal_button" onclick="closeDialog()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas = [
+            {
+                texto: "¿Qué propiedad define a un número primo?",
+                opciones: [
+                    "A) Tiene más de dos divisores positivos.",
+                    "B) Es divisible por cualquier número mayor que 1.",
+                    "C) Es divisible por todos los números menores que él.",
+                    "D) Solo tiene dos divisores positivos: 1 y él mismo."
+                ],
+                correcta: 3,
+                competenciaA: "Identifica correctamente la definición de un número primo como base para comprender la elección de “p” y “q” en RSA.",
+                competenciaM: "Debe reforzar su comprensión sobre qué constituye un número primo y su relevancia en criptografía."
+            },
+            {
+                texto: "¿Por qué el uso de números primos grandes es fundamental para la seguridad del sistema RSA?",
+                opciones: [
+                    "A) Porque es más fácil realizar cálculos con ellos.",
+                    "B) Porque asegura que el módulo sea divisible por varios números.",
+                    "C) Porque aumenta la dificultad de factorizar el módulo “n”.",
+                    "D) Porque el algoritmo solo funciona con números grandes."
+                ],
+                correcta: 2,
+                competenciaA: "Reconoce que la seguridad del sistema RSA depende de la dificultad de factorizar el módulo “n”, que se logra utilizando números primos grandes.",
+                competenciaM: "Debe comprender que el tamaño de los números primos utilizados es directamente proporcional a la seguridad del sistema RSA."
+            },
+            {
+                texto: "En el contexto de ejemplos educativos, ¿por qué se utilizan números primos pequeños en el estudio del algoritmo RSA?",
+                opciones: [
+                    "A) Porque permiten garantizar la seguridad del sistema.",
+                    "B) Porque simplifican la comprensión del algoritmo sin sacrificar conceptos.",
+                    "C) Porque hacen que 'n' sea difícil de factorizar.",
+                    "D) Porque son los únicos números válidos en RSA."
+                ],
+                correcta: 1,
+                competenciaA: "Comprende que los números primos pequeños facilitan el aprendizaje del algoritmo sin comprometer los conceptos fundamentales.",
+                competenciaM: "Debe comprender que la elección de números pequeños en ejemplos educativos es una herramienta pedagógica y no refleja los usos reales del algoritmo."
+            },
+            {
+                texto: "Menciona tres números primos de una sola cifra y tres de dos cifras.",
+                opciones: [
+                    "A) Una cifra: 4, 6, 8 / Dos cifras: 12, 14, 16",
+                    "B) Una cifra: 2, 3, 5 / Dos cifras: 11, 13, 17",
+                    "C) Una cifra: 9, 1, 7 / Dos cifras: 21, 23, 25",
+                    "D) Una cifra: 2, 6, 9 / Dos cifras: 30, 33, 37"
+                ],
+                correcta: 1,
+                competenciaA: "Memoriza y comprende el propósito de números primos pequeños como 2, 3, 5 (una cifra) y 11, 13, 17 (dos cifras) en contextos pedagógicos.",
+                competenciaM: "Debe familiarizarse con los números primos pequeños y su utilidad al explicar el RSA de manera básica."
+            },
+            {
+                texto: "¿Qué impacto tiene el uso de números primos de 2048 bits en el sistema RSA?",
+                opciones: [
+                    "A) Incrementa el tamaño del módulo “n”, haciéndolo más difícil de factorizar.",
+                    "B) Disminuye la complejidad de la factorización de “n”.",
+                    "C) Hace que el sistema sea menos eficiente pero más fácil de hackear.",
+                    "D) Garantiza que los números primos sean siempre distintos."
+                ],
+                correcta: 0,
+                competenciaA: "Entiende la relación entre el tamaño de los números primos y la seguridad del sistema RSA.",
+                competenciaM: "Debe reforzar la importancia de usar números primos grandes para garantizar la robustez del sistema frente a ataques."
+            }
+        ];
+
+        let puntuacion = 0;
+        let preguntaActual;
+
+        function showDialog() {
+            const modal = document.getElementById("questionModal");
+            preguntaActual = preguntas[Math.floor(Math.random() * preguntas.length)];
+            document.getElementById("pregunta").innerHTML = `<h3>${preguntaActual.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones");
+            opcionesDiv.innerHTML = "";
+            preguntaActual.opciones.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog() {
+            const modal = document.getElementById("questionModal");
+            modal.close();
+        }
+
+        function validarRespuesta() {
+            const seleccion = document.querySelector('input[name="respuesta"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual.correcta) {
+                puntuacion++;
+                document.getElementById("puntuacion").textContent = puntuacion;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+
+            closeDialog();
+            mostrarResultados(respuesta);
+        }
+
+        function mostrarResultados(respuesta) {
+            const preguntaR = document.getElementById("preguntaR");
+            const respuestaDiv = document.getElementById("respuesta");
+            const competencia = document.getElementById("competencia");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual.opciones[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual.opciones[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="questionModal1">
+        <div id="pregunta1"></div>
+        <div id="opciones1"></div>
+        <br>
+        <div class="comprobacion">
+            <button class="modal_button" onclick="validarRespuesta1()">Responder</button>
+            <button class="modal_button" onclick="closeDialog1()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas1 = [
+            {
+                texto: "¿Qué calcula la Función Totiente de Euler &phi;(n)?",
+                opciones1: [
+                    "A) La cantidad de divisores primos de “n”.",
+                    "B) El producto de los factores primos de “n”.",
+                    "C) El MCD de “n” y otro número.",
+                    "D) La cantidad de números menores que “n” que son coprimos con “n”."
+                ],
+                correcta: 3,
+                competenciaA: "Entiende que φ(n) calcula la cantidad de números menores que “n” que no comparten factores primos con “n”.",
+                competenciaM: "Debe reforzar el concepto de la función totiente y su relación con los números coprimos."
+            },
+            {
+                texto: "¿Cómo se calcula &phi;(n) si “n” es el producto de dos números primos p y q?",
+                opciones1: [
+                    "A) &phi;(n) = p × q",
+                    "B) &phi;(n) = p + q",
+                    "C) &phi;(n) = (p − 1) × (q − 1)",
+                    "D) &phi;(n) = (p − 1) + (q − 1)"
+                ],
+                correcta: 2,
+                competenciaA: "Sabe aplicar correctamente la fórmula de la función totiente en el caso de que “n” sea el producto de dos números primos distintos.",
+                competenciaM: "Debe comprender que φ(n) depende de la cantidad de números menores que “n” que son coprimos con él, calculados con esta fórmula."
+            },
+            {
+                texto: "¿Qué significa que dos números sean coprimos?",
+                opciones1: [
+                    "A) Son múltiplos de un número primo común.",
+                    "B) Tienen un MCD igual a 1.",
+                    "C) Tienen al menos un divisor común mayor que 1.",
+                    "D) Ambos números son primos."
+                ],
+                correcta: 1,
+                competenciaA: "Reconoce que la coprimalidad se determina por un MCD igual a 1.",
+                competenciaM: "Debe reforzar el concepto de coprimos como números que no comparten factores primos."
+            },
+            {
+                texto: "En el algoritmo RSA, ¿cuál es la condición que debe cumplir el número “e” respecto a &phi;(n)?",
+                opciones1: [
+                    "A) Debe ser un divisor de &phi;(n).",
+                    "B) Debe ser coprimo con &phi;(n).",
+                    "C) Debe ser igual a &phi;(n).",
+                    "D) Debe ser mayor que &phi;(n)."
+                ],
+                correcta: 1,
+                competenciaA: "Entiende que “e” debe ser coprimo con φ(n) para garantizar que el sistema RSA funcione correctamente.",
+                competenciaM: "Debe comprender la importancia de la coprimalidad de “e” con φ(n) en el diseño de claves RSA."
+            },
+            {
+                texto: "¿Qué asegura la congruencia e × d ≡ 1 (MOD &phi;(n)) en el algoritmo RSA?",
+                opciones1: [
+                    "A) Que “e” y “d” sean inversos modulares respecto a &phi;(n).",
+                    "B) Que “d” sea un múltiplo de “e”.",
+                    "C) Que “e” sea menor que “d”.",
+                    "D) Que “d” sea igual a &phi;(n)."
+                ],
+                correcta: 0,
+                competenciaA: "Comprende que esta congruencia garantiza que “d” es el inverso modular de “e” respecto a φ(n), una relación clave para el cifrado y descifrado en RSA.",
+                competenciaM: "Debe reforzar el concepto de inverso modular y su papel en el cálculo de la clave privada."
+            }
+        ];
+
+        let puntuacion1 = 0;
+        let preguntaActual1;
+
+        function showDialog1() {
+            const modal = document.getElementById("questionModal1");
+            preguntaActual1 = preguntas1[Math.floor(Math.random() * preguntas1.length)];
+            document.getElementById("pregunta1").innerHTML = `<h3>${preguntaActual1.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones1");
+            opcionesDiv.innerHTML = "";
+            preguntaActual1.opciones1.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta1" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog1() {
+            const modal = document.getElementById("questionModal1");
+            modal.close();
+        }
+
+        function validarRespuesta1() {
+            const seleccion = document.querySelector('input[name="respuesta1"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual1.correcta) {
+                puntuacion1++;
+                document.getElementById("puntuacion1").textContent = puntuacion1;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+            closeDialog1();
+            mostrarResultados1(respuesta);
+        }
+
+        
+        function mostrarResultados1(respuesta) {
+            const preguntaR = document.getElementById("preguntaR1");
+            const respuestaDiv = document.getElementById("respuesta1");
+            const competencia = document.getElementById("competencia1");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual1.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual1.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual1.opciones1[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual1.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual1.opciones1[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual1.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="questionModal2">
+        <div id="pregunta2"></div>
+        <div id="opciones2"></div>
+        <br>
+        <div class="comprobacion">
+            <button class="modal_button" onclick="validarRespuesta2()">Responder</button>
+            <button class="modal_button" onclick="closeDialog2()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas2 = [
+            {
+                texto: "¿Cuál es el rol principal del exponente “e” en el algoritmo RSA?",
+                opciones2: [
+                    "A) Calcular el módulo “n”.",
+                    "B) Desencriptar los datos en el sistema RSA.",
+                    "C) Calcular el inverso modular de &phi;(n).",
+                    "D) Cifrar los datos utilizando la clave pública."
+                ],
+                correcta: 3,
+                competenciaA: "Entiende que “e” es el exponente público utilizado para cifrar los datos en RSA.",
+                competenciaM: "Debe comprender el propósito del exponente “e” dentro del proceso de cifrado en RSA."
+            },
+            {
+                texto: "¿Qué condiciones debe cumplir el exponente “e” para ser válido en el algoritmo RSA?",
+                opciones2: [
+                    "A) e > 1 y “e” es un múltiplo de &phi;(n).",
+                    "B) e < &phi;(n) y “e” es igual a &phi;(n).",
+                    "C) 1 < e < &phi;(n) y MCD(e,&phi;(n)) = 1.",
+                    "D) e > &phi;(n) y MCD(e,&phi;(n)) > 1."
+                ],
+                correcta: 2,
+                competenciaA: "Reconoce las dos condiciones fundamentales para que “e” sea válido: rango y coprimalidad con φ(n).",
+                competenciaM: "Debe reforzar su comprensión sobre las restricciones matemáticas que hacen posible el uso de “e” en RSA."
+            },
+            {
+                texto: "¿Por qué es importante que el exponente “e” sea coprimo con &phi;(n)?",
+                opciones2: [
+                    "A) Para que e sea mayor que &phi;(n).",
+                    "B) Para poder calcular su inverso modular con respecto a &phi;(n).",
+                    "C) Para asegurar que e divida &phi;(n) sin residuo.",
+                    "D) Para garantizar que e sea igual a la clave privada “d”."
+                ],
+                correcta: 1,
+                competenciaA: "Comprende que la coprimalidad entre “e” y φ(n) es esencial para calcular el inverso modular, lo que permite generar la clave privada “d”.",
+                competenciaM: "Debe comprender cómo la coprimalidad permite realizar operaciones cruciales en RSA, como la generación de la clave privada."
+            },
+            {
+                texto: "Si φ(n) = 40, ¿cuál de los siguientes valores puede ser utilizado como exponente “e”?",
+                opciones2: [
+                    "A) 1",
+                    "B) 7",
+                    "C) 10",
+                    "D) 40"
+                ],
+                correcta: 1,
+                competenciaA: "Es capaz de aplicar las condiciones de rango y coprimalidad para elegir un exponente válido.",
+                competenciaM: "Debe reforzar su capacidad de identificar valores de “e” que cumplan las condiciones matemáticas necesarias."
+            },
+            {
+                texto: "¿Qué sucede si “e” no es coprimo con &phi;(n)?",
+                opciones2: [
+                    "A) No se podrá calcular el parámetro “d” de la clave privada.",
+                    "B) No se podrá cifrar la información correctamente.",
+                    "C) “e” será igual a la clave privada “d”.",
+                    "D) El módulo “n” será inválido."
+                ],
+                correcta: 0,
+                competenciaA: "Entiende que la falta de coprimalidad impide calcular el parámetro “d” de la clave privada, lo que inutiliza el algoritmo RSA.",
+                competenciaM: "Debe reforzar la relación entre la coprimalidad de “e” con φ(n) y la generación de la clave privada en el algoritmo RSA."
+            }
+        ];
+
+        let puntuacion2 = 0;
+        let preguntaActual2;
+
+        function showDialog2() {
+            const modal = document.getElementById("questionModal2");
+            preguntaActual2 = preguntas2[Math.floor(Math.random() * preguntas2.length)];
+            document.getElementById("pregunta2").innerHTML = `<h3>${preguntaActual2.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones2");
+            opcionesDiv.innerHTML = "";
+            preguntaActual2.opciones2.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta2" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog2() {
+            const modal = document.getElementById("questionModal2");
+            modal.close();
+        }
+
+        function validarRespuesta2() {
+            const seleccion = document.querySelector('input[name="respuesta2"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual2.correcta) {
+                puntuacion2++;
+                document.getElementById("puntuacion2").textContent = puntuacion2;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+            closeDialog2();
+            mostrarResultados2(respuesta);
+        }
+
+        function mostrarResultados2(respuesta) {
+            const preguntaR = document.getElementById("preguntaR2");
+            const respuestaDiv = document.getElementById("respuesta2");
+            const competencia = document.getElementById("competencia2");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual2.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual2.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual2.opciones2[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual2.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual2.opciones2[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual2.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="questionModal3">
+        <div id="pregunta3"></div>
+        <div id="opciones3"></div>
+        <br>
+        <div class="comprobacion">
+            <button class="modal_button" onclick="validarRespuesta3()">Responder</button>
+            <button class="modal_button" onclick="closeDialog3()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas3 = [
+            {
+                texto: "¿Qué condición debe cumplirse para que sea posible calcular el inverso multiplicativo de “e” módulo ϕ(n)?",
+                opciones3: [
+                    "A) e debe ser mayor que ϕ(n).",
+                    "B) e debe ser un número primo.",
+                    "C) e debe ser un múltiplo de ϕ(n).",
+                    "D) MCD(e,ϕ(n)) = 1."
+                ],
+                correcta: 3,
+                competenciaA: "Entiende que la coprimalidad entre e y ϕ(n) es esencial para calcular el inverso multiplicativo y, por ende, d.",
+                competenciaM: "Debe reforzar el concepto de coprimalidad y su importancia en la generación de d."
+            },
+            {
+                texto: "¿Qué representa la ecuación e × d ≡ 1 (MOD ϕ(n))?",
+                opciones3: [
+                    "A) Que e y d son números primos entre sí.",
+                    "B) Que e es igual a ϕ(n).",
+                    "C) Que d es el inverso multiplicativo de e módulo ϕ(n).",
+                    "D) Que d es un múltiplo de e."
+                ],
+                correcta: 2,
+                competenciaA: "Reconoce que esta congruencia define la relación que permite utilizar “d” para descifrar los datos cifrados con e.",
+                competenciaM: "Debe comprender cómo la congruencia define el papel de “d” en el proceso de descifrado."
+            },
+            {
+                texto: "¿Cómo se asegura que el resultado de d sea positivo después de calcular el inverso multiplicativo?",
+                opciones3: [
+                    "A) Se agrega 1 a d.",
+                    "B) Se utiliza el módulo ϕ(n) para ajustar el resultado. ",
+                    "C) Se calcula el complemento de d.",
+                    "D) Se ignora el signo negativo de d."
+                ],
+                correcta: 1,
+                competenciaA: "Entiende cómo ajustar el resultado para que d sea positivo en el sistema modular.",
+                competenciaM: "Debe reforzar la comprensión de las operaciones en aritmética modular y su aplicación en RSA."
+            },
+            {
+                texto: "Durante el proceso de retroceso en el algoritmo extendido de Euclides, ¿qué se busca obtener?",
+                opciones3: [
+                    "A) El valor de MCD(e,ϕ(n)).",
+                    "B) Los coeficientes que expresan el MCD como una combinación lineal de e y ϕ(n).",
+                    "C) El valor del módulo n.",
+                    "D) Una aproximación del inverso multiplicativo."
+                ],
+                correcta: 1,
+                competenciaA: "Comprende cómo el algoritmo extendido de Euclides encuentra los coeficientes necesarios para expresar el MCD como combinación lineal.",
+                competenciaM: "Debe entender cómo el retroceso en el algoritmo ayuda a determinar el inverso multiplicativo."
+            },
+            {
+                texto: "En el ejemplo proporcionado (e = 7 y ϕ(n)=40), ¿cuál es el valor final del exponente de descifrado d?",
+                opciones3: [
+                    "A) 23",
+                    "B) 40",
+                    "C) 7",
+                    "D) 17"
+                ],
+                correcta: 0,
+                competenciaA: "Es capaz de aplicar el algoritmo de Euclides y sus pasos para calcular “d” correctamente.",
+                competenciaM: "Debe practicar los cálculos del inverso multiplicativo y verificar los resultados en aritmética modular."
+            }
+        ];
+
+        let puntuacion3 = 0;
+        let preguntaActual3;
+
+        function showDialog3() {
+            const modal = document.getElementById("questionModal3");
+            preguntaActual3 = preguntas3[Math.floor(Math.random() * preguntas3.length)];
+            document.getElementById("pregunta3").innerHTML = `<h3>${preguntaActual3.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones3");
+            opcionesDiv.innerHTML = "";
+            preguntaActual3.opciones3.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta3" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog3() {
+            const modal = document.getElementById("questionModal3");
+            modal.close();
+        }
+
+        function validarRespuesta3() {
+            const seleccion = document.querySelector('input[name="respuesta3"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual3.correcta) {
+                puntuacion3++;
+                document.getElementById("puntuacion3").textContent = puntuacion3;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+            closeDialog3();
+            mostrarResultados3(respuesta);
+        }
+
+        function mostrarResultados3(respuesta) {
+            const preguntaR = document.getElementById("preguntaR3");
+            const respuestaDiv = document.getElementById("respuesta3");
+            const competencia = document.getElementById("competencia3");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual3.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual3.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual3.opciones3[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual3.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual3.opciones3[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual3.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="questionModal4">
+        <div id="pregunta4"></div>
+        <div id="opciones4"></div>
+        <br>
+        <div class="comprobacion">
+            <button class="modal_button" onclick="validarRespuesta4()">Responder</button>
+            <button class="modal_button" onclick="closeDialog4()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas4 = [
+            {
+                texto: "¿Qué operación matemática se realiza para cifrar un mensaje en RSA?",
+                opciones4: [
+                    "A) Multiplicar el mensaje M por e y dividir entre n.",
+                    "B) Sumar M, e y n.",
+                    "C) Elevar e al cuadrado y multiplicarlo por M.",
+                    "D) Elevar el mensaje M a la potencia e y calcular el residuo módulo n."
+                ],
+                correcta: 3,
+                competenciaA: "Entiende la operación central de cifrado en RSA y cómo se aplica a los datos.",
+                competenciaM: "Debe reforzar la comprensión de la fórmula C = M**e (MOD n) como base del cifrado en RSA."
+            },
+            {
+                texto: "¿Qué representa el exponente e en el cifrado RSA?",
+                opciones4: [
+                    "A) La clave privada.",
+                    "B) El módulo público.",
+                    "C) El exponente público, utilizado para cifrar el mensaje.",
+                    "D) El inverso multiplicativo de d."
+                ],
+                correcta: 2,
+                competenciaA: "Reconoce el rol de “e” como parte de la clave pública y su función en el proceso de cifrado.",
+                competenciaM: "Debe reforzar la identificación de los elementos de la clave pública y su propósito en RSA."
+            },
+            {
+                texto: "¿Cómo se calcula el valor del mensaje cifrado C?",
+                opciones4: [
+                    "A) C = M + e (MOD n).",
+                    "B) C = M**e (MOD n).",
+                    "C) C = M × e (MOD n)",
+                    "D) C = e**M (MOD n)."
+                ],
+                correcta: 1,
+                competenciaA: "Es capaz de aplicar correctamente la fórmula de cifrado y entender su estructura matemática.",
+                competenciaM: "Debe practicar la fórmula para comprender cómo transformar M en C."
+            },
+            {
+                texto: "Si el mensaje original es “HOLA”, ¿cuál sería la representación numérica correspondiente según la codificación dada?",
+                opciones4: [
+                    "A) [7, 15, 11, 0]",
+                    "B) [8, 16, 12, 1]",
+                    "C) [8, 15, 11, 1]",
+                    "D) [7, 16, 12, 0]"
+                ],
+                correcta: 1,
+                competenciaA: "Sabe transformar un mensaje alfabético en una secuencia numérica según la codificación especificada.",
+                competenciaM: "Debe reforzar la asociación entre caracteres alfabéticos y sus valores numéricos para preparar el mensaje M."
+            },
+            {
+                texto: "¿Cuál es la función del módulo n en la fórmula de cifrado RSA?",
+                opciones4: [
+                    "A) Limitar el valor de C dentro de un rango definido por n.",
+                    "B) Garantizar que el resultado sea un número positivo.",
+                    "C) Sumar el mensaje original con el exponente e.",
+                    "D) Multiplicar el exponente público por el mensaje original."
+                ],
+                correcta: 0,
+                competenciaA: "Comprende la importancia del módulo en las operaciones de cifrado para mantener los valores dentro de un rango.",
+                competenciaM: "Debe reforzar el concepto de aritmética modular y su rol en la fórmula C=M**e (MOD n)."
+            }
+        ];
+
+        let puntuacion4 = 0;
+        let preguntaActual4;
+
+        function showDialog4() {
+            const modal = document.getElementById("questionModal4");
+            preguntaActual4 = preguntas4[Math.floor(Math.random() * preguntas4.length)];
+            document.getElementById("pregunta4").innerHTML = `<h3>${preguntaActual4.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones4");
+            opcionesDiv.innerHTML = "";
+            preguntaActual4.opciones4.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta4" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog4() {
+            const modal = document.getElementById("questionModal4");
+            modal.close();
+        }
+
+        function validarRespuesta4() {
+            const seleccion = document.querySelector('input[name="respuesta4"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual4.correcta) {
+                puntuacion4++;
+                document.getElementById("puntuacion4").textContent = puntuacion4;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+            closeDialog4();
+            mostrarResultados4(respuesta);
+        }
+
+        function mostrarResultados4(respuesta) {
+            const preguntaR = document.getElementById("preguntaR4");
+            const respuestaDiv = document.getElementById("respuesta4");
+            const competencia = document.getElementById("competencia4");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual4.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual4.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual4.opciones4[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual4.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual4.opciones4[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual4.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="questionModal5">
+        <div id="pregunta5"></div>
+        <div id="opciones5"></div>
+        <br>
+        <div>
+            <button class="modal_button" onclick="validarRespuesta5()">Responder</button>
+            <button class="modal_button" onclick="closeDialog5()">Cerrar</button>
+        </div>
+    </dialog>
+    <script>
+        const preguntas5 = [
+            {
+                texto: "¿Qué operación matemática es fundamental para recuperar el mensaje original en el descifrado RSA?",
+                opciones5: [
+                    "A) Sumar el exponente privado y el módulo.",
+                    "B) Restar el módulo n al exponente privado.",
+                    "C) Dividir el mensaje cifrado entre el módulo n.",
+                    "D) Elevar el mensaje cifrado al exponente privado y calcular módulo n."
+                ],
+                correcta: 3,
+                competenciaA: "Comprende que el descifrado en RSA implica elevar el mensaje cifrado C al exponente privado d y calcular el módulo n.",
+                competenciaM: "Debe reforzar la noción de cómo se utiliza la clave privada en el proceso de descifrado."
+            },
+            {
+                texto: "¿Qué papel desempeña el exponente privado d en el descifrado RSA?",
+                opciones5: [
+                    "A) Es el inverso del mensaje cifrado.",
+                    "B) Multiplica directamente el mensaje cifrado para recuperar el original.",
+                    "C) Garantiza que solo el destinatario pueda descifrar el mensaje.",
+                    "D) No tiene un rol importante en el descifrado."
+                ],
+                correcta: 2,
+                competenciaA: "Reconoce la función del exponente privado d como el componente clave que permite el descifrado seguro.",
+                competenciaM: "Debe profundizar en el rol específico de d y su cálculo en el proceso RSA."
+            },
+            {
+                texto: "¿Qué garantiza que el mensaje descifrado M coincida con el mensaje original?",
+                opciones5: [
+                    "A) Que el módulo n sea igual al exponente público e.",
+                    "B) La congruencia matemática en RSA entre el cifrado y descifrado.",
+                    "C) Que el mensaje cifrado sea mayor que n.",
+                    "D) La igualdad del exponente privado y público."
+                ],
+                correcta: 1,
+                competenciaA: "Comprende la congruencia matemática que relaciona M, C, d, y n en RSA.",
+                competenciaM: "Necesita reforzar la comprensión de cómo RSA asegura la integridad del mensaje durante el cifrado y descifrado."
+            },
+            {
+                texto: "¿Qué operación modular se utiliza al descifrar un mensaje cifrado “C” con la clave privada?",
+                opciones5: [
+                    "A) M = C + d (MOD n)",
+                    "B) M = C**d (MOD n)",
+                    "C) M = C**e (MOD n)",
+                    "D) M = C / d (MOD n)"
+                ],
+                correcta: 1,
+                competenciaA: "Reconoce que el descifrado en RSA implica la operación C**d MOD n.",
+                competenciaM: "Reforzar cómo se aplica la operación modular en el descifrado RSA."
+            },
+            {
+                texto: "¿Por qué se requiere una clave privada distinta para descifrar un mensaje cifrado en RSA?",
+                opciones5: [
+                    "A) Para proteger la confidencialidad y evitar que cualquiera descifre el mensaje.",
+                    "B) Porque la clave pública no contiene suficiente información para descifrar.",
+                    "C) Porque el cifrado y descifrado son procesos idénticos.",
+                    "D) Porque las claves privada y pública se generan de manera independiente."
+                ],
+                correcta: 0,
+                competenciaA: "Comprende la importancia de la separación entre clave pública y clave privada para la seguridad en RSA.",
+                competenciaM: "Debe reforzar el entendimiento del rol de la clave privada en garantizar la confidencialidad del sistema RSA."
+            }
+        ];
+
+        let puntuacion5 = 0;
+        let preguntaActual5;
+
+        function showDialog5() {
+            const modal = document.getElementById("questionModal5");
+            preguntaActual5 = preguntas5[Math.floor(Math.random() * preguntas5.length)];
+            document.getElementById("pregunta5").innerHTML = `<h3>${preguntaActual5.texto}</h3>`;
+            const opcionesDiv = document.getElementById("opciones5");
+            opcionesDiv.innerHTML = "";
+            preguntaActual5.opciones5.forEach((opcion, index) => {
+                opcionesDiv.innerHTML += `
+                    <div>
+                        <input type="radio" name="respuesta5" id="opcion${index}" value="${index}">
+                        <label for="opcion${index}">${opcion}</label>
+                    </div>
+                `;
+            });
+            modal.showModal();
+        }
+
+        function closeDialog5() {
+            const modal = document.getElementById("questionModal5");
+            modal.close();
+        }
+
+        function validarRespuesta5() {
+            const seleccion = document.querySelector('input[name="respuesta5"]:checked');
+            if (!seleccion) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            const respuesta = parseInt(seleccion.value);
+            if (respuesta === preguntaActual5.correcta) {
+                puntuacion5++;
+                document.getElementById("puntuacion5").textContent = puntuacion5;
+                alert("¡Correcto!");
+            } else {
+                alert("Incorrecto, sigue intentando.");
+            }
+            closeDialog5();
+            mostrarResultados5(respuesta);
+        }
+
+        function mostrarResultados5(respuesta) {
+            const preguntaR = document.getElementById("preguntaR5");
+            const respuestaDiv = document.getElementById("respuesta5");
+            const competencia = document.getElementById("competencia5");
+
+            // Mostrar la pregunta en el nuevo div
+            preguntaR.innerHTML = `<h3>Pregunta:${preguntaActual5.texto}</h3>`;
+
+            // Mostrar el resultado
+            if (respuesta === preguntaActual5.correcta) {
+                respuestaDiv.innerHTML = `<p class="correcto">Respuesta correcta: ${preguntaActual5.opciones5[respuesta]}</p>`;
+                competencia.innerHTML = `<p>Competencia adquirida al acertar: ${preguntaActual5.competenciaA}</p>`;
+            } else {
+                respuestaDiv.innerHTML = `<p class="incorrecto">Respuesta incorrecta: ${preguntaActual5.opciones5[respuesta]}<br>`;
+                competencia.innerHTML = `<p>Competencia por mejorar si falla: ${preguntaActual5.competenciaM}</p>`;    
+            }
+        }
+    </script>
+    <dialog id="final">
+        <form action="#" class="formula">
+            <label>Nota:<span id="puntuacionFinal">???</span></label>
+        </form>
+        <br>
+        <p class="formula">Pregunta - Respuesta</p>
+        <div id="preguntaR"></div>
+        <div id="respuesta"></div>
+        <div id="competencia"></div>
+        <br>
+        <div id="preguntaR1"></div>
+        <div id="respuesta1"></div>
+        <div id="competencia1"></div>
+        <br>
+        <div id="preguntaR2"></div>
+        <div id="respuesta2"></div>
+        <div id="competencia2"></div>
+        <br>
+        <div id="preguntaR3"></div>
+        <div id="respuesta3"></div>
+        <div id="competencia3"></div>
+        <br>
+        <div id="preguntaR4"></div>
+        <div id="respuesta4"></div>
+        <div id="competencia4"></div>
+        <br>
+        <div id="preguntaR5"></div>
+        <div id="respuesta5"></div>
+        <div id="competencia5"></div>
+        <br>
+        <button class="boton_final" onclick="recargarPagina();">De acuerdo</button>
+    </dialog>
+    <script src="javascript\script.js"></script>
     <script>
 
       function calculateN() {
