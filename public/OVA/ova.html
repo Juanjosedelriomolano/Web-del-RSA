@@ -100,16 +100,7 @@
             <p class="ecuacion">&phi;(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1)</p>
             <p class="puntaje">Puntuación: <span id="puntuacion1">¿?</span>/1</p>
             <button class="evaluacion" onclick="showDialog1()">Evaluación</button>
-        </div>
-        <!--
-        <script>
-            // Asegurarse de que el contenido se muestre desde el inicio
-            function showTotiente() {
-                window.totiente.showModal();
-                window.totiente.scrollTop = 0; // Forzar que el contenido comience desde el inicio
-            }
-        </script>
-        -->        
+        </div>     
         <div class="arrow-line down"></div>
         <div class="arrow down"></div>
         <div class="shape rhomboid">
@@ -467,38 +458,6 @@
         <p class="formula">M = [8, 16, 12, 1]</p>
         <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
     </dialog>
-    <!--
-    <dialog id="modal_cifrado">
-        <h2>¿Qué es Cifrado en RSA?</h2>
-            <p>El cifrado en RSA consiste en convertir un mensaje legible (el mensaje original) en un formato codificado utilizando una clave pública.</p>
-
-            <p>Fórmula:</p>
-            <p class="formula">C = M**e (MOD n)</p>
-                        
-            <p>C: Mensaje cifrado.</p>
-            <p>M: Mensaje original.</p>
-            <p>e: Exponente público (parte de la clave pública).</p>
-            <p>n: Módulo (parte de la clave pública).</p>
-                        
-        <p>Proceso: Para cifrar el mensaje “M”, se eleva “M” a la potencia “e” y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
-        <br>
-        <p>Para generar un mensaje M, se asigna un número a cada letra del abecedario utilizando la siguiente codificación:</p>
-
-        <p>Espacio = 0, A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13, N = 14, Ñ = 15, O = 16, P = 17, Q = 18, R = 19, S = 20, T = 21, U = 22, V = 23, W = 24, X = 25, Y = 26, Z = 27.</p>
-                    
-        <p>Las letras minúsculas se asignan con el mismo valor que sus equivalentes en mayúsculas (por ejemplo, la letra 'e' también se asigna como 5).</p>
-        <p>Ejemplo: Para la cadena "HOLA", la conversión sería:</p>
-
-        <ul>
-            <li>H = 8, O = 16, L = 12, A = 1.</li>
-        </ul>
-                    
-        <p>Esto forma la secuencia numérica del mensaje M:</p>
-
-        <p class="formula">M = [8, 16, 12, 1]</p>
-        <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
-    </dialog>
-    -->
     <dialog id="modal_descifrado">
         <h2>¿Qué es Descifrado en RSA?</h2>
             <p>El descifrado en RSA consiste en convertir un mensaje cifrado de vuelta a su forma original usando una clave privada.</p>
