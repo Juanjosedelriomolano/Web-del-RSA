@@ -13,8 +13,11 @@
         h1 {
             font-family: 'Keania One', sans-serif;
             position: absolute;
-            left:35%;
+            left:37%;
             font-size: 50px;
+        }
+        #mensaje{
+            font-family: 'Keania One', sans-serif;
         }
         @media (max-width:881px){
             h1{
@@ -24,591 +27,61 @@
     </style>
 </head>
 <body>
-    <header>
-        <button class="modal_button">Ir al inicio</button>
-        <div>
-            <p>Llave pública = (<span id="output-e">e</span>,<span id="output-n">n</span>)</p>
-            <p>Llave privada = (<span id="output-d">d</span>,<span id="output-n1">n</span>)</p>
-        </div>
-        <span id="seccion">Generación de claves</span>
-    </header>
     <h1>RSA personalizado</h1>
     <div class="rsa-text">
-    <p>Bienvenido a nuestra paginá web sobre el algoritmo RSA,  uno de los métodos más importantes en la criptografía moderna. En esta paginá web, te llevaremos paso a paso a través del funcionamiento de RSA y la generación de las claves necesarias para su implementación.</p>
+    <p>Bienvenido a nuestra plataforma web sobre el algoritmo RSA<button id="mensaje" onclick="window.RSA_message.showModal();"><span>¡</span></button>,  uno de los métodos más importantes en la criptografía moderna. En esta paginá web, te llevaremos paso a paso a través del funcionamiento de RSA y la generación de las claves necesarias para su implementación.</p>
     <p>Nuestra plataforma está organizada en tres secciones clave:</p>
     <ol>
-        <li><strong>Generación de Claves:</strong>Aprende cómo se crean las  claves pública<button id="mensaje" onclick="window.clave_publica.showModal();">ℹ️</button> y privada<button id="mensaje" onclick="window.clave_privada.showModal();">ℹ️</button>, esenciales para el proceso de cifrado y descifrado.</li>
-        <li><button id="mensaje" onclick="window.modal_cifrado.showModal();">ℹ️</button> <strong>Cifrado:</strong>Descubre cómo utilizar la clave pública para cifrar mensajes y garantizar que solo los destinatarios autorizados puedan leerlos.</li>
-        <li><button id="mensaje" onclick="window.modal_descifrado.showModal();">ℹ️</button> <strong>Descifrado:</strong>Entiende el proceso de descifrado utilizando la clave privada para recuperar el mensaje original a partir del texto cifrado.</li>
+        <li><strong>Generación de Claves:</strong>Aprende cómo se crean las  claves pública<button id="mensaje" onclick="window.clave_publica.showModal();"><span>¡</span></button> y privada<button id="mensaje" onclick="window.clave_privada.showModal();"><span>¡</span></button>, esenciales para el proceso de cifrado y descifrado.</li>
+        <li><button id="mensaje" onclick="window.modal_cifrado.showModal();"><span>¡</span></button> <strong>Cifrado:</strong>Descubre cómo utilizar la clave pública para cifrar mensajes y garantizar que solo los destinatarios autorizados puedan leerlos.</li>
+        <li><button id="mensaje" onclick="window.modal_descifrado.showModal();"><span>¡</span></button> <strong>Descifrado:</strong>Entiende el proceso de descifrado utilizando la clave privada para recuperar el mensaje original a partir del texto cifrado.</li>
     </ol>
-    <button>Inicio</button>
-    </div>
-    <div class="diagram-container">
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape rhomboid">
-        <h2><button id="shape_button" onclick="window.modal_rsa.showModal();">ℹ️</button>El Módulo RSA (n) y la Elección de Números Primos</h2>
-        <p>Selecciona dos números primos distintos.</p>
-        <form action="#">
-            <label>n =</label>
-            <select name="numerosP" id="numP" onchange="calculateN();">
-              <option value="p">p</option>  
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="5">5</option>
-              <option value="7">7</option>
-              <option value="11">11</option>
-              <option value="13">13</option>
-              <option value="17">17</option>
-              <option value="19">19</option>
-              <option value="23">23</option>
-              <option value="29">29</option>
-              <option value="31">31</option>
-              <option value="37">37</option>
-              <option value="41">41</option>
-              <option value="43">43</option>
-              <option value="47">47</option>
-              <option value="53">53</option>
-              <option value="59">59</option>
-              <option value="61">61</option>
-              <option value="67">67</option>
-              <option value="71">71</option>
-              <option value="73">73</option>
-              <option value="79">79</option>
-              <option value="83">83</option>
-              <option value="89">89</option>
-              <option value="97">97</option>
-            </select>
-            <label>*</label>
-            <select name="numerosq" id="numq" onchange="calculateN();">
-                <option value="q">q</option>  
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="7">7</option>
-                <option value="11">11</option>
-                <option value="13">13</option>
-                <option value="17">17</option>
-                <option value="19">19</option>
-                <option value="23">23</option>
-                <option value="29">29</option>
-                <option value="31">31</option>
-                <option value="37">37</option>
-                <option value="41">41</option>
-                <option value="43">43</option>
-                <option value="47">47</option>
-                <option value="53">53</option>
-                <option value="59">59</option>
-                <option value="61">61</option>
-                <option value="67">67</option>
-                <option value="71">71</option>
-                <option value="73">73</option>
-                <option value="79">79</option>
-                <option value="83">83</option>
-                <option value="89">89</option>
-                <option value="97">97</option>
-              </select>
-      </form>
-      <button class="evaluacion">Evaluación</button>
-    </div>
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape square">
-        <h2><button id="shape_button" onclick="window.totiente.showModal();">ℹ️</button>Función Totiente de Euler (φ)</h2>
-        <p>Se calcula mediante la siguiente ecuación:</p>
-        <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputz">a</span></p>
-        <button class="evaluacion">Evaluación</button>
-    </div>
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape rhomboid">
-        <h2><button id="shape_button" onclick="window.exponente_cifrado.showModal();">ℹ️</button>Exponente de Cifrado (e)</h2>
-        <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
-        <form action="#">
-            <label>e =</label>
-            <select name="cadidatose" id="canE" onchange="updatePublicKey(); calculateD()">
-              <!-- Las opciones de e se generarán dinámicamente aquí -->
-          </select>          
-      </form>
-      <button class="evaluacion">Evaluación</button>
-    </div>
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape square" id="Square">
-        <h2><button id="shape_button" onclick="window.exponente_descifrado.showModal();">ℹ️</button>Exponente de Descifrado (d)</h2>
-        <ol>
-            <li>Inicialización</li>
-            <button id="arrow_buttom" onclick="window.inicializacion.showModal();">
-                <div class="arrow down"></div>
-            </button>
-            <li>Algoritmo de Euclides</li>
-            <button id="arrow_buttom" onclick="window.algoritmo_euclides.showModal(), showEuclideanAlgorithm();">
-                <div class="arrow down"></div>
-            </button>
-            <li>Verificación de Coprimalidad</li>
-            <button id="arrow_buttom" onclick="window.verificacion.showModal();">
-                <div class="arrow down"></div>
-            </button>
-            <li>Algoritmo Extendido de Euclides</li>
-            <button id="arrow_buttom" onclick="window.algoritmo_extendido.showModal(), showExtendedEuclideanAlgorithm();">
-                <div class="arrow down"></div>
-            </button>
-            <li>Cálculo del Inverso Multiplicativo d</li>
-            <button id="arrow_buttom" onclick="window.inverso_multiplicativo.showModal();">
-                <div class="arrow down"></div>
-            </button>
-        </ol>
-        <button class="evaluacion">Evaluación</button>
-    </div>
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape rhomboid">
-        <h2>
-            <button id="shape_button" onclick="window.texto_cifrado.showModal();">ℹ️</button>
-            Introduce el mensaje para aplicar el cifrado
-        </h2>
-        <input type="text" id="messageInput" maxlength="20" oninput="validateInput()" placeholder="Escribe tu mensaje aquí...">
-        <p class="aviso">
-            Número de caracteres disponibles: 
-            <span id="disponibles">20</span> 
-            (<span id="utilizados">0</span> utilizados)
-        </p>
-        <button class="evaluacion" id="encryptBtn" onclick="sendToBackend()" disabled>Cifrar</button>
-    </div>
-    
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape square">
-        <h2>Cifrado</h2>
-        <form action="#">
-            <label>M = <input type="text" id="mValue" disabled></label>
-        </form>
-        <button id="publica">
-            Llave pública = (<span id="output-e1">e</span>,<span id="output-n3">n</span>)
-        </button>
-        <br>
-        <!-- Nuevo campo para mostrar el texto cifrado -->
-        <label>C = <input type="text" id="encryptedText" disabled></label>
-        
-        <button class="evaluacion">Evaluación</button>
-    </div>
-    
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <div class="shape square">
-        <h2>Descifrado</h2>
-        <form action="#">
-            <label>M = <input type="text" id="decryptedText" disabled></label>
-        </form>
-        <button id="privada">Llave privada = (<span id="output-d1">d</span>,<span id="output-n4">n</span>)</button>
-        <button class="evaluacion">Evaluación</button>
-    </div>
-    <div class="arrow-line down"></div>
-    <div class="arrow down"></div>
-    <button>Fin</button>
+    <button><a href="OVA/ova.html">Inicio</a></button>
     </div>
     <dialog id="modal_cifrado">
-            <h2>¿Qué es?</h2>
-            <p>Convertir un mensaje legible en un formato codificado utilizando una clave pública.</p>
+            <h2>¿Qué es Cifrado en RSA?</h2>
+            <p>El cifrado en RSA consiste en convertir un mensaje legible (el mensaje original) en un formato codificado utilizando una clave pública.</p>
 
-            <p>Fórmula: C = M**e (MOD n)</p>
+            <p>Fórmula:</p>
+            <p class="formula">C = M**e (MOD n)</p>
                         
             <p>C: Mensaje cifrado.</p>
             <p>M: Mensaje original.</p>
             <p>e: Exponente público (parte de la clave pública).</p>
             <p>n: Módulo (parte de la clave pública).</p>
                         
-            <p>Proceso: Eleva el mensaje “M” a la potencia “e” y toma el residuo al dividir por “n”.</p>
+            <p>Proceso: Para cifrar el mensaje “M”, se eleva “M” a la potencia “e” y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
             <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
-        
     </dialog>   
     <dialog id="modal_descifrado">
-            <h2>¿Qué es?</h2>
-            <p>Convertir el mensaje codificado de vuelta a su forma original usando una clave privada.</p>
+            <h2>¿Qué es Descifrado en RSA?</h2>
+            <p>El descifrado en RSA consiste en convertir un mensaje cifrado de vuelta a su forma original usando una clave privada.</p>
 
-            <p>Fórmula: M = C**d (MOD n)</p>
+            <p>Fórmula:</p>
+
+            <p class="formula">M = C**d (MOD n)</p>
                         
             <p>M: Mensaje original recuperado.</p>
             <p>C: Mensaje cifrado.</p>
             <p>d: Exponente privado (parte de la clave privada).</p>
             <p>n: Módulo (parte de la clave pública y privada).</p>
                         
-            <p>Proceso: Eleva el mensaje cifrado “C” a la potencia “d” y toma el residuo al dividir por “n”.</p>
+            <p>Proceso: Para descifrar el mensaje “C”, se eleva “C” a la potencia “d”  y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
             <button class="modal_button" onclick="window.modal_descifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="clave_publica">
-        <p>Esta clave se utiliza para cifrar los mensajes que solo pueden ser descifrados con la llave privada correspondiente. La llave pública está compuesta por un exponente público (e) y un módulo (n). Esta clave puede compartirse abiertamente con cualquier persona.</p>
+        <p>Clave Pública en RSA</p>
+        <p>La clave pública se utiliza para cifrar los mensajes, los cuales solo pueden ser descifrados por la clave privada correspondiente. Esta clave está compuesta por dos elementos: un exponente público (e) y un módulo (n).  La clave pública puede compartirse libremente con cualquier persona, ya que no compromete la seguridad del sistema.</p>
         <button class="modal_button" onclick="window.clave_publica.close();">Cerrar</button>
     </dialog>
     <dialog id="clave_privada">
-        <p>Esta clave se utiliza para descifrar los mensajes que han sido cifrados con la llave pública correspondiente. La llave privada está compuesta por un exponente privado (d) y el mismo módulo (n) que se utiliza en la llave pública. Esta clave no se puede compartir y debe mantenerse en secreto.</p>
+        <p>Clave Privada en RSA</p>
+        <p>La clave privada se utiliza para descifrar los mensajes que han sido cifrados con la clave pública correspondiente. Esta clave está compuesta por un exponente privado (d) y el mismo módulo (n) que se usa en la clave pública. A diferencia de la clave pública, la clave privada debe mantenerse en secreto y no debe compartirse bajo ninguna circunstancia, ya que es esencial para garantizar la seguridad del sistema.</p>
         <button class="modal_button" onclick="window.clave_privada.close();">Cerrar</button>
     </dialog>
-    <dialog id="modal_rsa">
-        <p>El módulo "n" se obtiene multiplicando dos números primos distintos, "p" y "q". La seguridad del sistema RSA depende en gran medida de la dificultad de factorizar este módulo en sus factores primos originales.</p>
-
-        <p>En Aplicaciones Reales:</p>
-                    
-        <ol>
-            <li>Números primos "p" y "q" son muy grandes (hasta 2048 bits, ~617 dígitos).</li>
-            <li>Esto asegura que "n" sea lo suficientemente grande para mantener la seguridad.</li>
-        </ol>
-                    
-        <p>Para Ejemplos Educativos:</p>
-                    
-        <ol>
-            <li>Una cifra: 2, 3, 5, 7</li>
-            <li>Dos cifras: 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97</li>
-        </ol>
-
-        <p>Usar números primos pequeños simplifica el aprendizaje del algoritmo RSA al evitar la complejidad de números grandes.</p>
-        <button class="modal_button" onclick="window.modal_rsa.close();">Cerrar</button>
+    <dialog id="RSA_message">
+        <p>RSA es un sistema de cifrado asimétrico que utiliza dos claves distintas: una clave pública para cifrar los mensajes y una clave privada para descifrarlos, a diferencia del cifrado simétrico, que emplea la misma clave para ambos procesos. Su seguridad se fundamenta en la dificultad de factorizar números grandes compuestos por el producto de dos números primos.</p>
+        <button class="modal_button" onclick="window.RSA_message.close();">Cerrar</button>
     </dialog>
-    <dialog id="totiente">
-        <p>La Función Totiente de Euler, φ(n), cuenta cuántos números enteros menores que "n" son coprimos con "n" (es decir, tienen un máximo común divisor de 1 con "n"). Para un número entero "n" que es el producto de dos números primos distintos "p" y "q", se calcula como:</p>
-                    
-        <p>φ(n)=(p−1)×(q−1)</p>
-        <button class="modal_button" onclick="window.totiente.close();">Cerrar</button>
-    </dialog>
-    <dialog id="exponente_cifrado">
-        <p>El exponente de cifrado "e", también conocido como exponente público, es un número entero positivo que se usa en el algoritmo RSA. Para ser válido, el exponente de cifrado "e" debe cumplir dos condiciones:</p>
-
-        <ol>
-            <li><strong>Rango:</strong>Debe ser mayor que 1 y menor que φ(n), es decir, 1&lt;e&lt;φ(n).</li>
-            <li><strong>Coprimalidad:</strong> "e" y φ(n) deben ser coprimos, lo que significa que su máximo común divisor (MCD) debe ser 1. Esto asegura que "e" tenga una relación adecuada con φ(n) para el proceso de cifrado.</li>
-        </ol>
-        <button class="modal_button" onclick="window.exponente_cifrado.close();">Cerrar</button>
-    </dialog>
-    <dialog id="exponente_descifrado">
-        <p>El exponente de descifrado "d" es esencial en el algoritmo RSA. Se calcula encontrando el inverso multiplicativo de "e" módulo φ(n). Esto significa encontrar un número "d" tal que:</p>
-
-        <p>e × d = 1 (MOD φ(n))</p>
-
-        <p>Ejemplo: Supongamos que φ(n) = <span id="output-n5">40</span> y e = <span id="output-e2">7</span></p>
-
-        <ol>
-            <li>Inicialización</li>
-            <li>Algoritmo de Euclides</li>
-            <li>Verificación de Coprimalidad</li>
-            <li>Algoritmo Extendido de Euclides</li>
-            <li>Cálculo del Inverso Multiplicativo d</li>
-        </ol>
-        <button class="modal_button" onclick="window.exponente_descifrado.close();">Cerrar</button>
-    </dialog>
-    <dialog id="inicializacion">
-        <p>Comienza con a = φ(n) y b = e.</p>
-        <p>En nuestro caso: a = <span id="output-n6">40</span> y b = <span id="output-e3">7</span>.</p>
-        <button class="modal_button" onclick="window.inicializacion.close();">Cerrar</button>
-    </dialog>
-    <dialog id="algoritmo_euclides">
-        <p>Aplica el algoritmo estándar para encontrar el máximo común divisor (MCD) de a y b.</p>
-        <p>Proceso:</p>
-        <div id="mcd-process"></div>
-        <p id="mcd-result"></p>
-        <button class="modal_button" onclick="document.getElementById('algoritmo_euclides').close();">Cerrar</button>
-    </dialog>
-    <dialog id="verificacion">
-        <p>Asegúrate de que MCD(φ(n), e) = 1.</p>
-        <p>En nuestro caso, MCD(<span id="output-n7">40</span>, <span id="output-e4">7</span>) = 1, así que <span id="output-n8">40</span> y <span id="output-e5">7</span> son coprimos.</p>
-        <button class="modal_button" onclick="window.verificacion.close();">Cerrar</button>
-    </dialog>
-    <dialog id="algoritmo_extendido">
-        <p>Proceso del Algoritmo Extendido de Euclides para encontrar x e y en la ecuación: e × x + φ(n) × y = 1</p>
-        <div id="extended-process"></div>
-        <button class="modal_button" onclick="document.getElementById('algoritmo_extendido').close();">Cerrar</button>
-    </dialog>
-    
-    <dialog id="inverso_multiplicativo">
-        <p>El inverso multiplicativo “d” es “x” (en módulo φ(n)).</p>
-        
-        <p>En nuestro ejemplo, d = −17. Para obtener un valor positivo, ajustamos el resultado en el módulo: d = −17 MOD 40 = 23.</p>
-
-        <p>Verifica que e × d = 1 (MOD φ(n)):</p>
-
-        <p>7 × 23 = 161</p>
-        <p>161 MOD 40 = 1</p>
-
-        <p>Entonces, el exponente de descifrado “d” es 23.</p>
-        <button class="modal_button" onclick="window.inverso_multiplicativo.close();">Cerrar</button>
-    </dialog>
-    <dialog id="texto_cifrado">
-        <p>Ahora que tienes tus claves pública y privada, estamos listos para cifrar tu mensaje usando el algoritmo RSA. Ten en cuenta lo siguiente:</p>
-                    
-        <ol>
-            <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Puede ser cualquier información sensible, como un mensaje o una contraseña. El sistema solo permite ingresar caracteres alfabeticos en minusculas por lo que cualquier otro caracter especial no sera digitado(por ejemplo: 1,2, A, B, !, ?, #, &, @) y otros símbolos que puedan complicar el cifrado.</li>
-            <li><strong>Preparación del Texto:</strong> Recuerda que, como mencionamos antes, el módulo "n" en RSA es el resultado de multiplicar dos números grandes. Esto se hace para asegurar que el sistema pueda manejar mensajes más largos y complejos durante el cifrado.</li>
-            <li><strong>Cifrado:</strong> Una vez que tengas el texto listo, escríbelo en el campo proporcionado y procede con el cifrado. El algoritmo RSA transformará tu texto en un código que solo puede ser descifrado por alguien que tenga la clave privada correcta.</li>
-        </ol>
-                    
-        <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
-    </dialog>
-    <input type="hidden" id="encryptedArrayField" />
-    <!-- Este div estará oculto en la página -->
-    <div id="output-n9" style="display:none;"></div>
-    <div id="output-e6" style="display:none;"></div>
-    <script>
-
-      function calculateN() {
-          const p = parseInt(document.getElementById('numP').value);
-          const q = parseInt(document.getElementById('numq').value);
-
-          document.getElementById('outputp').textContent = isNaN(p) ? 'p' : p;
-          document.getElementById('outputq').textContent = isNaN(q) ? 'q' : q;
-
-          // Verificar si p y q son iguales
-          if (p === q) {
-              alert('Los números p y q no pueden ser iguales. Por favor, selecciona dos números primos diferentes.');
-              return; // Detener el cálculo si son iguales
-          }
-          
-          // Si ambos valores son números válidos
-          if (!isNaN(p) && !isNaN(q)) {
-              fetch('/calculate', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ p, q })
-              })
-              .then(response => response.json())
-              .then(data => {
-                  console.log('Valor de n calculado:', data.n);
-                  document.getElementById('outputz').textContent = data.z; //a es cambiado a x por problemas de datos
-                  document.getElementById('output-n').textContent = data.n;
-                  document.getElementById('output-n1').textContent = data.n;
-                  document.getElementById('output-n2').textContent = data.n;
-                  document.getElementById('output-n3').textContent = data.n;
-                  document.getElementById('output-n4').textContent = data.n;
-                  document.getElementById('output-n5').textContent = data.n;
-                  document.getElementById('output-n6').textContent = data.n;
-                  document.getElementById('output-n7').textContent = data.n;
-                  document.getElementById('output-n8').textContent = data.n;
-                  document.getElementById('output-n9').textContent = data.n;
-
-              })
-          .catch(error => console.error('Error:', error));
-
-          // Calcular e
-          fetch('/calculateE', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ p, q })
-          })
-          .then(response => response.json())
-          .then(data => {
-              const eSelect = document.getElementById('canE');
-              eSelect.innerHTML = ''; // Limpiar opciones anteriores
-
-              // Añadir opción por defecto
-              const defaultOption = document.createElement('option');
-              defaultOption.text = 'Selecciona e';
-              defaultOption.value = '';
-              eSelect.add(defaultOption);
-
-              // Añadir opciones de e
-              data.possibleE.forEach(e => {
-                  const option = document.createElement('option');
-                  option.value = e;
-                  option.text = e;
-                  eSelect.add(option);
-              });
-               // Reiniciar el valor de e en la llave pública
-               document.getElementById('output-e').textContent = 'e';
-               document.getElementById('output-e1').textContent = 'e';
-               document.getElementById('output-e2').textContent = 'e';
-               document.getElementById('output-e3').textContent = 'e';
-               document.getElementById('output-e4').textContent = 'e';
-               document.getElementById('output-e5').textContent = 'e';
-
-          })
-          .catch(error => console.error('Error:', error));
-      }
-  }
-  function updatePublicKey() {
-          const e = document.getElementById('canE').value;
-          document.getElementById('output-e').textContent = e || 'e';
-          document.getElementById('output-e1').textContent = e || 'e';
-          document.getElementById('output-e2').textContent = e || 'e';
-          document.getElementById('output-e3').textContent = e || 'e';
-          document.getElementById('output-e4').textContent = e || 'e';
-          document.getElementById('output-e5').textContent = e || 'e';
-          document.getElementById('output-e6').textContent = e || 'e';
-
-      }
-
-      function calculateD() {
-      const e = parseInt(document.getElementById('canE').value);
-      const p = parseInt(document.getElementById('outputp').textContent);
-      const q = parseInt(document.getElementById('outputq').textContent);
-
-      if (!isNaN(e) && !isNaN(p) && !isNaN(q)) {
-          fetch('/calculateD', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ p, q, e })
-          })
-          .then(response => response.json())
-          .then(data => {
-              console.log('Valor de d calculado:', data.d);
-              document.getElementById('output-d').textContent = data.d;
-              document.getElementById('output-d1').textContent = data.d;
-              
-          })
-          .catch(error => console.error('Error:', error));
-      }
-  }
-    const messageInput = document.getElementById('messageInput');
-    const encryptBtn = document.getElementById('encryptBtn');
-    const mValue = document.getElementById('mValue');
-    const maValue = document.getElementById('mValue');
-    const disponibles = document.getElementById('disponibles');
-    const utilizados = document.getElementById('utilizados');    
-
-    function validateInput() {
-    const inputField = document.getElementById('messageInput');
-    
-    // Expresión regular que permite solo letras y espacios
-    inputField.value = inputField.value.replace(/[^a-z\s]/g, '');}
-
-
-// Limitar caracteres y actualizar contadores
-messageInput.addEventListener('input', () => {
-    const length = messageInput.value.length;
-    disponibles.textContent = 20 - length;
-    utilizados.textContent = length;
-    encryptBtn.disabled = length === 0;
-});
-
-// Función para enviar el mensaje al backend
-function sendToBackend() {
-    const message = messageInput.value;
-
-    fetch('/convertText', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Mostrar el texto convertido en el campo mValue
-        mValue.value = data.convertedText;
-        maValue.value = data.convertedArray;
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-document.getElementById('publica').addEventListener('click', function() {
-        const e = parseInt(document.getElementById('canE').value);
-        const n = parseInt(document.getElementById('output-n3').textContent);
-        const convertedArray = maValue.value.split(',').map(Number);
-        // Asumiendo que `mValue` contiene los números separados por comas.
-
-        // Enviar al backend para cifrar
-        fetch('/encrypt', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ numbers: convertedArray, e, n })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Guardar el arreglo encriptado en el campo oculto
-            document.getElementById('encryptedArrayField').value = data.encryptedText.join(',');
-
-            document.getElementById('encryptedText').value = data.encryptedText.join('');
-        })
-        .catch(error => console.error('Error:', error));
-    });
-
-    // Evento para descifrar el arreglo de números encriptados
-document.getElementById('privada').addEventListener('click', function() {
-    const d = parseInt(document.getElementById('output-d1').textContent);
-    const n = parseInt(document.getElementById('output-n4').textContent);
-
-    // Asegúrate de que `window.encryptedArray` contenga el arreglo de números encriptados previamente almacenado
-    const encryptedArray = document.getElementById('encryptedArrayField').value.split(',').map(Number);
-
-    fetch('/decrypt', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ encryptedArray, d, n })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Mostrar el texto descifrado en el campo de descifrado
-        document.getElementById('decryptedText').value = data.decryptedText;
-    })
-    .catch(error => console.error('Error:', error));
-});
-
-function showEuclideanAlgorithm() {
-    const a = parseInt(document.getElementById('output-n6').textContent);
-    const b = parseInt(document.getElementById('output-e3').textContent);
-
-    fetch('/calculateMCD', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ a, b })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const processContainer = document.getElementById('mcd-process');
-        processContainer.innerHTML = ''; // Limpia el contenido anterior
-
-        data.process.forEach(step => {
-            const stepElement = document.createElement('p');
-            stepElement.textContent = step;
-            processContainer.appendChild(stepElement);
-        });
-
-        document.getElementById('mcd-result').textContent = `El MCD de ${a} y ${b} es ${data.mcd}`;
-        document.getElementById('algoritmo_euclides').showModal();
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function showExtendedEuclideanAlgorithm() {
-    const a = parseInt(document.getElementById('output-n9').textContent);
-    const b = parseInt(document.getElementById('output-e6').textContent);
-
-    fetch('/calculateEE', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ a, b })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const processContainer = document.getElementById('extended-process');
-        processContainer.innerHTML = ''; // Limpia el contenido anterior
-
-        data.steps.forEach(step => {
-            const stepElement = document.createElement('p');
-            stepElement.textContent = step;
-            processContainer.appendChild(stepElement);
-        });
-
-        // Mostrar el resultado final
-        processContainer.innerHTML += `<p>Resultado final: x = ${data.x}, y = ${data.y}</p>`;
-        document.getElementById('algoritmo_extendido').showModal();
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-
-  </script>
-
 </body>
 </html>
