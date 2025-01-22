@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="box">
+        <span class="borderLine"></span>
+        <form onsubmit="handleRegister(event)">
+            <h2>Registro</h2>
+            <div class="inputBox">
+                <input type="text" id="id" required>
+                <span>ID</span>
+                <i></i>
+            </div>            
+            <div class="inputBox">
+                <input type="text" id="nombre" required>
+                <span>Nombre</span>
+                <i></i>
+            </div>            
+            <div class="inputBox">
+                <input type="text" id="edad" required>
+                <span>Edad</span>
+                <i></i>
+            </div>
+            <input type="submit" value="Ingresar">
+            <div class="link">
+                <p>¿Ya tienes una cuenta?</p>
+                <a href="/login/login.html">Iniciar sesión</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    async function handleRegister(event) {
+        event.preventDefault(); // Evitar recarga
+        const id = document.getElementById('id').value;
+        const name = document.getElementById('nombre').value;
+        const age = document.getElementById('edad').value;
+
+        if (!id || !name || !age) {
+            alert("Todos los campos son obligatorios");
+            return;
+        }
+
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, name, age })
+            });
+
+            const result = await response.json();
+            if (response.ok && result.success) {
+                alert(result.message);
+                window.location.href = "/../ova/ova.html";
+            } else {
+                alert(result.error || "Error al registrar");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error de conexión con el servidor");
+        }
+    }
+</script>
+</html>
