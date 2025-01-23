@@ -120,6 +120,7 @@
     <div class="arrow down"></div>
     <div class="shape square">
         <h2 class="margen_derecho"><button id="shape_button" onclick="window.modal_cifrado.showModal(); document.getElementById('evaluacion5').disabled = false;">¡</button>Cifrado</h2>
+        <button id="informacion_cifrado" onclick="window.proceso_cifrado.showModal();"><span>¡</span></button>
         <form action="#">
             <label>M = <input type="text" id="mValue" disabled></label>
         </form>
@@ -300,6 +301,21 @@
         <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="modal_cifrado">
+        <h2>¿Qué es Cifrado en RSA?</h2>
+            <p>El cifrado en RSA consiste en convertir un mensaje legible (el mensaje original) en un formato codificado utilizando una clave pública.</p>
+
+            <p>Fórmula:</p>
+            <p class="formula">C = M**e (MOD n)</p>
+                        
+            <p>C: Mensaje cifrado.</p>
+            <p>M: Mensaje original.</p>
+            <p>e: Exponente público (parte de la clave pública).</p>
+            <p>n: Módulo (parte de la clave pública).</p>
+                        
+        <p>Proceso: Para cifrar el mensaje “M”, se eleva “M” a la potencia “e” y luego se calcula el residuo de esta operación al dividir entre “n” (es decir, se realiza una operación módulo n).</p>
+        <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
+    </dialog>
+    <dialog id="proceso_cifrado">
         <p>Para generar un mensaje M, se asigna un número a cada letra del abecedario utilizando la siguiente codificación:</p>
 
         <p>Espacio = 0, A = 1, B = 2, C = 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9, J = 10, K = 11, L = 12, M = 13, N = 14, Ñ = 15, O = 16, P = 17, Q = 18, R = 19, S = 20, T = 21, U = 22, V = 23, W = 24, X = 25, Y = 26, Z = 27.</p>
@@ -314,7 +330,7 @@
         <p>Esto forma la secuencia numérica del mensaje M:</p>
 
         <p class="formula">M = [8, 16, 12, 1]</p>
-        <button class="modal_button" onclick="window.modal_cifrado.close();">Cerrar</button>
+        <button class="modal_button" onclick="window.proceso_cifrado.close();">Cerrar</button>
     </dialog>
     <dialog id="modal_descifrado">
         <h2>¿Qué es Descifrado en RSA?</h2>
