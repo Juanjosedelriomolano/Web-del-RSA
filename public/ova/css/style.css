@@ -353,6 +353,21 @@ color: black;
   font-size: 1em;
 }
 
+#informacion_cifrado{
+    position: relative ;
+    left: -17vw;
+    bottom: 30px;
+    height: 3vh;  /* Ajuste de altura relativo al viewport */
+    width: 2vw;  /* Ancho ajustado al viewport */
+    background-color: #d9d9d9;
+    font-size: 1em;
+  }
+
+  #informacion_cifrado span{
+    position: relative;
+    bottom: 3px;
+  }
+
 @media (max-width:881px){/*Condicional que se activa si el ancho alcanza los 680px*/
   .shape.rhomboid{
       left: -10vw;
@@ -371,4 +386,8 @@ color: black;
     height: 7vh;
     width: 4vw;
   }
+  #informacion_cifrado{
+      left: -28vw;
+      width: 3vw;
+    }
 }
