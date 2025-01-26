@@ -55,7 +55,7 @@
 
             const result = await response.json();
             if (response.ok && result.success) {
-                alert(result.message);
+                console.log(result.message);
                 window.location.href = "/../ova/ova.html"; // Redirigir a otra página
             } else {
                 alert(result.error || "Error al registrar");
