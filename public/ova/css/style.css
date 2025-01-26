@@ -317,6 +317,60 @@ color: black;
   margin-right: 1vw;
   padding-bottom: 3vw;
 }
+#shape_button1{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
+#shape_button2{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
+#shape_button3{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
+#shape_button4{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
+#shape_button5{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
+#shape_button6{
+  position: static;
+  height: 5vh;
+  width: 3vw;
+  background-color: #d9d9d9;
+  font-size: 1em;
+  margin-right: 1vw;
+  padding-bottom: 3vw;
+}
 
 #Square{
   padding-bottom: 0px;

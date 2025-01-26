@@ -2,22 +2,37 @@ const rsaModel = require('../models/rsa');
 const db = require('../config/database'); // Conexión a la base de datos
 const exteuc = require('../models/exteneuc');
 
-// Ruta para registrar usuarios
 exports.registerUser = (req, res) => {
     const { id, name, age } = req.body;
     if (!id || !name || !age) {
         return res.status(400).json({ error: 'Nombre de usuario, id y edad son obligatorios' });
     }
-//aqui tengo que editar, tambien tengo que editar en la base de datos, este mensaje tambien tengo que borrarlo al finalizar
-    const query = 'INSERT INTO usuarios (idu, nombre, edad) VALUES (?, ?, ?)';
-    db.query(query, [id, name ,age], (err) => {
+
+    // Verificar si el ID ya existe
+    const checkQuery = 'SELECT * FROM usuarios WHERE idu = ?';
+    db.query(checkQuery, [id], (err, results) => {
         if (err) {
-            console.error('Error al registrar el usuario:', err);
-            return res.status(500).json({ error: 'Error al registrar el usuario' });
+            console.error('Error al verificar el usuario:', err);
+            return res.status(500).json({ error: 'Error al verificar el usuario' });
         }
-        res.json({ success: true, message: 'Registro exitoso. Cambiando de vista...' });
+
+        if (results.length > 0) {
+            // Si el ID ya existe, enviar un mensaje para que lo cambie
+            return res.status(400).json({ error: 'Este ID ya está en uso. Por favor elige otro.' });
+        }
+
+        // Si el ID no existe, proceder con el registro
+        const query = 'INSERT INTO usuarios (idu, nombre, edad) VALUES (?, ?, ?)';
+        db.query(query, [id, name, age], (err) => {
+            if (err) {
+                console.error('Error al registrar el usuario:', err);
+                return res.status(500).json({ error: 'Error al registrar el usuario' });
+            }
+            res.json({ success: true, message: 'Registro exitoso. Cambiando de vista...' });
+        });
     });
 };
+
 
 // Ruta para iniciar sesión
 exports.loginUser = (req, res) => {
@@ -33,10 +48,35 @@ exports.loginUser = (req, res) => {
             return res.status(500).json({ error: 'Error al verificar el usuario' });
         }
         if (results.length > 0) {
-            res.json({ success: true, message: 'Inicio de sesión exitoso. Cambiando de vista...' });
+            const { administrador } = results[0]; 
+            res.json({ success: true, message: 'Inicio de sesión exitoso. Cambiando de vista...', administrador});
         } else {
             res.status(401).json({ error: 'Credenciales incorrectas' });
         }
+    });
+};
+
+// Ruta para registrar usuarios
+exports.evalusave = (req, res) => {
+    const { idu, eva1, eva2, eva3, eva4, eva5, eva6, total} = req.body;
+    // Verificar si algún valor está vacío
+    const isEmpty = (value) => value === undefined || value === null || value === '';
+
+    if (
+        isEmpty(idu) || isEmpty(eva1) || isEmpty(eva2) || 
+        isEmpty(eva3) || isEmpty(eva4) || isEmpty(eva5) || 
+        isEmpty(eva6) || isEmpty(total)
+    ) {
+        return res.status(400).json({ error: 'Evaluaciones no completadas' });
+    }
+//aqui tengo que editar, tambien tengo que editar en la base de datos, este mensaje tambien tengo que borrarlo al finalizar
+    const query = 'INSERT INTO evaluacion (idu, eva1, eva2, eva3, eva4, eva5, eva6, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(query, [idu, eva1, eva2, eva3, eva4, eva5, eva6, total], (err) => {
+        if (err) {
+            console.error('Error al registrar el usuario:', err);
+            return res.status(500).json({ error: 'Error al registrar la evaluacion' });
+        }
+        res.json({ success: true });
     });
 };
 

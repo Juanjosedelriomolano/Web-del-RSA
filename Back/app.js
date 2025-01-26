@@ -27,6 +27,7 @@ app.post('/encrypt', rsaController.encryptNumbers);
 app.post('/decrypt', rsaController.decryptNumbers);
 app.post('/calculateMCD', rsaController.calculateMCD);
 app.post('/calculateEE', rsaController.calculateEE);
+app.post('/evalusave', rsaController.evalusave);
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Keania+One&display=swap" rel="stylesheet">
     <style>
         /* Aplica la fuente personalizada a los encabezados */
-        #shape_button {
+        #shape_button, #shape_button1, #shape_button2, #shape_button3, #shape_button4, #shape_button5, #shape_button6 {
             font-family: 'Keania One', sans-serif;
         }
     </style>
@@ -21,13 +21,15 @@
         <div>
             <p>Llave pública = (<span id="output-e">e</span>, <span id="output-n">n</span>)</p>
             <p>Llave privada = (<span id="output-d">d</span>, <span id="output-n1">n</span>)</p>
+            <p>Idusuario: <span id="Idusuario"></span></p>
+            <p>Administrador: <span id="admin">?</span></p>
         </div>
         <span id="seccion">Generación de claves</span>
     </header>
     </div>
     <div class="diagram-container">
     <div class="shape rhomboid">
-        <h2><button id="shape_button" onclick="window.modal_rsa.showModal(); document.getElementById('numP').disabled = false; document.getElementById('numq').disabled = false; document.getElementById('evaluacion1').disabled = false;">ℹ️</button>El Módulo RSA (n) y la Elección de Números Primos</h2>
+        <h2 class="margen_derecho"><button id="shape_button1" onclick="window.modal_rsa.showModal(); document.getElementById('numP').disabled = false; document.getElementById('numq').disabled = false; document.getElementById('evaluacion1').disabled = false;">¡</button>El Módulo RSA (n) y la Elección de Números Primos</h2>
         <p>Selecciona dos números primos distintos.</p>
         <form action="#">
             <label>n =</label>
@@ -49,22 +51,22 @@
                 <option value="11">11</option>
               </select>
       </form>
-      <p class="puntaje">Puntuación: <span id="puntuacion">¿?</span>/1</p>
+      <p class="puntaje">Puntuación: <span id="puntuacion">0</span>/1</p>
       <button class="evaluacion" id="evaluacion1" disabled="True" onclick="showDialog()">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square">
-        <h2><button id="shape_button" onclick="window.totiente.showModal(); document.getElementById('evaluacion2').disabled = false;">ℹ️</button>Función Totiente de Euler (φ)</h2>
+        <h2 class="margen_derecho"><button id="shape_button2" onclick="window.totiente.showModal(); document.getElementById('evaluacion2').disabled = false;">¡</button>Función Totiente de Euler (φ)</h2>
         <p>Se calcula mediante la siguiente ecuación:</p>
         <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputz">a</span></p>
-        <p class="puntaje">Puntuación: <span id="puntuacion1">¿?</span>/1</p>
+        <p class="puntaje">Puntuación: <span id="puntuacion1">0</span>/1</p>
         <button class="evaluacion" id="evaluacion2" disabled="True" onclick="showDialog1()">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape rhomboid">
-        <h2><button id="shape_button" onclick="document.getElementById('canE').disabled = false; document.getElementById('evaluacion3').disabled = false; window.exponente_cifrado.showModal();">ℹ️</button>Exponente de Cifrado (e)</h2>
+        <h2 class="margen_derecho"><button id="shape_button3" onclick="document.getElementById('canE').disabled = false; document.getElementById('evaluacion3').disabled = false; window.exponente_cifrado.showModal();">¡</button>Exponente de Cifrado (e)</h2>
         <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
         <form action="#">
             <label>e =</label>
@@ -72,13 +74,13 @@
               <!-- Las opciones de e se generarán dinámicamente aquí -->
           </select>          
       </form>
-      <p class="puntaje">Puntuación: <span id="puntuacion2">¿?</span>/1</p>
+      <p class="puntaje">Puntuación: <span id="puntuacion2">0</span>/1</p>
       <button class="evaluacion" id="evaluacion3" disabled="true" onclick="showDialog2()">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square" id="Square">
-        <h2><button id="shape_button" onclick="window.exponente_descifrado.showModal(); document.getElementById('evaluacion4').disabled = false;">ℹ️</button>Exponente de Descifrado (d)</h2>
+        <h2 class="margen_derecho"><button id="shape_button4" onclick="window.exponente_descifrado.showModal(); document.getElementById('evaluacion4').disabled = false;">¡</button>Exponente de Descifrado (d)</h2>
         <ol>
             <li>Inicialización</li>
             <button id="arrow_buttom" onclick="window.inicializacion.showModal();">
@@ -97,16 +99,17 @@
                 <div class="arrow down"></div>
             </button>
         </ol>
-        <p class="puntaje1">Puntuación: <span id="puntuacion3">¿?</span>/1</p>
+        <p class="puntaje1">Puntuación: <span id="puntuacion3">0</span>/1</p>
         <button class="evaluacion" id="evaluacion4" disabled="true" onclick="showDialog3()">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape rhomboid">
-        <h2>
-            <button id="shape_button" onclick="document.getElementById('messageInput').disabled = false; window.texto_cifrado.showModal();">ℹ️</button>
+        <h2 class="margen_derecho">
+            <button id="shape_button" onclick="document.getElementById('messageInput').disabled = false; window.texto_cifrado.showModal();">¡</button>
             Introduce el mensaje para aplicar el cifrado
         </h2>
+        <button id="informacion_cifrado" onclick="window.proceso_cifrado.showModal();"><span>¡</span></button>
         <input type="text" id="messageInput" disabled="True" maxlength="10" oninput="validateInput()" placeholder="Escribe tu mensaje aquí...">
         <p class="aviso">
             Número de caracteres disponibles: 
@@ -119,8 +122,7 @@
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square">
-        <h2 class="margen_derecho"><button id="shape_button" onclick="window.modal_cifrado.showModal(); document.getElementById('evaluacion5').disabled = false;">¡</button>Cifrado</h2>
-        <button id="informacion_cifrado" onclick="window.proceso_cifrado.showModal();"><span>¡</span></button>
+        <h2 class="margen_derecho"><button id="shape_button5" onclick="window.modal_cifrado.showModal(); document.getElementById('evaluacion5').disabled = false;">¡</button>Cifrado</h2>
         <form action="#">
             <label>M = <input type="text" id="mValue" disabled></label>
         </form>
@@ -129,22 +131,20 @@
         <br>
         <!-- Nuevo campo para mostrar el texto cifrado -->
         <label>C = <input type="text" id="encryptedText" disabled></label>
-        <p class="ecuaciones">C = M**e (MOD n)</p>
-        <p class="puntaje">Puntuación: <span id="puntuacion4">¿?</span>/1</p>
+        <p class="puntaje">Puntuación: <span id="puntuacion4">0</span>/1</p>
         <button class="evaluacion" id="evaluacion5" disabled="true" onclick="showDialog4()">Evaluación</button>
     </div>
     
     <div class="arrow-line down"></div>
     <div class="arrow down"></div>
     <div class="shape square">
-        <h2 class="margen_derecho"><button id="shape_button" onclick="window.modal_descifrado.showModal();document.getElementById('evaluacion6').disabled = false;">¡</button>Descifrado</h2>
+        <h2 class="margen_derecho"><button id="shape_button6" onclick="window.modal_descifrado.showModal();document.getElementById('evaluacion6').disabled = false;">¡</button>Descifrado</h2>
         <form action="#">
             <label>M = <input type="text" id="decryptedNumbers" disabled></label>
         </form>
         <button id="privada">Llave privada = (<span id="output-d1">d</span>,<span id="output-n4">n</span>)</button>
-        <p class="ecuaciones">M = C**d (MOD n)</p>
         <label>Texto = <input type="text" id="decryptedText" disabled></label>
-        <p class="puntaje">Puntuación: <span id="puntuacion5">¿?</span>/1</p>
+        <p class="puntaje">Puntuación: <span id="puntuacion5">0</span>/1</p>
         <button class="evaluacion" id="evaluacion6" disabled="true" onclick="showDialog5()">Evaluación</button>
     </div>
     <div class="arrow-line down"></div>
@@ -296,6 +296,7 @@
             <li><strong>Introduce el Texto:</strong> Escribe el mensaje que deseas cifrar. Puede ser cualquier información sensible, como un mensaje o una contraseña. El sistema solo permite ingresar caracteres alfabeticos en minusculas por lo que cualquier otro caracter especial no sera digitado(por ejemplo: 1,2, A, B, !, ?, #, &, @) y otros símbolos que puedan complicar el cifrado.</li>
             <li><strong>Preparación del Texto:</strong> Recuerda que, como mencionamos antes, el módulo "n" en RSA es el resultado de multiplicar dos números grandes. Esto se hace para asegurar que el sistema pueda manejar mensajes más largos y complejos durante el cifrado.</li>
             <li><strong>Cifrado:</strong> Una vez que tengas el texto listo, escríbelo en el campo proporcionado y procede con el cifrado. El algoritmo RSA transformará tu texto en un código que solo puede ser descifrado por alguien que tenga la clave privada correcta.</li>
+            <li><strong>Importante:</strong>No olvides que el valor de "n" te limita el tamaño del caracter que puedes ingresar, por lo que si la "n" es un numero pequeño esto podria generar un error a la hora de cifrar y decifrar los mensajes, por lo que si tu "n" es actualmente un "10" o menos te recomendamos subir y cambiar los valores de "p", "q" y "e" para evitar confuciones.</li>
         </ol>
                     
         <button class="modal_button" onclick="window.texto_cifrado.close();">Cerrar</button>
@@ -353,7 +354,7 @@
         <div id="opciones"></div>
         <br>
         <div class="comprobacion">
-            <button class="modal_button" onclick="validarRespuesta(); document.getElementById('evaluacion1').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta(); document.getElementById('evaluacion1').disabled = true; document.getElementById('shape_button1').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog()">Cerrar</button>
         </div>
     </dialog>
@@ -489,7 +490,7 @@
         <div id="opciones1"></div>
         <br>
         <div class="comprobacion">
-            <button class="modal_button" onclick="validarRespuesta1(); document.getElementById('evaluacion2').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta1(); document.getElementById('evaluacion2').disabled = true; document.getElementById('shape_button2').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog1()">Cerrar</button>
         </div>
     </dialog>
@@ -625,7 +626,7 @@
         <div id="opciones2"></div>
         <br>
         <div class="comprobacion">
-            <button class="modal_button" onclick="validarRespuesta2(); document.getElementById('evaluacion3').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta2(); document.getElementById('evaluacion3').disabled = true; document.getElementById('shape_button3').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog2()">Cerrar</button>
         </div>
     </dialog>
@@ -760,7 +761,7 @@
         <div id="opciones3"></div>
         <br>
         <div class="comprobacion">
-            <button class="modal_button" onclick="validarRespuesta3(); document.getElementById('evaluacion4').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta3(); document.getElementById('evaluacion4').disabled = true; document.getElementById('shape_button4').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog3()">Cerrar</button>
         </div>
     </dialog>
@@ -895,7 +896,7 @@
         <div id="opciones4"></div>
         <br>
         <div class="comprobacion">
-            <button class="modal_button" onclick="validarRespuesta4(); document.getElementById('evaluacion5').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta4(); document.getElementById('evaluacion5').disabled = true; document.getElementById('shape_button5').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog4()">Cerrar</button>
         </div>
     </dialog>
@@ -1030,7 +1031,7 @@
         <div id="opciones5"></div>
         <br>
         <div>
-            <button class="modal_button" onclick="validarRespuesta5(); document.getElementById('evaluacion6').disabled = true;">Responder</button>
+            <button class="modal_button" onclick="validarRespuesta5(); document.getElementById('evaluacion6').disabled = true; document.getElementById('shape_button6').disabled = true;">Responder</button>
             <button class="modal_button" onclick="closeDialog5()">Cerrar</button>
         </div>
     </dialog>
@@ -1190,7 +1191,7 @@
         <div id="respuesta5"></div>
         <div id="competencia5"></div>
         <br>
-        <button class="boton_final" onclick="recargarPagina();">De acuerdo</button>
+        <button class="boton_final" id="boton_final" onclick="recargarPagina();">De acuerdo</button>
     </dialog>
     <script src="javascript\script.js"></script>
     <input type="hidden" id="encryptedArrayField" />
@@ -1198,6 +1199,21 @@
     <div id="outputz4" style="display:none;"></div>
     <div id="output-e6" style="display:none;"></div>
     <script>
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const id = sessionStorage.getItem("id"); // Obtener el id
+            const admin = sessionStorage.getItem("administrador");
+            const idElement = document.getElementById('Idusuario');
+            const adminElement = document.getElementById('admin');
+
+            if (id) {
+                idElement.textContent = id; // Mostrar el id en el elemento
+                adminElement.textContent = admin;
+            } else {
+                idElement.textContent = "ID no disponible"; // Mensaje de error si no existe
+                console.error("El ID no se encontró en sessionStorage.");
+            }
+        });
 
       function calculateN() {
           const p = parseInt(document.getElementById('numP').value);
@@ -1460,6 +1476,31 @@ function showExtendedEuclideanAlgorithm() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+document.getElementById('boton_final').addEventListener('click', function() {
+        const idu = parseInt(document.getElementById('Idusuario').textContent);
+        const eva1= parseInt(document.getElementById('puntuacion').textContent);
+        const eva2 = parseInt(document.getElementById('puntuacion1').textContent);
+        const eva3= parseInt(document.getElementById('puntuacion2').textContent);
+        const eva4 = parseInt(document.getElementById('puntuacion3').textContent);
+        const eva5= parseInt(document.getElementById('puntuacion4').textContent);
+        const eva6 = parseInt(document.getElementById('puntuacion5').textContent);
+        const total = parseFloat(document.getElementById('puntuacionFinal').textContent);
+        // Asumiendo que `mValue` contiene los números separados por comas.
+
+        // Enviar al backend para cifrar
+        fetch('/evalusave', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idu, eva1, eva2, eva3, eva4, eva5, eva6, total })
+        })
+        .then(response => response.json())
+        .then(data => {
+        })
+        .catch(error => console.error('Error:', error));
+    });
 
 
   </script>
