@@ -746,9 +746,6 @@ function extendedEuclidean(a, b, l) {
         case a=== 8 && b ===3:
             message = "The second number is greater than the first.";
             break;
-        
-        default:
-            message = "Default case, provide valid inputs.";
     }
 
     return { gcdMessage: message, y, ed}; // Adjust to return steps if extended Euclidean is implemented.

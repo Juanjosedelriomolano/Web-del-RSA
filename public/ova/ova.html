@@ -282,13 +282,56 @@
     <dialog id="algoritmo_euclides">
         <p>Aplica el algoritmo estándar para encontrar el máximo común divisor (MCD) de a y b.</p>
         <p>Proceso:</p>
-        <div id="mcd-process"></div>
+        <div><span id="mcd-process">Divide 40 entre 7. El cociente es 5 y el residuo es 5:
+            40 = 7(5) + 5
+           
+           Divide 7 entre 5. El cociente es 1 y el residuo es 2:
+            7 = 5(1) + 2
+           
+           Divide 5 entre 2. El cociente es 2 y el residuo es 1:
+            5 = 2(2) + 1
+           
+           Divide 2 entre 1. El cociente es 2 y el residuo es 0:
+            2 = 1(2) + 0
+           
+           Conclusión:
+           El último residuo no nulo es 1, por lo que el máximo común divisor es:
+           MCD(40,7)=1
+           
+           Esto significa que 40 y 7 son coprimos, ya que su máximo común divisor es 1.</span></div>
         <p id="mcd-result"></p>
         <button class="modal_button" onclick="document.getElementById('algoritmo_euclides').close();">Cerrar</button>
     </dialog>
     <dialog id="algoritmo_extendido">
         <p></p>
-        <div id="extended-process" style="white-space: pre-line;"></div>
+        <div><span id="extended-process" style="white-space: pre-line;">El algoritmo extendido de Euclides se utiliza para resolver ecuaciones de la forma de la ecuación de Bézout:                                          a(x) + b(y) = MCD (a, b)En el caso de RSA, la ecuación que estamos resolviendo es:                                                 40(x) + 7(y) = 1
+
+
+            Proceso:
+            Una vez desarrollado el algoritmo de Euclides, retrocedemos en los cálculos para expresar el MCD (en este caso 1) como una combinación lineal de 40 y 7.De la división 40 ÷ 7: 40 = 7(5) + 5, Despejamos el resto 5:5 = 40 - 7 (5)De la  división 7 ÷ 5: 7 = 5(1) + 2, Despejamos el resto 2:2 = 7 - 5(1)De la  división 5 ÷ 2: 5 = 2(2) + 1, Despejamos el resto 1:1 = 5 − 2(2)
+            Retroceso para obtener la combinación lineal:
+            A partir de la última ecuación obtenida, que es 1 = 5 − 2(2) , reemplazamos el valor de 2 por la expresión obtenida de la segunda división: 7 - 5(1)
+            
+                                                                  1 = 5 − 2 (7 − 5)
+            
+            Distribuimos y agrupamos los términos semejantes para simplificar la expresión:
+            1 = 5 - 2(7) + 2(5) 
+            1 = 3(5) − 2(7) 
+            
+            Ahora, reemplazamos el 5 por la expresión 40 − 5(7), que obtuvimos de la primera división:
+            1 = 3(40 −  5(7)) − 2(7) 
+            
+            Distribuimos y agrupamos los términos semejantes para simplificar la expresión:
+            1 = 3(40)  − 15(7) − 2(7)
+            1 = 3(40) − 17(7)
+            
+            Resultado final
+            Así, hemos expresado el MCD 1 como una combinación lineal de 40 y 7:
+            
+                                                                 1 = 3(40) − 17(7)
+            
+            Por lo tanto, los valores de “x” e “y” son:
+                                                                      x = 3   y = −17</span></div>
         <button class="modal_button" onclick="document.getElementById('algoritmo_extendido').close();">Cerrar</button>
     </dialog>
     
