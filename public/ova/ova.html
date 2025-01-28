@@ -60,7 +60,7 @@
     </div> 
     <div id="container2">
     <div class="shape square">
-        <h2 class="margen_derecho"><button id="shape_button2" onclick="window.totiente.showModal(); document.getElementById('evaluacion2').disabled = false;">¡</button>Función Totiente de Euler (φ)</h2>
+        <h2 class="margen_derecho"><button id="shape_button2" onclick="showTotiente(); document.getElementById('evaluacion2').disabled = false;">¡</button>Función Totiente de Euler (φ)</h2>
         <p>Se calcula mediante la siguiente ecuación:</p>
         <p class="ecuacion">φ(<span id="output-n2">n</span>) = (<span id="outputp">p</span>  - 1) * (<span id="outputq">q</span>  - 1) = <span id="outputz">a</span></p>
         <p class="puntaje">Puntuación: <span id="puntuacion1">0</span>/1</p>
@@ -71,7 +71,7 @@
     </div>
     <div id="container3">
     <div class="shape rhomboid">
-        <h2 class="margen_derecho"><button id="shape_button3" onclick="document.getElementById('canE').disabled = false; document.getElementById('evaluacion3').disabled = false; window.exponente_cifrado.showModal();">¡</button>Exponente de Cifrado (e)</h2>
+        <h2 class="margen_derecho"><button id="shape_button3" onclick="document.getElementById('canE').disabled = false; document.getElementById('evaluacion3').disabled = false; showEC();">¡</button>Exponente de Cifrado (e)</h2>
         <p>Selecciona el número que prefieras de la lista a continuación. Cada uno de estos números es un posible candidato para el exponente de cifrado “e”.</p>
         <form action="#">
             <label>e =</label>
@@ -98,7 +98,7 @@
                 <div class="arrow down"></div>
             </button>
             <li>Algoritmo Extendido de Euclides</li>
-            <button id="arrow_buttom" onclick="window.algoritmo_extendido.showModal(), showExtendedEuclideanAlgorithm();">
+            <button id="arrow_buttom" onclick="show_AE(), showExtendedEuclideanAlgorithm();">
                 <div class="arrow down"></div>
             </button>
             <li>Cálculo del Inverso Multiplicativo d</li>
@@ -115,7 +115,7 @@
     <div id="container5">
     <div class="shape rhomboid">
         <h2 class="margen_derecho">
-            <button id="shape_button" onclick="document.getElementById('messageInput').disabled = false; window.texto_cifrado.showModal();">¡</button>
+            <button id="shape_button" onclick="document.getElementById('messageInput').disabled = false; showTC();">¡</button>
             Introduce el mensaje para aplicar el cifrado
         </h2>
         <input type="text" id="messageInput" disabled="True" maxlength="10" oninput="validateInput()" placeholder="Escribe tu mensaje aquí...">
@@ -267,10 +267,10 @@
         <p>Ejemplo: Supongamos que φ(n) = <span id="output-n5">40</span> y e = <span id="output-e2">7</span></p>
 
         <ol>
-            <li>Inicialización<button id="mensaje" onclick="window.inicializacion_span.showModal();">¡</button></li>
-            <li>Algoritmo de Euclides<button id="mensaje" onclick="window.algoritmo_euclides_span.showModal();">¡</button></li>
-            <li>Algoritmo Extendido de Euclides<button id="mensaje" onclick="window.algoritmo_extendido_span.showModal()">¡</button></li>
-            <li>Cálculo del Inverso Multiplicativo d<button id="mensaje" onclick="window.inverso_multiplicativo_span.showModal();">¡</button></li>
+            <li>Inicialización<button id="mensaje" onclick="window.inicializacion_span.showModal();"><span>¡</span></button></li>
+            <li>Algoritmo de Euclides<button id="mensaje" onclick="window.algoritmo_euclides_span.showModal();"><span>¡</span></button></li>
+            <li>Algoritmo Extendido de Euclides<button id="mensaje" onclick="show_AE_span()"><span>¡</span></button></li>
+            <li>Cálculo del Inverso Multiplicativo d<button id="mensaje" onclick="window.inverso_multiplicativo_span.showModal();"><span>¡</span></button></li>
         </ol>
         <button class="modal_button" onclick="window.exponente_descifrado.close();">Cerrar</button>
     </dialog>
