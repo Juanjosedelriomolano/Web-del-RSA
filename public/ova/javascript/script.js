@@ -19,6 +19,16 @@ function show_MC() {
     window.modal_cifrado.scrollTop = 0; // Forzar que el contenido comience desde el inicio
 }
 
+function showEC() {
+    window.exponente_cifrado.showModal();
+    window.exponente_cifrado.scrollTop = 0; // Forzar que el contenido comience desde el inicio
+}
+
+function showTC() {
+    window.texto_cifrado.showModal();
+    window.texto_cifrado.scrollTop = 0; // Forzar que el contenido comience desde el inicio
+}
+
 function show_results() {
     window.final.showModal();
     window.final.scrollTop = 0; // Forzar que el contenido comience desde el inicio
