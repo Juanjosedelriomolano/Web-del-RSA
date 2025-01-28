@@ -308,6 +308,11 @@ color: black;
   border-radius: 40px;
 }
 
+#mensaje span{
+  position: relative;
+  bottom: 3px;
+}
+
 #shape_button{
   position: static;
   height: 5vh;
