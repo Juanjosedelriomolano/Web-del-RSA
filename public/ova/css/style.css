@@ -381,7 +381,19 @@ color: black;
   padding-bottom: 0px;
 }
 
-#arrow_buttom{
+#arrow_buttom1{
+  background-color: transparent; 
+  left: 1%;
+}
+#arrow_buttom2{
+  background-color: transparent; 
+  left: 1%;
+}
+#arrow_buttom3{
+  background-color: transparent; 
+  left: 1%;
+}
+#arrow_buttom4{
   background-color: transparent; 
   left: 1%;
 }

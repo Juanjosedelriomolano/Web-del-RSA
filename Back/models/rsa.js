@@ -99,13 +99,15 @@ function calculateMCD(a, b) {
     while (b !== 0) {
         let quotient = Math.floor(a / b);
         let remainder = a % b;
-        steps.push(`Divide ${a} entre ${b}. El cociente es ${quotient} y el residuo es ${remainder} (${a} = ${b} × ${quotient} + ${remainder}).`);
+        steps.push(`Divide ${a} entre ${b}. El cociente es ${quotient} y el residuo es ${remainder}`);
+        steps.push(`${a} = ${b} (${quotient}) + ${remainder}.`);
         a = b;
         b = remainder;
     }
     steps.push(`El último residuo no nulo es ${a}, por lo que MCD(a, b) = ${a}`);
     return { mcd: a, process: steps };
 }
+
 
 
 module.exports = {

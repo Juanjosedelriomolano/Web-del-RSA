@@ -45,6 +45,10 @@
             alert("Todos los campos son obligatorios");
             return;
         }
+        if (age < 0){
+            alert("Digite una edad apropiada");
+            return;
+        }
 
         try {
             const response = await fetch('/register', {
@@ -56,6 +60,8 @@
             const result = await response.json();
             if (response.ok && result.success) {
                 console.log(result.message);
+                sessionStorage.setItem("id", id);
+                sessionStorage.setItem("administrador", "0");
                 window.location.href = "/../ova/ova.html"; // Redirigir a otra página
             } else {
                 alert(result.error || "Error al registrar");

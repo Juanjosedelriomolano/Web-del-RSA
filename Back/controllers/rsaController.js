@@ -28,7 +28,7 @@ exports.registerUser = (req, res) => {
                 console.error('Error al registrar el usuario:', err);
                 return res.status(500).json({ error: 'Error al registrar el usuario' });
             }
-            res.json({ success: true, message: 'Registro exitoso. Cambiando de vista...' });
+            res.json({ success: true, message: 'Registro exitoso. Cambiando de vista...'});
         });
     });
 };
