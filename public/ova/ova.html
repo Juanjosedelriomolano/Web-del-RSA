@@ -307,7 +307,17 @@
 
 
             Proceso:
-            Una vez desarrollado el algoritmo de Euclides, retrocedemos en los cálculos para expresar el MCD (en este caso 1) como una combinación lineal de 40 y 7.De la división 40 ÷ 7: 40 = 7(5) + 5, Despejamos el resto 5:5 = 40 - 7 (5)De la  división 7 ÷ 5: 7 = 5(1) + 2, Despejamos el resto 2:2 = 7 - 5(1)De la  división 5 ÷ 2: 5 = 2(2) + 1, Despejamos el resto 1:1 = 5 − 2(2)
+            Una vez desarrollado el algoritmo de Euclides, retrocedemos en los cálculos para expresar el MCD (en este caso 1) como una combinación lineal de 40 y 7.
+            
+            De la división 40 ÷ 7: 40 = 7(5) + 5, Despejamos el resto 5: 
+            5 = 40 - 7 (5) 
+            
+            De la  división 7 ÷ 5: 7 = 5(1) + 2, Despejamos el resto 2:
+            2 = 7 - 5(1)
+            
+            De la  división 5 ÷ 2: 5 = 2(2) + 1, Despejamos el resto 1:
+            1 = 5 − 2(2)
+            
             Retroceso para obtener la combinación lineal:
             A partir de la última ecuación obtenida, que es 1 = 5 − 2(2) , reemplazamos el valor de 2 por la expresión obtenida de la segunda división: 7 - 5(1)
             
@@ -1363,6 +1373,7 @@
             }
             if (admin === "1"){
                 document.getElementById('numP').disabled = false;
+                document.getElementById('arrow_buttom1').disabled = false;
                 document.getElementById('numq').disabled = false;
                 document.getElementById('canE').disabled = false;
                 document.getElementById('messageInput').disabled = false;
