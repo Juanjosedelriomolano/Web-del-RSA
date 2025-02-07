@@ -59,3 +59,42 @@ function recargarPagina() {
 }
 
 document.getElementById("botonResultados").addEventListener("click", () => sumarPuntuaciones());
+
+//Código para cambiar las flechas del módulo d
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener todos los botones en orden
+    const buttons = [
+        document.getElementById("arrow_buttom1"),
+        document.getElementById("arrow_buttom2"),
+        document.getElementById("arrow_buttom3"),
+        document.getElementById("arrow_buttom4")
+    ];
+
+    const shapeButton = document.getElementById("shape_button4");
+
+    // Función para cambiar el color de la flecha
+    function changeArrowColor(button) {
+        const arrow = button.querySelector(".arrow.red");
+        if (arrow) {
+            arrow.style.borderTopColor = "black";
+        }
+    }
+
+    // Evento para desbloquear el primer botón al hacer clic en shape_button4
+    shapeButton.addEventListener("click", function () {
+        if (buttons[0]) {
+            buttons[0].disabled = false;
+            changeArrowColor(buttons[0]);
+        }
+    });
+
+    // Evento para desbloquear los botones en secuencia
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", function () {
+            if (index < buttons.length - 1) {
+                buttons[index + 1].disabled = false;
+                changeArrowColor(buttons[index + 1]);
+            }
+        });
+    });
+});
