@@ -137,6 +137,13 @@ color: black;
   transform: translateX(-44%); /* Ajuste horizontal con vw */
 }
 
+.arrow.red {
+  border-top: 4vh solid #E41515;  
+  position: sticky;
+  left: 52%;
+  transform: translateX(-44%);
+}
+
 .shape {
   width: 600px;            /* Establece el ancho del elemento en 200 píxeles */
   padding: 80px;           /* Agrega un relleno interno de 20 píxeles en todos los lados */
