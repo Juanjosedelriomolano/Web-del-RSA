@@ -5,11 +5,11 @@ function extendedEuclidean(a, b, l) {
 
     switch (true) {
         case a === 4 && b === 3:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que:
+            En este caso, buscamos "x" e "y" tal que:
             
             4(x) + 3(y) = 1
             
@@ -32,11 +32,11 @@ function extendedEuclidean(a, b, l) {
 
             break;
         case a === 6 && b ===5:
-            `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+           message= `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
 
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
 
             6(x) + 5(y) = 1
 
@@ -57,11 +57,11 @@ function extendedEuclidean(a, b, l) {
             y = '-1';
             break;
         case a === 10 && b ===3:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
 
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
 
             10(x) + 3(y) = 1
 
@@ -83,11 +83,11 @@ function extendedEuclidean(a, b, l) {
 
             break;
         case a===10 && b===7:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             10(x) + 7(y) = 1
             
@@ -128,11 +128,11 @@ function extendedEuclidean(a, b, l) {
             y = '3';            
             break;
         case a===10 && b === 9:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             10(x) + 9(y) = 1
             
@@ -153,11 +153,11 @@ function extendedEuclidean(a, b, l) {
             y = '-1';            
             break;
         case a=== 8 && b ===3:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             8(x) + 3(y) = 1
             
@@ -198,11 +198,11 @@ function extendedEuclidean(a, b, l) {
             y = '3'; 
             break;
         case a=== 8 && b ===5:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que:
+            En este caso, buscamos "x" e "y" tal que:
             
             8(x) + 5(y) = 1
             
@@ -257,11 +257,11 @@ function extendedEuclidean(a, b, l) {
             y = '-3';            
             break;
         case a=== 8 && b ===7:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que:
+            En este caso, buscamos "x" e "y" tal que:
             
             8(x) + 7(y) = 1
             
@@ -282,11 +282,11 @@ function extendedEuclidean(a, b, l) {
             y = '-1';            
             break;
         case a=== 12 && b ===5:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que:
+            En este caso, buscamos "x" e ""y" tal que:
             
             12(x) + 5(y) = 1
             
@@ -327,10 +327,10 @@ function extendedEuclidean(a, b, l) {
             y = '5';            
             break;
         case a=== 12 && b ===7:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             12(x) + 7(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 12 y 7:
@@ -370,10 +370,10 @@ function extendedEuclidean(a, b, l) {
             y = `-5`;            
             break;
         case a=== 12 && b ===11:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             12(x) + 11(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 12 y 11:
@@ -388,10 +388,10 @@ function extendedEuclidean(a, b, l) {
             y = `-1`;            
             break;
         case a=== 20 && b ===3:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             20(x) + 3(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 20 y 3:
@@ -422,10 +422,10 @@ function extendedEuclidean(a, b, l) {
             y = `7`;            
             break;
         case a=== 20 && b ===7:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             20(x) + 7(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 20 y 7:
@@ -456,10 +456,10 @@ function extendedEuclidean(a, b, l) {
             y = `3`;            
             break;
         case a=== 20 && b ===9:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             20(x) + 9(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 20 y 9:
@@ -490,10 +490,10 @@ function extendedEuclidean(a, b, l) {
             y = `9`;            
             break;
         case a=== 20 && b ===11:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             20(x) + 11(y) = 1
             
             Deshacemos los pasos para expresar 1 como una combinación lineal de 20 y 11:
@@ -535,11 +535,11 @@ function extendedEuclidean(a, b, l) {
             y = `5`;            
             break;
         case a=== 20 && b ===13:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             20(x) + 13(y) = 1
             
@@ -594,11 +594,11 @@ function extendedEuclidean(a, b, l) {
             y = `-3`;            
             break;
         case a=== 20 && b ===17:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             20(x) + 17(y) = 1
             
@@ -653,11 +653,11 @@ function extendedEuclidean(a, b, l) {
             y = `-7`;            
             break;
         case a=== 20 && b ===19:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             20(x) + 19(y) = 1
             
@@ -678,11 +678,11 @@ function extendedEuclidean(a, b, l) {
             y = `−1`;            
             break;
         case a=== 24 && b ===5:
-            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes x e y tal que: 
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
 
             a(x) + b(y) = MCD(a,b)
             
-            En este caso, buscamos x e y tal que: 
+            En este caso, buscamos "x" e "y" tal que: 
             
             24(x) + 5(y) = 1
             
@@ -723,29 +723,990 @@ function extendedEuclidean(a, b, l) {
             y = `5`;            
             break;
         case a=== 24 && b ===7:
-            message = "The second number is greater than the first.";
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
+
+            a(x) + b(y) = MCD(a,b)
+
+            En este caso, buscamos "x" e "y" tal que: 
+
+            24(x) + 7(y) = 1
+
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 7:
+
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 7 = 3(2) + 1 
+
+            Ahora tenemos:
+
+            1 = 7 − 3(2)
+
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 24 = 7(3) + 3:
+
+            Ahora tenemos:
+
+            3 = 24 − 7(3)
+
+
+            Sustituimos el 3 en: 1 = 7 − 3(2) por: 24 − 3(7)
+
+            1 = 7 − 2(24 − 3(7))
+
+            Distribuimos:
+
+            1 = 7 − 2(24) + 6(7)
+
+            Agrupamos los términos semejantes para simplificar la expresión:
+
+            1 = 7(7) − 2(24)
+
+
+            Así que hemos encontrado que:
+
+            1 = 7(7) − 2(24)
+
+            Esto significa que los coeficientes x = -2 e y = 7 son los que satisfacen la ecuación de Bézout:
+
+            24(-2) + 7(7) = 1`;
+
+            y =`7`;
+
+            break;
+        case a=== 24 && b ===11:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
+
+                a(x) + b(y) = MCD(a,b)
+
+                En este caso, buscamos "x" e "y" tal que: 
+
+                24(x) + 11(y) = 1
+
+                Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 11:
+
+                Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 11 = 2(5) + 1 
+
+                Ahora tenemos:
+
+                1 = 11 − 2(5)
+
+                Despejamos el resto de la primera ecuación del algoritmo de Euclides: 24 = 11(2) + 2:
+
+                Ahora tenemos:
+
+                2 = 24 − 11(2)
+
+
+                Sustituimos el 2 en: 1 = 11 − 2(5) por: 24 − 2(11)
+
+                1 = 11 − 5(24 − 2(11))
+
+                Distribuimos:
+
+                1 = 11 − 5(24) + 10(11)
+
+                Agrupamos los términos semejantes para simplificar la expresión:
+
+                1 = 11(11) − 5(24)
+
+
+                Así que hemos encontrado que:
+
+                1 = 11(11) − 5(24)
+
+                Esto significa que los coeficientes x = -5 e y = 11 son los que satisfacen la ecuación de Bézout:
+
+                24(-5) + 11(11) = 1`;
+
+            y=`11`;
+            break;
+        case a=== 24 && b ===13:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que: 
+
+            a(x) + b(y) = MCD(a,b)
+
+            En este caso, buscamos "x" e "y" tal que: 
+
+            24(x) + 13(y) = 1
+
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 13:
+
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 11 = 2(5) + 1
+
+            Ahora tenemos:
+
+            1 = 11 − 2(5)
+
+            Despejamos el resto de la segunda ecuación del algoritmo de Euclides: 13 = 11(1) + 2:
+
+            Ahora tenemos:
+
+            2 = 13 − 11(1)
+
+            Sustituimos el 2 en: 1 = 11 − 2(5) por: 13 − 11
+
+            1 = 11 − 5(13 − 11)
+
+            Distribuimos:
+
+            1 = 11 − 5(13) + 5(11)
+
+            Agrupamos los términos semejantes para simplificar la expresión:
+
+            1 = 6(11) − 5(13)
+
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 24 = 13(1) + 11:
+
+            Ahora tenemos:
+
+            11 = 24 − 13(1)
+
+            Sustituimos el 11 en: 1 = 6(11) − 5(13) por: 24 − 13
+
+            1 = 6(24 − 13) - 5(13)
+            1 = 6(24) - 6(13) - 5(13)
+            1 = 6(24) - 11(13)
+
+            Así que hemos encontrado que:
+
+            1 = 6(24) − 11(13)
+
+            Esto significa que los coeficientes x = 6 e y = -11 son los que satisfacen la ecuación de Bézout:
+
+            24(6) + 13(-11) = 1`;
+
+            y=`-11`;
+            break;
+        case a=== 24 && b ===17:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos "x" e "y" tal que:  
+            
+            24(x) + 17(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 17: 
+            
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 7 = 3(2) + 1 
+            
+            Ahora tenemos: 
+            
+            1 = 7 − 3(2) 
+            
+            Despejamos el resto de la segunda ecuación del algoritmo de Euclides: 17 = 7(2) + 3: 
+            
+            Ahora tenemos: 
+            
+            3 = 17 − 7(2) 
+            
+            Sustituimos el 3 en: 1 = 7 − 3(2) por: 17 − 2(7) 
+            
+            1 = 7 − 2(17 − 2(7)) 
+            
+            Distribuimos: 
+            
+            1 = 7 − 2(17) + 4(7) 
+            
+            Agrupamos los términos semejantes para simplificar la expresión: 
+            
+            1 = 5(7) − 2(17) 
+            
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 24 = 17(1) + 7: 
+            
+            Ahora tenemos: 
+            
+            7 = 24 − 17(1) 
+            
+            
+            Sustituimos el 11 en: 1 = 5(7) − 2(17) por: 24 − 17 
+            
+            1 = 5(24 − 17) - 2(17) 
+            1 = 5(24) - 5(17) - 2(17) 
+            1 = 5(24) - 7(17) 
+            
+            
+            Así que hemos encontrado que: 
+            
+            1 = 5(24) − 7(17) 
+            
+            Esto significa que los coeficientes x = 5 e y = -7 son los que satisfacen la ecuación de Bézout: 
+            
+            24(5) + 17(-7) = 1 `;
+
+            y=`-7`;
+            break;
+        case a=== 24 && b ===19:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos "x" e "y" tal que:  
+            
+            24(x) + 19(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 19: 
+            
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 5 = 4(1) + 1 
+            
+            Ahora tenemos: 
+            
+            1 = 5 − 4(1) 
+            
+            Despejamos el resto de la segunda ecuación del algoritmo de Euclides: 19 = 5(3) + 4: 
+            
+            Ahora tenemos: 
+            
+            4 = 19 − 5(3) 
+            
+            Sustituimos el 4 en: 1 = 5 − 4(1) por: 19 − 3(5) 
+            
+            1 = 5 − 1(19 − 3(5)) 
+            
+            Distribuimos: 
+            
+            1 = 5 − 1(19) + 3(5) 
+            
+            Agrupamos los términos semejantes para simplificar la expresión: 
+            
+            1 = 4(5) − 1(19) 
+            
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 24 = 19(1) + 5: 
+            
+            Ahora tenemos: 
+            
+            5 = 24 − 19(1) 
+            
+            
+            Sustituimos el 5 en: 1 = 4(5) − 1(19) por: 24 − 19 
+            
+            1 = 4(24 − 19) - 1(19) 
+            1 = 4(24) - 4(19) - 1(19) 
+            1 = 4(24) - 5(19) 
+            
+            
+            Así que hemos encontrado que: 
+            
+            1 = 4(24) − 5(19) 
+            
+            Esto significa que los coeficientes x = 4 e y = -5 son los que satisfacen la ecuación de Bézout: 
+            
+            24(4) + 19(-5) = 1`;
+
+            y=`-5`;
+            break;
+        case a=== 24 && b ===23:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes "x" e "y" tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos "x" e "y" tal que:  
+            
+            24(x) + 23(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 24 y 23: 
+            
+            Despejamos el resto la última ecuación no trivial del algoritmo de Euclides: 24 = 23(1) + 1 
+            
+            Ahora tenemos: 
+            
+            1 = 24 − 23(1) 
+            
+            Esto ya es la forma que queremos, ya que hemos expresado 1 como una combinación lineal de 24 y 23. A partir de aquí, podemos satisfacer la ecuación de Bézout: 
+            
+            24(1) + 23(−1) = 1 
+            
+            x = 1 e y = −1`;
+
+            y=`-1`;
+            break;
+        case a=== 40 && b ===3:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes “x” e “y” tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos “x” e “y” tal que:  
+            
+            40(x) + 3(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 40 y 3: 
+            
+            Despejamos el resto la última ecuación no trivial del algoritmo de Euclides: 40 = 3(13) + 1 
+            
+            Ahora tenemos: 
+            
+            1 = 40 − 3(13) 
+            
+            Esto ya es la forma que queremos, ya que hemos expresado 1 como una combinación lineal de 40 y 3. A partir de aquí, podemos satisfacer la ecuación de Bézout: 
+            
+            40(1) + 3(−13) = 1 
+            
+            x = 1 e y = −13 `;
+
+            y=`-13`;
+            break;
+        case a=== 40 && b ===7:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes “x” e “y” tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos “x” e “y” tal que:  
+            
+            40(x) + 7(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 40 y 7: 
+            
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 5 = 2(2) + 1 
+            
+            Ahora tenemos: 
+            
+            1 = 5 − 2(2) 
+            
+            Despejamos el resto de la segunda ecuación del algoritmo de Euclides: 7 = 5(1) + 2: 
+            
+            Ahora tenemos: 
+            
+            2 = 7 − 5(1) 
+            
+            Sustituimos el 2 en: 1 = 5 − 2(2) por: 7 − 5 
+            
+            1 = 5 − 2(7 − 5) 
+            
+            Distribuimos: 
+            
+            1 = 5 − 2(7) + 2(5) 
+            
+            Agrupamos los términos semejantes para simplificar la expresión: 
+            
+            1 = 3(5) − 2(7) 
+            
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 40 = 7(5) + 5: 
+            
+            Ahora tenemos: 
+            
+            5 = 40 − 7(5) 
+            
+            
+            Sustituimos el 5 en: 1 = 3(5) − 2(7) por: 40 − 5(7) 
+            
+            1 = 3(40 − 5(7)) - 2(7) 
+            1 = 3(40) - 15(7) - 2(7) 
+            1 = 3(40) - 17(7) 
+            
+            
+            Así que hemos encontrado que: 
+            
+            1 = 3(40) − 17(7) 
+            
+            Esto significa que los coeficientes x = 3 e y = -17 son los que satisfacen la ecuación de Bézout: 
+            
+            40(3) + 7(-17) = 1`;
+
+            y=`-17`;
+            break;
+
+        case a=== 40 && b ===9:
+            message = `El Algoritmo de Euclides Extendido no solo encuentra el MCD, sino también los coeficientes “x” e “y” tal que:  
+ 
+            a(x) + b(y) = MCD(a,b) 
+            
+            En este caso, buscamos “x” e “y” tal que:  
+            
+            40(x) + 9(y) = 1 
+            
+            Deshacemos los pasos para expresar 1 como una combinación lineal de 40 y 9: 
+            
+            Despejamos el resto de la última ecuación no trivial del algoritmo de Euclides: 9 = 4(2) + 1  
+            
+            Ahora tenemos: 
+            
+            1 = 9 − 4(2) 
+            
+            Despejamos el resto de la primera ecuación del algoritmo de Euclides: 40 = 9(4) + 4: 
+            
+            Ahora tenemos: 
+            
+            4 = 40 − 9(4) 
+            
+            
+            Sustituimos el 4 en: 1 = 9 − 4(2) por: 40 − 4(9) 
+            
+            1 = 9 − 2(40 − 4(9)) 
+            
+            Distribuimos: 
+            
+            1 = 9 − 2(40) + 8(9) 
+            
+            Agrupamos los términos semejantes para simplificar la expresión: 
+            
+            1 = 9(9) − 2(40) 
+            
+            
+            Así que hemos encontrado que: 
+            
+            1 = 9(9) − 2(40) 
+            
+            Esto significa que los coeficientes x = -2 e y = 9 son los que satisfacen la ecuación de Bézout: 
+            
+            40(-2) + 9(9) = 1`;
+
+            y=`9`;
             break;
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
+
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+        
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
+
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
+
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
+
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
         case a=== 8 && b ===3:
-            message = "The second number is greater than the first.";
+            message = ``;
+
+            y=``;
             break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+        case a=== 8 && b ===3:
+            message = ``;
+
+            y=``;
+            break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     return { gcdMessage: message, y, ed}; // Adjust to return steps if extended Euclidean is implemented.
