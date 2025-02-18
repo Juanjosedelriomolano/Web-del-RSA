@@ -98,7 +98,7 @@
                 <div class="arrow red"></div>
             </button>
             <li>Algoritmo Extendido de Euclides</li>
-            <button id="arrow_buttom3" disabled="true" onclick="show_AE(), showExtendedEuclideanAlgorithm(); document.getElementById('arrow_buttom4').disabled = false;">
+            <button id="arrow_buttom3" disabled="true" onclick="window.algoritmo_extendido.showModal(), showExtendedEuclideanAlgorithm(); document.getElementById('arrow_buttom4').disabled = false;">
                 <div class="arrow red"></div>
             </button>
             <li>Cálculo del Inverso Multiplicativo d</li>
@@ -1377,14 +1377,20 @@
                 document.getElementById('numq').disabled = false;
                 document.getElementById('canE').disabled = false;
                 document.getElementById('messageInput').disabled = false;
-                document.getElementById('shape_button1').disabled = true;
-                document.getElementById('shape_button2').disabled = true;
-                document.getElementById('shape_button3').disabled = true;
-                document.getElementById('shape_button4').disabled = true;
-                document.getElementById('shape_button5').disabled = true;
-                document.getElementById('shape_button6').disabled = true;
-                document.getElementById('shape_button').disabled = true;
-                document.getElementById('botonResultados').disabled = true;
+                document.getElementById('shape_button1').style="display:none";
+                document.getElementById('shape_button2').style="display:none";
+                document.getElementById('shape_button3').style="display:none";
+                document.getElementById('shape_button4').style="display:none";
+                document.getElementById('shape_button5').style="display:none";
+                document.getElementById('shape_button6').style="display:none";
+                document.getElementById('shape_button').style="display:none";
+                document.getElementById('botonResultados').style="display:none";
+                document.getElementById('evaluacion1').style="display:none";
+                document.getElementById('evaluacion2').style="display:none";
+                document.getElementById('evaluacion3').style="display:none";
+                document.getElementById('evaluacion4').style="display:none";
+                document.getElementById('evaluacion5').style="display:none";
+                document.getElementById('evaluacion6').style="display:none";
             }
         });
 
@@ -1400,6 +1406,11 @@
           if (p === q) {
               alert('Los números p y q no pueden ser iguales. Por favor, selecciona dos números primos diferentes.');
               return; // Detener el cálculo si son iguales
+          }
+
+          if (p === 2 && q === 3 || p===3 && q===2) {
+              alert('Estos dos numeros no tienen un exponente de cifrado e, por favor selecciona otro dos numeros.');
+              return; // Detener el cálculo si son esos dos numetos
           }
           
           // Si ambos valores son números válidos

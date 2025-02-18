@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+
     // Evento para desbloquear el primer botón al hacer clic en shape_button4
     shapeButton.addEventListener("click", function () {
         if (buttons[0]) {
