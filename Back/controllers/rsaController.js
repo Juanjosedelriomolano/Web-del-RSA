@@ -3,27 +3,27 @@ const db = require('../config/database'); // Conexión a la base de datos
 const exteuc = require('../models/exteneuc');
 
 exports.registerUser = (req, res) => {
-    const { ID, Name, Age } = req.body;
-    if (!ID || !Name || !Age) {
+    const { id, name, age } = req.body;
+    if (!id || !name || !age) {
         return res.status(400).json({ error: 'Nombre de usuario, id y edad son obligatorios' });
     }
 
-    // Verificar si el ID ya existe
-    const checkQuery = 'SELECT * FROM usuarios WHERE IDu = ?';
-    db.query(checkQuery, [ID], (err, results) => {
+    // Verificar si el id ya existe
+    const checkQuery = 'SELECT * FROM usuarios WHERE idu = ?';
+    db.query(checkQuery, [id], (err, results) => {
         if (err) {
             console.error('Error al verificar el usuario:', err);
             return res.status(500).json({ error: 'Error al verificar el usuario' });
         }
 
         if (results.length > 0) {
-            // Si el ID ya existe, enviar un mensaje para que lo cambie
-            return res.status(400).json({ error: 'Este ID ya está en uso. Por favor elige otro.' });
+            // Si el id ya existe, enviar un mensaje para que lo cambie
+            return res.status(400).json({ error: 'Este id ya está en uso. Por favor elige otro.' });
         }
 
-        // Si el ID no existe, proceder con el registro
-        const query = 'INSERT INTO usuarios (IDu, nombre, edad) VALUES (?, ?, ?)';
-        db.query(query, [id, Name, Age], (err) => {
+        // Si el id no existe, proceder con el registro
+        const query = 'INSERT INTO usuarios (idu, nombre, edad) VALUES (?, ?, ?)';
+        db.query(query, [id, name, age], (err) => {
             if (err) {
                 console.error('Error al registrar el usuario:', err);
                 return res.status(500).json({ error: 'Error al registrar el usuario' });
@@ -36,13 +36,13 @@ exports.registerUser = (req, res) => {
 
 // Ruta para iniciar sesión
 exports.loginUser = (req, res) => {
-    const { ID, Name, Age } = req.body;
-    if (!ID || !Name || !Age) {
+    const { id, name, age } = req.body;
+    if (!id || !name || !age) {
         return res.status(400).json({ error: 'Nombre de usuario, id y edad son obligatorios' });
     }
 
-    const query = 'SELECT * FROM usuarios WHERE IDu = ? AND nombre = ? AND edad = ?';
-    db.query(query, [ID, Name, Age], (err, results) => {
+    const query = 'SELECT * FROM usuarios WHERE idu = ? AND nombre = ? AND edad = ?';
+    db.query(query, [id, name, age], (err, results) => {
         if (err) {
             console.error('Error al verificar el usuario:', err);
             return res.status(500).json({ error: 'Error al verificar el usuario' });
@@ -58,20 +58,20 @@ exports.loginUser = (req, res) => {
 
 // Ruta para registrar usuarios
 exports.evalusave = (req, res) => {
-    const { IDu, Eva1, Eva2, Eva3, Eva4, Eva5, Eva6, Total} = req.body;
+    const { idu, eva1, eva2, eva3, eva4, eva5, eva6, total} = req.body;
     // Verificar si algún valor está vacío
     const isEmpty = (value) => value === undefined || value === null || value === '';
 
     if (
-        isEmpty(IDu) || isEmpty(Eva1) || isEmpty(Eva2) || 
-        isEmpty(Eva3) || isEmpty(Eva4) || isEmpty(Eva5) || 
-        isEmpty(Eva6) || isEmpty(Total)
+        isEmpty(idu) || isEmpty(eva1) || isEmpty(eva2) || 
+        isEmpty(eva3) || isEmpty(eva4) || isEmpty(eva5) || 
+        isEmpty(eva6) || isEmpty(total)
     ) {
-        return res.status(400).json({ error: 'Evaluaciones no completadas' });
+        return res.status(400).json({ error: 'evaluaciones no completadas' });
     }
 //aqui tengo que editar, tambien tengo que editar en la base de datos, este mensaje tambien tengo que borrarlo al finalizar
-    const query = 'INSERT INTO evaluacion (IDu, Eva1, Eva2, Eva3, Eva4, Eva5, Eva6, Total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    db.query(query, [IDu, Eva1, Eva2, Eva3, Eva4, Eva5, Eva6, Total], (err) => {
+    const query = 'INSERT INTO evaluacion (idu, eva1, eva2, eva3, eva4, eva5, eva6, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(query, [idu, eva1, eva2, eva3, eva4, eva5, eva6, total], (err) => {
         if (err) {
             console.error('Error al registrar el usuario:', err);
             return res.status(500).json({ error: 'Error al registrar la evaluacion' });
