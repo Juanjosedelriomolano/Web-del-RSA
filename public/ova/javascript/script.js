@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     const shapeButton = document.getElementById("shape_button4");
+    const adminSpan = document.getElementById("admin"); // Obtener el elemento <span id="admin">
+    const isAdmin = adminSpan.textContent.trim() === "1"; // Convertir a número y evaluar
 
     // Función para cambiar el color de la flecha
     function changeArrowColor(button) {
@@ -80,22 +82,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Si admin es 1, solo desbloqueamos arrow_buttom1
+    if (isAdmin) {
+        buttons.forEach((button, index) => {
+            button.disabled = index !== 0; // Solo arrow_buttom1 estará activo
+        });
+    }
 
-    // Evento para desbloquear el primer botón al hacer clic en shape_button4
+    // Evento para desbloquear el primer botón al hacer clic en shape_button4 (si no es admin)
     shapeButton.addEventListener("click", function () {
-        if (buttons[0]) {
+        if (!isAdmin && buttons[0]) {
             buttons[0].disabled = false;
             changeArrowColor(buttons[0]);
         }
     });
 
-    // Evento para desbloquear los botones en secuencia
-    buttons.forEach((button, index) => {
-        button.addEventListener("click", function () {
-            if (index < buttons.length - 1) {
-                buttons[index + 1].disabled = false;
-                changeArrowColor(buttons[index + 1]);
-            }
+    // Evento para desbloquear los botones en secuencia (si no es admin)
+    if (!isAdmin) {
+        buttons.forEach((button, index) => {
+            button.addEventListener("click", function () {
+                if (index < buttons.length - 1) {
+                    buttons[index + 1].disabled = false;
+                    changeArrowColor(buttons[index + 1]);
+                }
+            });
         });
-    });
+    }
 });
