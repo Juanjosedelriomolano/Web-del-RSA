@@ -91,7 +91,7 @@
         <ol>
             <li>Inicialización</li>
             <button id="arrow_buttom1" disabled="true" onclick="window.inicializacion.showModal(); document.getElementById('arrow_buttom2').disabled = false;">
-                <div class="arrow red"></div>
+                <div class="arrow red" id="arrow_admin"></div>
             </button>
             <li>Algoritmo de Euclides</li>
             <button id="arrow_buttom2" disabled="true" onclick="window.algoritmo_euclides.showModal(), showEuclideanAlgorithm(); document.getElementById('arrow_buttom3').disabled = false;">
@@ -1710,6 +1710,19 @@ document.getElementById('botonResultados').addEventListener('click', function() 
             }
 
     };
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const adminSpan = document.getElementById("admin"); // Obtener el span con id "admin"
+    const isAdmin = adminSpan.textContent.trim() === "1"; // Convertir a número y evaluar
+
+    const button1 = document.getElementById("arrow_buttom1"); // Botón principal
+    const arrowAdmin = document.getElementById("arrow_admin"); // Div con la flecha roja
+
+    if (isAdmin) {
+        button1.disabled = false; // Desbloquear botón
+        arrowAdmin.style.borderTopColor = "black"; // Cambiar color de la flecha
+    }
+});
 
 
   </script>
