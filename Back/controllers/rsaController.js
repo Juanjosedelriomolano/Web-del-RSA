@@ -8,7 +8,7 @@ exports.registerUser = (req, res) => {
         return res.status(400).json({ error: 'Nombre de usuario, id y edad son obligatorios' });
     }
 
-    // Verificar si el id ya existe
+    // Verificar si el ID ya existe
     const checkQuery = 'SELECT * FROM usuarios WHERE idu = ?';
     db.query(checkQuery, [id], (err, results) => {
         if (err) {
@@ -17,11 +17,11 @@ exports.registerUser = (req, res) => {
         }
 
         if (results.length > 0) {
-            // Si el id ya existe, enviar un mensaje para que lo cambie
-            return res.status(400).json({ error: 'Este id ya está en uso. Por favor elige otro.' });
+            // Si el ID ya existe, enviar un mensaje para que lo cambie
+            return res.status(400).json({ error: 'Este ID ya está en uso. Por favor elige otro.' });
         }
 
-        // Si el id no existe, proceder con el registro
+        // Si el ID no existe, proceder con el registro
         const query = 'INSERT INTO usuarios (idu, nombre, edad) VALUES (?, ?, ?)';
         db.query(query, [id, name, age], (err) => {
             if (err) {
@@ -67,7 +67,7 @@ exports.evalusave = (req, res) => {
         isEmpty(eva3) || isEmpty(eva4) || isEmpty(eva5) || 
         isEmpty(eva6) || isEmpty(total)
     ) {
-        return res.status(400).json({ error: 'evaluaciones no completadas' });
+        return res.status(400).json({ error: 'Evaluaciones no completadas' });
     }
 //aqui tengo que editar, tambien tengo que editar en la base de datos, este mensaje tambien tengo que borrarlo al finalizar
     const query = 'INSERT INTO evaluacion (idu, eva1, eva2, eva3, eva4, eva5, eva6, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';

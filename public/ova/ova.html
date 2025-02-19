@@ -1516,6 +1516,8 @@
   }
   const messageInput = document.getElementById('messageInput');
     const encryptBtn = document.getElementById('encryptBtn');
+    const mValue = document.getElementById('mValue');
+    const maValue = document.getElementById('mValue');
     const disponibles = document.getElementById('disponibles');
     const utilizados = document.getElementById('utilizados');
     const nblock = document.getElementById('output-n1'); // Contenedor donde se muestra el valor de n
@@ -1532,7 +1534,7 @@ function validateInput() {
     let newValue = '';
 
     for (let char of inputField.value) {
-        if (alphabetMap[char] !== undefined && alphabetMap[char] <= n) {
+        if (alphabetMap[char] !== undefined && alphabetMap[char] < n) {
             newValue += char;
         }
     }
