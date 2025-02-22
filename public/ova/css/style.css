@@ -328,6 +328,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button1{
   position: static;
@@ -337,6 +338,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button2{
   position: static;
@@ -346,6 +348,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button3{
   position: static;
@@ -355,6 +358,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button4{
   position: static;
@@ -364,6 +368,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button5{
   position: static;
@@ -373,6 +378,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 #shape_button6{
   position: static;
@@ -382,6 +388,7 @@ color: black;
   font-size: 1em;
   margin-right: 1vw;
   padding-bottom: 3vw;
+  color: #E41515;
 }
 
 #Square{
@@ -445,7 +452,11 @@ color: black;
     position: relative;
     bottom: 3px;
   }
-
+  
+  #seccion{
+    position: relative;
+    right: 13%;
+  }
 @media (max-width:881px){/*Condicional que se activa si el ancho alcanza los 680px*/
   .shape.rhomboid{
       left: -10vw;

@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function changeArrowColor(button) {
         const arrow = button.querySelector(".arrow.red");
         if (arrow) {
-            arrow.style.borderTopColor = "black";
+            arrow.style.borderTopColor = "green";
         }
     }
 
@@ -108,4 +108,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = [
+        document.getElementById("shape_button"),
+        document.getElementById("shape_button1"),
+        document.getElementById("shape_button2"),
+        document.getElementById("shape_button3"),
+        document.getElementById("shape_button4"),
+        document.getElementById("shape_button5"),
+        document.getElementById("shape_button6")
+    ].filter(Boolean); // Filtra valores nulos si algún botón no existe
+
+    function changeShapeButton(button) {
+        if (button) {
+            button.style.color = "green"; // Cambia el color del texto
+        }
+    }
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+            changeShapeButton(button); // Cambia el color del botón presionado
+        });
+    });
 });
