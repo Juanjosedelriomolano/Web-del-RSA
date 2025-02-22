@@ -16,7 +16,61 @@ body { /*Estructura de la página web*/
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0.2);
   }
+
+  footer{
+    position: relative;
+    top: 79vh;
+    background-color: #010305;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+.autores, .fuentes {
+    text-align: left;
+}
+
+h3 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+.creditos {
+    border-top: 1px solid white;
+    padding-top: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+}
   
+  /*footer h3{
+    color: white;
+    margin: 5px 0;
+    font-size: 1.2vw; 
+  }
+
+  footer ul li{
+    color: white;
+    margin: 5px 0; 
+    font-size: 1.2vw; 
+  }*/
+
   .rsa-text{/*div que permite controlar el texto de la página*/
       width: 650px;
       height: 300px;
