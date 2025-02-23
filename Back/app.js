@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
-const rsaController = require('./controllers/rsacontroller.js');
-const db = require('./config/database'); // Importar conexión a la base de datos
+const rsaController = require('/controllers/rsacontroller.js');
 
 const app = express();
 
