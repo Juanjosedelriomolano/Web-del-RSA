@@ -48,7 +48,7 @@ exports.loginUser = (req, res) => {
             return res.status(500).json({ error: 'Error al verificar el usuario' });
         }
         if (results.length > 0) {
-            const { administrador } = results[0]; 
+            const { Super_usuario: administrador } = results[0]; 
             res.json({ success: true, message: 'Inicio de sesión exitoso. Cambiando de vista...', administrador});
         } else {
             res.status(401).json({ error: 'Credenciales incorrectas' });
@@ -159,4 +159,14 @@ exports.calculateEE = (req, res) => {
     const { a, b, l } = req.body;
     const result1 = exteuc.extendedEuclidean(a, b, l);
     res.json(result1);
+};
+
+exports.getChartData = (req, res) => {
+    rsaModel.getChartData((err, results) => {
+        if (err) {
+            console.error('Error al obtener datos:', err);
+            return res.status(500).json({ error: 'Error en el servidor' });
+        }
+        res.json(results);
+    });
 };

@@ -1,3 +1,5 @@
+const db = require('../config/database'); // Conexión a la base de datos
+
 // Funciones para cálculos RSA
 
 // Calcular n = p * q
@@ -109,6 +111,33 @@ function calculateMCD(a, b) {
 }
 
 
+function getChartData(callback) {
+    const sql = `
+        SELECT 
+            (SUM(eva1) / COUNT(*)) * 100 AS eva1,
+            (SUM(eva2) / COUNT(*)) * 100 AS eva2,
+            (SUM(eva3) / COUNT(*)) * 100 AS eva3,
+            (SUM(eva4) / COUNT(*)) * 100 AS eva4,
+            (SUM(eva5) / COUNT(*)) * 100 AS eva5,
+            (SUM(eva6) / COUNT(*)) * 100 AS eva6
+        FROM evaluacion;
+    `;
+    
+    db.query(sql, (err, results) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            const processedData = Object.keys(results[0]).map(eva => ({
+                name: eva,
+                value: parseFloat(results[0][eva])
+            }));
+
+            callback(null, processedData);
+        }
+    });
+}
+
+
 
 module.exports = {
     calculateN,
@@ -120,4 +149,5 @@ module.exports = {
     decryptNumbers,
     convertNumbersToText,
     calculateMCD,
+    getChartData,
 };

@@ -23,6 +23,7 @@
             <p>Llave privada = (<span id="output-d">d</span>, <span id="output-n1">n</span>)</p>
             <p style="display:none;">Idusuario: <span id="Idusuario"></span></p>
             <p style="display:none;">Administrador: <span id="admin">?</span></p>
+            <button class="modal_button" id="graficos"><a href="/../graficos/graficos.html">Graficos</a></button>
         </div>
         <span id="seccion">Generación de claves</span>
         <span id="nameUser">Nombre</span>
@@ -595,6 +596,8 @@
                 adminElement.textContent = admin;
                 nombreElement.textContent = userName;
                 if (admin === "0") {
+
+                document.getElementById('graficos').style="display:none";
                 // Oculta los contenedores solo si el usuario no es administrador
                 const container2 = document.getElementById('container2');
                 const container3 = document.getElementById('container3');

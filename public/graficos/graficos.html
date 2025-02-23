@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos con Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="modal_button"><a href="/../ova/ova.html">Regresar</a></button>
+    </header>
+
+    <h1>Análisis de Datos</h1>
+    <canvas id="myChart"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/Chart')
+                .then(response => response.json())
+                .then(data => {
+                    const etiquetas = data.map(item => item.name); // "eva1", "eva2", ...
+                    const valores = data.map(item => item.value.toFixed(2)); // Redondeamos a 2 decimales
+    
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: etiquetas,
+                            datasets: [{
+                                label: 'Porcentaje de respuestas correctas (%)',
+                                data: valores,
+                                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: { beginAtZero: true, max: 100 }
+                            }
+                        }
+                    });
+                })
+
+                .catch(error => console.error('Error al cargar los datos:', error));
+        });
+        
+    </script>
+
+</body>
+</html>

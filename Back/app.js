@@ -29,8 +29,12 @@ app.post('/calculateMCD', rsaController.calculateMCD);
 app.post('/calculateEE', rsaController.calculateEE);
 app.post('/evalusave', rsaController.evalusave);
 
+//Ruta para los graficos
+app.get('/Chart', rsaController.getChartData);
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
+
+//mysql://root:ACUZxSRfSMPONmRyfBLLPDfZvQVUQehc@gondola.proxy.rlwy.net:21711/railway
