@@ -1,11 +1,20 @@
 const mysql = require('mysql2');
 
+
+const DB_Host = process.env.DB_Host || 'localhost';
+const DB_User = process.env.DB_Usuer || 'root';
+const DB_Password = process.env.DB_Password || 'admin';
+const DB_Name = process.env.DB_Name || 'rsa';
+const DB_Port = process.env.PORT || 3306;
+
+
 // Crear conexión con el usuario base predeterminado
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'admin', // Agrega tu contraseña aquí si tienes configurada una
-    database: 'rsa',
+    host: DB_Host,
+    user: DB_User,
+    password: DB_Password, // Agrega tu contraseña aquí si tienes configurada una
+    database: DB_Name,
+    port: DB_Port
 });
 
 // Conectar a la base de datos
