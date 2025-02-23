@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const rsaController = require('/controllers/rsacontroller.js');
+const rsaController = require('./controllers/rsaController.js');
+const db = require('./config/database'); // Importar conexión a la base de datos
 
 const app = express();
 
@@ -35,5 +36,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
-
-//mysql://root:ACUZxSRfSMPONmRyfBLLPDfZvQVUQehc@gondola.proxy.rlwy.net:21711/railway

@@ -62,6 +62,7 @@
                 console.log(result.message);
                 sessionStorage.setItem("id", id);
                 sessionStorage.setItem("administrador", "0");
+                sessionStorage.setItem("nombre", name);
                 window.location.href = "/../ova/ova.html"; // Redirigir a otra página
             } else {
                 alert(result.error || "Error al registrar");
