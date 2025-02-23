@@ -58,6 +58,7 @@
                 console.log(result.message);
                 sessionStorage.setItem("id", id);
                 sessionStorage.setItem("administrador", result.administrador);
+                sessionStorage.setItem("nombre", name);
                 window.location.href = "/../ova/ova.html"; // Cambiar a vista de dashboard
             } else {
                 alert(result.error || "Credenciales incorrectas");
