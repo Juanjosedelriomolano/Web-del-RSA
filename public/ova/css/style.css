@@ -505,7 +505,7 @@ color: black;
     }
 }
 
-@media (max-width:1320px){/**Condicional que se activa si el ancho alcanza los 680px**/
+@media (max-width:1337px){/*Condicional que se activa si el ancho alcanza los 680px*/
   .diagram-container{
   top: 20%;
   left: 15%;
