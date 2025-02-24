@@ -48,7 +48,7 @@ exports.loginUser = (req, res) => {
             return res.status(500).json({ error: 'Error al verificar el usuario' });
         }
         if (results.length > 0) {
-            const { Super_usuario: administrador } = results[0]; 
+            const { super_usuario: administrador } = results[0]; 
             res.json({ success: true, message: 'Inicio de sesión exitoso. Cambiando de vista...', administrador});
         } else {
             res.status(401).json({ error: 'Credenciales incorrectas' });
