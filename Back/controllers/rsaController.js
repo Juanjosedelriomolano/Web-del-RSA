@@ -170,3 +170,23 @@ exports.getChartData = (req, res) => {
         res.json(results);
     });
 };
+
+exports.getChartDataprom = (req, res) => {
+    rsaModel.getChartDataprom((err, results) => {
+        if (err) {
+            console.error('Error al obtener datos:', err);
+            return res.status(500).json({ error: 'Error en el servidor' });
+        }
+        res.json(results);
+    });
+};
+
+exports.getChartDatahis = (req, res) => {
+    rsaModel.getChartDatahis((err, results) => {
+        if (err) {
+            console.error('Error al obtener datos:', err);
+            return res.status(500).json({ error: 'Error en el servidor' });
+        }
+        res.json(results);
+    });
+};

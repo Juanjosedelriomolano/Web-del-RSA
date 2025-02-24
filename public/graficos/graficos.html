@@ -22,8 +22,14 @@
         <button class="modal_button"><a href="/../ova/ova.html">Regresar</a></button>
     </header>
 
-    <h1>Análisis de Datos</h1>
+    <h1>Análisis de Datos: porcenta de preguntas correctas</h1>
     <canvas id="myChart"></canvas>
+
+    <h1>Análisis de Datos: Promedio total</h1>
+    <canvas id="myChartprom"></canvas>
+
+    <h1>Análisis de Datos: Histograma</h1>
+    <canvas id="myCharthis"></canvas>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -57,6 +63,74 @@
 
                 .catch(error => console.error('Error al cargar los datos:', error));
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    fetch('/Chartprom')
+        .then(response => response.json())
+        .then(data => {
+            const porcentaje = data.promedio.toFixed(2);
+
+            const ctx = document.getElementById('myChartprom').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Promedio Total', 'Restante'],
+                    datasets: [{
+                        data: [porcentaje, 100 - porcentaje],
+                        backgroundColor: ['rgba(75, 192, 192, 0.7)', 'rgba(200, 200, 200, 0.5)'],
+                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(200, 200, 200, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error al cargar los datos:', error));
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/charthis')
+        .then(response => response.json())
+        .then(data => {
+            const etiquetas = data.map(item => parseFloat(item.rango).toFixed(1)); // Ejemplo: "0.0", "0.1", ..., "1.0"
+            const valores = data.map(item => parseInt(item.cantidad, 10));
+
+            const ctx = document.getElementById('myCharthis').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: etiquetas,
+                    datasets: [{
+                        label: 'Frecuencia de Calificaciones',
+                        data: valores,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { title: { display: true, text: 'Rango de calificaciones' } },
+                        y: { title: { display: true, text: 'Cantidad de usuarios' }, beginAtZero: true,
+                        ticks: {
+                stepSize: 1,  // 🔹 Solo valores enteros
+                callback: function(value) {
+                    return Number.isInteger(value) ? value : '';  // 🔹 Oculta valores decimales
+                }
+            } }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error al cargar los datos:', error));
+});
+
         
     </script>
 

@@ -31,6 +31,8 @@ app.post('/evalusave', rsaController.evalusave);
 
 //Ruta para los graficos
 app.get('/Chart', rsaController.getChartData);
+app.get('/Chartprom', rsaController.getChartDataprom);
+app.get('/Charthis', rsaController.getChartDatahis);
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

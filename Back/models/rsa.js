@@ -137,6 +137,40 @@ function getChartData(callback) {
     });
 }
 
+function getChartDataprom(callback) {
+    const sql = `
+        SELECT 
+        (AVG(total) * 100) AS promedio_total
+        FROM evaluacion;
+    `;
+    
+    db.query(sql, (err, results) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, { promedio: parseFloat(results[0].promedio_total) });
+        }
+    });
+}
+
+function getChartDatahis(callback) {
+    const sql = `
+        SELECT 
+            ROUND(total * 10) / 10 AS rango, 
+            COUNT(*) AS cantidad 
+        FROM evaluacion 
+        GROUP BY rango 
+        ORDER BY rango;
+    `;
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, results);
+        }
+    });
+}
 
 
 module.exports = {
@@ -150,4 +184,6 @@ module.exports = {
     convertNumbersToText,
     calculateMCD,
     getChartData,
+    getChartDataprom,
+    getChartDatahis,
 };
