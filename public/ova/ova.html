@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSAprende</title>
+    <title>RSA personalizado</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,6 @@
             <p>Llave privada = (<span id="output-d">d</span>, <span id="output-n1">n</span>)</p>
             <p style="display:none;">Idusuario: <span id="Idusuario"></span></p>
             <p style="display:none;">Administrador: <span id="admin">?</span></p>
-            <button class="modal_button" style="display: none;" id="graficos"><a href="/../graficos/graficos.html">Graficos</a></button>
         </div>
         <span id="seccion">Generación de claves</span>
         <span id="nameUser">Nombre</span>
@@ -167,6 +166,9 @@
     </div>
     <div id="container8">
     <button onclick="show_results()" id="botonResultados">Fin</button>
+    <span class="nombre">
+        <span class="text">Haz click en el botón fin</span>
+    </span>
     </div>
     </div> 
     <dialog id="modal_rsa">
@@ -619,7 +621,6 @@
                 console.error("El ID no se encontró en sessionStorage.");
             }
             if (admin === "1"){
-                document.getElementById('graficos').style="display:block";
                 document.getElementById('numP').disabled = false;
                 document.getElementById('arrow_buttom1').disabled = false;
                 document.getElementById('numq').disabled = false;
@@ -657,7 +658,7 @@
           }
 
           if (p === 2 && q === 3 || p===3 && q===2) {
-              alert('Los números ingresados no generan un exponente de cifrado e válido; por favor, selecciona otro par de números.');
+              alert('Estos dos numeros no tienen un exponente de cifrado e, por favor selecciona otro dos numeros.');
               return; // Detener el cálculo si son esos dos numetos
           }
           
@@ -987,7 +988,7 @@ document.getElementById('botonResultados').addEventListener('click', function() 
 
     if (isAdmin) {
         button1.disabled = false; // Desbloquear botón
-        arrowAdmin.style.borderTopColor = "green"; // Cambiar color de la flecha
+        arrowAdmin.style.borderTopColor = "black"; // Cambiar color de la flecha
     }
 });
 
