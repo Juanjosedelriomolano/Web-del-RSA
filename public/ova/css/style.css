@@ -6,6 +6,7 @@ body { /*Estructura de la página web*/
   background-color: #f5f5f5;
   margin: 0;
   padding-top: 60px;
+  overflow-x: hidden;
 }
 
 dialog{
@@ -79,10 +80,22 @@ text-decoration: none;
 color: black;
 }
 
+select{
+  font-size: clamp(1.5vw, 1rem, 5vw); /* Escalable y legible */
+  padding: 0.2em 1em 0.4em 0.5em; /* Espacio para el icono */
+  appearance: none; /* Elimina estilo nativo */
+  background: url("data:image/svg+xml;utf8,<svg fill='black' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right -0.4em center;
+  background-size: 2.1em;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  }
+
 .diagram-container{
   top: 20%;
   left: 15%;
   position: absolute;
+  flex-direction: column;
  }
 
 .diagram-container button{
@@ -119,7 +132,8 @@ color: black;
   height: 11vh;   /* Ajuste de altura con vh */
   width: 0.2vw;   /* Ancho con vw */
   bottom: 0;
-  left: 52%;
+  left: 54%;
+  justify-content: center;
   transform: translateX(60%);
 }
 
@@ -133,20 +147,20 @@ color: black;
 .arrow.down {
   border-top: 4vh solid #333;  /* Ajuste de tamaño de la flecha con vh */
   position: sticky;
-  left: 52%;
+  left: 54%;
   transform: translateX(-44%); /* Ajuste horizontal con vw */
 }
 
 .arrow.red {
   border-top: 4vh solid #E41515;  
   position: sticky;
-  left: 52%;
+  left: 54%;
   transform: translateX(-44%);
 }
 
 .shape {
-  width: 600px;            /* Establece el ancho del elemento en 200 píxeles */
-  padding: 80px;           /* Agrega un relleno interno de 20 píxeles en todos los lados */
+  max-width: 50vw;            /* Establece el ancho del elemento en 200 píxeles */
+  padding: 8vw;     /* Agrega un relleno interno de 20 píxeles en todos los lados */
   margin: 5px auto;        /* Margen de 5px arriba y abajo; auto en los lados izquierdo y derecho para centrar el elemento horizontalmente */
   position: relative;      /* Define la posición del elemento como relativa (para futuros ajustes de posición) */
   display: grid;
@@ -175,15 +189,21 @@ color: black;
 }
 
 .shape.rhomboid input{
-  width: 622px; 
+  width: 40vw; 
   height: 40px;
   align-items: center;
+}
+
+.shape.rhomboid label{
+  font-size: 22px;
 }
 
 .shape.square{
   background-color: #3f51b5;
   line-height: normal;
-  left: 9vw;
+  left: 7vw;
+  container-type: inline-size;
+  container-name: square1;
 }
 
 .shape.square h2{
@@ -195,13 +215,18 @@ color: black;
   position: relative;
   top: -50px;
   right: 216px; 
+  text-align: justify;
+
+  @media (width <= 425px){
+      right: 25px !important;
+  }
 }
 
 .shape.square ol{
   position: relative;
   top: -50px;
   padding-left: 0; /* Elimina el padding a la izquierda */
-  margin-left: 0;  /* Elimina el margen a la izquierda */
+  margin-right: 3vw;  /* Elimina el margen a la izquierda */
   list-style-position: inside; /* Mueve los números dentro del contenido */
 }
 
@@ -216,13 +241,13 @@ color: black;
 }
 
 .shape.square input{
-  width: 400px;
+  width: 40vw;
 }
 
 .ecuacion{
   position: relative; 
   text-align: center;
-  left: -8px;
+  left: 3vw;
   transform: translateY(17px);
   font-size: 25px;
 }
@@ -237,7 +262,7 @@ color: black;
 .aviso{
   position: relative !important;
   top: 50px !important;
-  right: 54px !important;
+  right: 50px !important;
 }
 
 .evaluacion{
@@ -491,18 +516,102 @@ color: black;
     position: relative;
     right: 13%;
   }
-@media (max-width:881px){/*Condicional que se activa si el ancho alcanza los 680px*/
-  .shape.rhomboid{
-      left: -10vw;
+
+  #botonResultados{
+    position: relative;
+    left: 31vw;
+    height: 8vh;
+    width: 15vw;
+    background-color: #d9d9d9;
+    border: none;
+    outline: none;
+    font-size: 2.5em;
+    border-radius: 2em;
+    margin: 0.1em auto;
+  }
+
+
+@media screen and (max-width:1024px){
+  header p{
+    font-size: 2vw;
+  }
+  header button{
+  font-size: 2vw;
+  }
+  header span{
+    font-size: 2vw;
+  }
+
+  #seccion{
+    right: 8%;
+  }
+  #shape_button{
+  height: 6vh;
+  width: 4vh;
+  }
+  #shape_button1{
+  height: 6vh;
+  width: 4vh;
+  }
+  #shape_button3{
+    height: 6vh;
+    width: 4vh;
+  }
+  #shape_button4{
+    height: 6vh;
+    width: 4vh;
+  }
+  #shape_button5{
+    height: 6vh;
+    width: 4vh;
+  }
+  #shape_button6{
+    height: 6vh;
+    width: 4vh;
+  }
+  #botonResultados{
+    left: 32vw;
+  }
+  #container8 .nombre{
+    left: 22%;
+  }
+}
+@media screen and (max-width:881px){/*Condicional que se activa si el ancho está por debajo de 881px*/
+  header button{
+    font-size: 2vw;
+  }
+  header p{
+    font-size: 2.2vw;
+  }
+  header span{
+    font-size: 2.5vw;
+    padding-right: 2vw;
+  }
+  
+    .shape.rhomboid{
+    left: 4vw;
   }
   .shape.square{
-    left: -12vw;
+    left: 1vw;
   }
   .shape.square ol{
     padding-left: 49px;
   }
-  .evaluacion{
-    right: -20em !important;
+  .shape.square p{
+    right: 50px; 
+  }
+  .arrow-line.down::before{
+    left: 52%;
+  }
+  .arrow.down{
+    left: 52%;
+  }
+  .arrow.red{
+    left: 52%;
+
+  }
+  .margen_derecho{
+    right: -2%;
   }
 
   #shape_button{
@@ -537,7 +646,468 @@ color: black;
       left: -28vw;
       width: 3vw;
   }
+  #container8 .nombre::before{
+    left: 44%;
+  }
   #container8 .nombre{
-  left: 11%;
+  left: 16%;
+  }
+
+  #botonResultados{
+    left: 29vw;
+  }
+
+  #seccion{
+    right: 2%;
+  }
+}
+@media screen and (max-width:768px){
+  #container8 .nombre{
+    left: 14%;
+  }
+}
+@media screen and (max-width:480px){
+  header{
+    min-height: 77px;
+  }
+  header button{
+    padding: 0.5vw 1vw;
+    font-size: 3vw;
+  }
+  header p{
+    font-size: 3.2vw;
+    width: max-content;
+  }
+  header span{
+    font-size: 3.5vw;
+  }
+
+  .diagram-container button{
+    left: 15vw;
+    width: 22vw;
+  }
+  .shape{
+    max-width: 62vw;
+  }
+  .shape.rhomboid{
+    left: 4vw;
+  }
+  .shape.rhomboid h2{
+    top:  -48px;
+  }
+  .shape.rhomboid form{
+    position: relative;
+    bottom:  7vh;
+  }
+  .shape.rhomboid input{
+    width: 60vw;
+  }
+  .shape.square{
+    left: 4vw;
+  }
+  .shape.square ol{
+    padding-left: 15px;
+  }
+  .shape.square h2{
+    top: -37px;
+  }
+  .shape.square form{
+    top: -27px;
+  }
+  .shape.square label{
+    position: relative;
+    bottom: 3vh;
+  }
+  .arrow-line.down::before{
+    left: 52%;
+  }
+  .arrow.down{
+    left: 52%;
+  }
+  .arrow.red{
+    left: 52%;
+
+  }
+  .margen_derecho{
+    right: -2%;
+  }
+  .ecuacion{
+    font-size: 5vw;
+    left: 2vw;
+  }
+  .aviso{
+    top: 14px !important;
+    right: 20px !important;
+  }
+
+  #seccion{
+    font-size: 3.5vw;
+    margin-left: unset;
+    padding-right: unset;
+    right: -5.5vw;
+  }
+  #nameUser{
+    position: relative;
+    right: -3vw;
+  }
+  #shape_button{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button1{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button2{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button3{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button4{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button5{
+    height: 8vh;
+    width: 6vw;
+  }
+  #shape_button6{
+    height: 8vh;
+    width: 6vw;
+  }
+  #informacion_cifrado{
+      left: -28vw;
+      width: 3vw;
+  }
+  #container8 .nombre::before{
+    left: 44%;
+  }
+  #container8 .nombre{
+  left: 6%;
+  }
+  #botonResultados{
+  left: 35vw;
+  }
+  #publica{
+  top:-15px;
+  }
+  #privada{
+  top:-15px;
+  }
+}
+@media screen and (max-width:375px){
+  #botonResultados{
+    width: 20vw;
+    left: 34vw;
+  }
+  #container8 .nombre{
+    left: -2%;
+  }
+}
+@media screen and (max-width:320px){
+  header p{
+    font-size: 4.2vw;
+    width: 43vw;
+  }
+  header button{
+  padding: 1.5vw 3vw;
+  font-size: 4vw;
+  }
+  header div{
+    padding-left: 1.5vw;
+  }
+  header span{
+    font-size: 4.5vw;
+  }
+
+  .diagram-container button{
+    left:3vw;
+    width: 29vw;
+  }
+  .shape.rhomboid h2{
+    top: -40px;
+  }
+  .shape.rhomboid input{
+    position: relative;
+    bottom: 1vh;
+  }
+  .shape.square p{
+    right: 14px;
+  }
+  .shape.square label{
+    bottom: 4vh;
+  }
+  .aviso{
+    top: -10px !important;
+    right: 20px !important;
+  }
+  
+  #shape_button1{
+    height: 7vh;
+  }
+  #seccion{
+  font-size: 4.5vw;
+  right: -3.5vw;
+  }
+  #nameUser{
+  font-size: 4.5vw;
+  right: -2vw;
+  }
+  #publica{
+    width: 180px;
+    top: -20px;
+  }
+  #privada{
+    width: 180px;
+    top: -20px;
+  }
+  #botonResultados{
+    left: 36vw;
+    width: 21vw;
+  }
+  #container8 .nombre{
+    left: -6%;
+  }
+  /*#botonResultados{
+    left: 34vw;
+    width: 18vw;
+  }
+  #container8 .nombre{
+    top: 44px;
+    left: -1%;
+  }*/
+}
+
+@container square1 (max-width:512px){
+p{
+  right: 8vw !important;
+}
+
+.ecuacion{
+  left: 4vw;
+}
+}
+
+@container square1 (max-width:384px){
+p{
+  right: unset !important;
+}
+}
+/**/
+
+@media screen and (width >= 1440px) {
+  h2{
+    font-size: 2.5vw;
+  }
+
+  header p{
+    font-size: 2.1vw;
+  }
+  header button{
+  font-size: 2vw;
+  }
+  header span{
+    font-size: 2.1vw;
+  } 
+
+  dialog p{
+    font-size: 1.8vw;
+  }
+  dialog li{
+    font-size: 1.8vw;
+  }
+
+  .shape.rhomboid p{
+    font-size: 1.6vw;
+  }
+  .shape.rhomboid form{
+    font-size: 2vw;
+  }
+  .shape.rhomboid input{
+    font-size: 1.3vw;
+    width: 50vw;
+    height: 5vh;
+  }
+
+  .shape.square p{
+    font-size: 1.6vw;
+    right: 10vw;
+  }
+  .shape.square ol li{
+    font-size: 1.7vw;
+  }
+  .shape.square label{
+    font-size: 1.7vw;
+  }
+  .shape.square input{
+    height: 2.7vh;
+  }
+
+  .ecuacion{
+    left: 8vw;
+    font-size: 2vw !important;
+  }
+  .evaluacion{
+    font-size: 1.3em !important;
+  }
+
+  .modal_button{
+    font-size: 1.8vw;
+  }
+
+  #shape_button{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button1{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button2{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button3{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button4{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button5{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+  #shape_button6{
+    height: 4.1vw;
+    width: 4.3vw;
+    padding-bottom: 1vw;
+  }
+
+  #publica{
+    width: 30vw;
+    height: 3vh;
+    font-size: 1.5em;
+  }
+  #privada{
+    width: 30vw;
+    height: 3vh;
+    font-size: 1.5em;
+  }
+
+  #botonResultados{
+    left: 32vw;
+    font-size: 4em;
+  }
+
+  #container8 .nombre{
+    top: 6.2vh;
+  }
+  #container8 .nombre .text{
+    font-size: 1.3vw;
+  }
+}
+@media screen and (width >= 2560px){
+  dialog{
+    width: 60vw;
+    max-width: 60%;
+    box-shadow: 0 1vw 4vw rgba(0, 0, 0.2);
+  }
+  
+  .shape{
+    padding-top: 4vw;
+  }
+  .shape.rhomboid label{
+    font-size: 2.5vw;
+  }
+
+  .ecuacion{
+    left: 5vw;
+    font-size: 2.5vw !important;
+  }
+  .evaluacion{
+    font-size: 2.3em !important;
+  }
+
+  #publica{
+    font-size: 2.5em;
+  }
+  #privada{
+    font-size: 2.5em;
+  }
+
+  #botonResultados{
+    left: 31.6vw;
+    font-size: 7em;
+  }
+
+  #container8 .nombre::before{
+    bottom: 6vh;
+    border-left: 1.5em solid white;
+    border-right: 1.5em solid white;
+    border-bottom: 1.5em solid red;
+  }
+  #container8 .nombre{
+    padding: 3em 2em;
+    border-radius: 1em;
+    left: 22%;
+    top: 7vh;
+    min-width: 100px;
+  }
+  #container8 .nombre .text{
+    font-size: 1.6vw;
+  }
+}
+@media screen and (width >= 2561px) {
+  body {
+    font-size: clamp(1.2rem, 0.8vw, 2rem);
+    max-width: 1920px;
+    margin: 0;
+  }
+
+  .modal_button{
+    border-radius: 4em;
+    background-color: #7b7878;
+  }
+
+  #algoritmo_extendido span{
+    font-size: 1.8vw;
+  }
+}
+
+@media (min-width: 2561px) and (max-width: 3000px) {
+  #container8 .nombre {
+    min-width: clamp(100px, 6vw, 200px);
+    top: clamp(6vh,7vh,7.3vh);       /* Ajusta la posición vertical */
+    left: 21%;                         /* Centrado más controlado en pantallas anchas */
+    padding: clamp(2em, 3em, 2vh) 2vw;
+  }
+
+  #container8 .nombre::before {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5.8vh;
+    border-left: 2.5vh solid white;
+    border-right: 2.5vh solid white;
+    border-bottom: 2.5vh solid red;
+  }
+}
+
+@media (min-width: 3001px) and (max-width: 6000px) {
+  #container8 .nombre::before{
+    bottom: clamp(20px, 7.8vh, 224px); /* ← Sin despegue */
+    border-left: clamp(12px, 1vw, 100px) solid white;
+    border-right: clamp(12px, 1vw, 100px) solid white;
+    border-bottom: clamp(12px, 1vw, 100px) solid red;
   }
 }
