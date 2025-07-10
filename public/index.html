@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSAprende</title>
+    <title>RSA personalizado</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Keania+One&display=swap" rel="stylesheet">
@@ -13,28 +13,56 @@
         h1 {
             font-family: 'Keania One', sans-serif;
             position: absolute;
-            left:40%;
-            font-size: 50px;
+            left:36%;
+            font-size: clamp(1.5rem, 4vw, 6.125rem);
         }
         #mensaje{
             font-family: 'Keania One', sans-serif;
         }
+        @media (max-width:1024px) {
+         h1{
+         left: 32%;
+         }
+        }
         @media (max-width:881px){
             h1{
-                left: 29%;
+                left: 33%;
+            }
+        }
+        @media (max-width:768px){
+            h1{
+                top: -5%;
+            }
+        }
+        @media (max-width: 425px){
+            h1{
+                top: unset;
+            }
+        }
+
+        @media (min-width: 1440px){
+            h1{
+                top: -1%;
+                left: 34%;
+            }
+        }
+        @media (min-width: 2560px){
+            h1{
+                top: 1%;
+                left: 36%;
             }
         }
     </style>
 </head>
 <body>
-    <h1>RSAprende</h1>
+    <h1>RSA personalizado</h1>
     <div class="rsa-text">
     <p>Bienvenido a nuestra plataforma web sobre el algoritmo RSA<button id="mensaje" onclick="window.RSA_message.showModal();"><span>¡</span></button>,  uno de los métodos más importantes en la criptografía moderna. En esta plataforma web, te llevaremos paso a paso a través del funcionamiento de RSA y la generación de las claves necesarias para su implementación.</p>
     <p>Nuestra plataforma está organizada en tres secciones clave:</p>
     <ol>
         <li><strong>Generación de Claves:</strong>Aprende cómo se crean las  claves pública<button id="mensaje" onclick="window.clave_publica.showModal();"><span>¡</span></button> y privada<button id="mensaje" onclick="window.clave_privada.showModal();"><span>¡</span></button>, esenciales para el proceso de cifrado y descifrado.</li>
-        <li><button id="mensaje" onclick="window.modal_cifrado.showModal();"><span>¡</span></button> <strong>Cifrado:</strong>Descubre cómo utilizar la clave pública para cifrar mensajes y garantizar que solo los destinatarios autorizados puedan leerlos.</li>
-        <li><button id="mensaje" onclick="window.modal_descifrado.showModal();"><span>¡</span></button> <strong>Descifrado:</strong>Entiende el proceso de descifrado utilizando la clave privada para recuperar el mensaje original a partir del texto cifrado.</li>
+        <li><button id="mensaje" onclick="modalCifrado();"><span>¡</span></button> <strong>Cifrado:</strong>Descubre cómo utilizar la clave pública para cifrar mensajes y garantizar que solo los destinatarios autorizados puedan leerlos.</li>
+        <li><button id="mensaje" onclick="modalDescifrado();"><span>¡</span></button> <strong>Descifrado:</strong>Entiende el proceso de descifrado utilizando la clave privada para recuperar el mensaje original a partir del texto cifrado.</li>
     </ol>
     <button><a href="login/login.html">Inicio</a></button>
     </div>
@@ -60,7 +88,7 @@
         </div>
 
         <div class="creditos">
-            <p>© 2025 - Herramienta web interactiva para el aprendizaje del algoritmo de encriptación RSA </p>
+            <p>© 2025 - Herramienta web interactiva para la comprensión del algoritmo de encriptación RSA </p>
         </div>
     </footer>
     <dialog id="modal_cifrado">
@@ -108,5 +136,16 @@
         <p>RSA es un sistema de cifrado asimétrico que utiliza dos claves distintas: una clave pública para cifrar los mensajes y una clave privada para descifrarlos, a diferencia del cifrado simétrico, que emplea la misma clave para ambos procesos. Su seguridad se fundamenta en la dificultad de factorizar números grandes compuestos por el producto de dos números primos.</p>
         <button class="modal_button" onclick="window.RSA_message.close();">Cerrar</button>
     </dialog>
+    <script>
+    function modalCifrado() {
+        window.modal_cifrado.showModal();
+        window.modal_cifrado.scrollTop = 0; // Forzar que el contenido comience desde el inicio
+    }
+
+    function modalDescifrado() {
+        window.modal_descifrado.showModal();
+        window.modal_descifrado.scrollTop = 0; // Forzar que el contenido comience desde el inicio
+    }
+    </script>
 </body>
 </html>

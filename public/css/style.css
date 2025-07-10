@@ -11,7 +11,7 @@ body { /*Estructura de la página web*/
     background-color: #fff;
     position: fixed;
     width: 600px;
-    max-width: 100%;
+    max-width: 50%;
     padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0.2);
@@ -35,7 +35,8 @@ body { /*Estructura de la página web*/
 }
 
 .autores, .fuentes {
-  text-align: left;
+    text-align: left;
+    /*background-color: aqua;*/
 }
 
 h3 {
@@ -133,8 +134,136 @@ ul li {
     bottom: 4px;
   }
   
+  @media (max-width:1024px) {
+    p{
+      font-size: 2.3ex;
+    }
+    li{
+      font-size: 2.3ex;
+    }
+
+    .rsa-text{
+      padding-bottom: 12vh;
+    }
+    .rsa-text p{
+      font-size: 2.3ex;
+    }
+    .fuentes{
+      max-width: 50%;
+    }
+  }
   @media (max-width:881px){/*Condicional que se activa si el ancho alcanza los 680px*/
     .rsa-text button{
       left: 223px;
     }
   }
+  @media (max-width: 768px) {
+    body {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .rsa-text{
+      font-size: small;
+    }
+  }
+  @media (max-width: 425px) {
+  body {
+    font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+  }
+
+  .rsa-text{
+    font-size: x-small;
+    width: 90vw;
+  }
+  .rsa-text button{
+    height: 10vh;
+    width: 47vw;
+    left: 28%;
+  }
+  .fuentes{
+    max-width: none;
+  }
+}
+@media (max-width: 320px){
+  footer{
+    top: 95vh;
+  }
+}
+
+@media (min-width: 1440px){
+    p{
+      font-size: 3ex;
+    }
+    li{
+      font-size: 3ex;
+    }
+
+    .rsa-text{
+      padding-bottom: 27vh;
+      font-size: medium;
+    }
+    .rsa-text p{
+      font-size: 3ex;
+    }
+
+    .fuentes{
+      max-width: 50%;
+    }
+}
+
+@media (min-width: 2560px){
+      footer{
+        font-size: 2em;
+      }    
+
+      .rsa-text {
+        padding-bottom: 40vh;
+        font-size: xx-large;
+        width: 60vw;
+      }
+      .rsa-text button{
+        left: 42%;
+        height: 6vh;
+        width: 24vh;
+      }
+}
+/*.rsa-text {
+    width: clamp(700px, 50vw, 900px);
+    height: auto;
+    padding-bottom: 3vh;
+  }
+
+  .rsa-text button {
+    width: clamp(240px, 16vw, 320px);
+    height: clamp(80px, 8vh, 100px);
+    font-size: clamp(36px, 2vw, 52px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  dialog {
+    width: clamp(600px, 40vw, 900px);
+    padding: 40px;
+  }
+
+  footer {
+    padding: 30px;
+    font-size: 18px;
+  }
+
+  .footer-container {
+    max-width: 80%;
+    margin: 0 auto;
+    gap: 50px;
+  }
+
+  #mensaje {
+    width: 2vw;
+    height: 2.5vh;
+    font-size: 1.1em;
+  }
+
+  #mensaje span {
+    bottom: 3px;
+  }
+}
